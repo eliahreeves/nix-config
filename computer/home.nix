@@ -10,6 +10,8 @@
   home.stateVersion = "25.05"; # Please read the comment before changing.
   home.packages = with pkgs; [
     nixfmt-rfc-style
+    stylua
+    lua-language-server
 
     firefox
     nautilus
@@ -73,11 +75,10 @@
 
   programs = {
     home-manager.enable = true;
+
     neovim = {
       enable = true;
       plugins = with pkgs; [
-        stylua
-        lua-language-server
         vimPlugins.nvim-treesitter.withAllGrammars
       ];
     };
@@ -85,34 +86,5 @@
       enable = true;
     };
     lazygit.enable = true;
-    git = {
-      enable = true;
-      userName = "Eliah Reeves";
-      userEmail = "ereeclimb@gmail.com";
-      signing = {
-        signByDefault = true;
-      };
-      configExtra = {
-        init.defaultBranch = "main";
-      };
-    };
-    zsh = {
-      enable = true;
-      oh-my-zsh = {
-        enable = true;
-        theme = "";
-        plugins = [
-          "git"
-          "sudo"
-        ];
-      };
-      initContent = ''
-        source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-        source /home/erreeves/.dotfiles/p10k/.p10k.zsh
-      '';
-      syntaxHighlighting.enable = true;
-      autosuggestion.enable = true;
-
-    };
   };
 }

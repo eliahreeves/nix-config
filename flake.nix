@@ -21,5 +21,6 @@
 ./nixosModules
       ];
     };
+    homeManagerModules.default = import ./homeManagerModules;
   };
 }

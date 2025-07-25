@@ -85,13 +85,7 @@
     ];
     shell = pkgs.zsh;
   };
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      "erreeves" = import ./home.nix;
-    };
 
-  };
 
   programs.zsh.enable = true;
 
