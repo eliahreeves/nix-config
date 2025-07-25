@@ -3,13 +3,11 @@
   pkgs,
   lib,
   ...
-}:
-
-{
+}: {
   home.username = "erreeves";
   home.stateVersion = "25.05"; # Please read the comment before changing.
   home.packages = with pkgs; [
-    nixfmt-rfc-style
+    alejandra
     stylua
     lua-language-server
 
@@ -23,6 +21,7 @@
     tmux
     gnumake
     walker
+    blueberry
     nerd-fonts.caskaydia-mono
     wl-clipboard
   ];

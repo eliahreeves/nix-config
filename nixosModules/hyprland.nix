@@ -3,9 +3,7 @@
   lib,
   config,
   ...
-}:
-{
-
+}: {
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -25,6 +23,5 @@
       };
     };
   };
-  security.pam.services.greetd = { };
-
+  security.pam.services.greetd = {};
 }

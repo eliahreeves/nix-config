@@ -1,15 +1,12 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
 {
   config,
   pkgs,
   inputs,
   ...
-}:
-
-{
+}: {
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
@@ -33,6 +30,11 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
 
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
@@ -64,18 +66,8 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.erreeves = {
     isNormalUser = true;
     description = "Eliah Reeves";
@@ -86,7 +78,6 @@
     shell = pkgs.zsh;
   };
 
-
   programs.zsh.enable = true;
 
   nixpkgs.config.allowUnfree = true;
@@ -96,7 +87,8 @@
     rsync
     cryptsetup
     vim
+    git
   ];
-  system.stateVersion = "25.05"; # Did you read the comment?
 
+  system.stateVersion = "25.05"; # Did you read the comment?
 }

@@ -3,8 +3,7 @@
   lib,
   config,
   ...
-}:
-{
+}: {
   programs.tmux = {
     enable = true;
     plugins = with pkgs.tmuxPlugins; [
@@ -18,11 +17,10 @@
       {
         plugin = fingers;
         extraConfig = ''
-          			set -g @fingers-hint-style "bg=red,fg=black,bold"
-                set -g @fingers-backdrop-style "dim"
-                set -g @fingers-highlight-style "bg=green,fg=black"
-          			'';
-
+          set -g @fingers-hint-style "bg=red,fg=black,bold"
+             set -g @fingers-backdrop-style "dim"
+             set -g @fingers-highlight-style "bg=green,fg=black"
+        '';
       }
       mode-indicator
     ];

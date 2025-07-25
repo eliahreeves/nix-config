@@ -3,12 +3,11 @@
   lib,
   config,
   ...
-}:
-{
+}: {
   services.keyd = {
     enable = true;
     keyboards.default = {
-      ids = [ "*" ];
+      ids = ["*"];
       settings = {
         main = {
           capslock = "overload(capslock, esc)";
