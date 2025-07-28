@@ -1,6 +1,13 @@
-{inputs, ...}: {
+{
+  inputs,
+  config,
+  ...
+}: {
   home-manager = {
-    extraSpecialArgs = {inherit inputs;};
+    extraSpecialArgs = {
+      inherit inputs;
+      nixosConfig = config;
+    };
     users = {
       "erreeves" = {
         imports = [

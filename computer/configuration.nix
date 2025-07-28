@@ -36,6 +36,12 @@
     powerOnBoot = true;
   };
 
+  networking.firewall.allowedTCPPorts = [
+    80 # http
+    443 # https
+    25565 # minecraft
+  ];
+
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
 
@@ -78,6 +84,8 @@
     shell = pkgs.zsh;
   };
 
+  programs.gdk-pixbuf.modulePackages = [pkgs.librsvg];
+
   programs.zsh.enable = true;
 
   nixpkgs.config.allowUnfree = true;
@@ -89,6 +97,9 @@
     vim
     git
   ];
+
+  system76-utils.enable = true;
+  amd-utils.enable = true;
 
   system.stateVersion = "25.05"; # Did you read the comment?
 }

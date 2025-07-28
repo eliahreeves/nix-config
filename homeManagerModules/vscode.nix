@@ -4,12 +4,17 @@
   config,
   ...
 }: {
-  programs.vscode = {
-    enable = true;
-    profiles.default = {
-      extensions = with pkgs.vscode-extensions; [
-        jnoortheen.nix-ide
-      ];
+  options = {
+    vscode.enable = lib.mkEnableOption "Enable vscode";
+  };
+  config = lib.mkIf config.vscode.enable {
+    programs.vscode = {
+      enable = true;
+      profiles.default = {
+        extensions = with pkgs.vscode-extensions; [
+          jnoortheen.nix-ide
+        ];
+      };
     };
   };
 }
