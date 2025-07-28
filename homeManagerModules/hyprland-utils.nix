@@ -17,6 +17,7 @@
       hyprpaper
       hyprpicker
       hyprpolkitagent
+      hyprsunset
       wlogout
     ];
     home.file = {
