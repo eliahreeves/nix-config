@@ -18,17 +18,17 @@
   ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
+    loader = {
+      systemd-boot.enable = true;
+      timeout = 2;
+      efi.canTouchEfiVariables = true;
+    };
+  };
 
   networking.hostName = "nixos"; # Define your hostname.
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
   networking.networkmanager.enable = true;
 
   hardware.bluetooth = {
@@ -37,9 +37,7 @@
   };
 
   networking.firewall.allowedTCPPorts = [
-    80 # http
-    443 # https
-    25565 # minecraft
+    25565
   ];
 
   # Set your time zone.
@@ -100,6 +98,7 @@
 
   system76-utils.enable = true;
   amd-utils.enable = true;
+  power-button-sleep.enable = true;
 
   system.stateVersion = "25.05"; # Did you read the comment?
 }
