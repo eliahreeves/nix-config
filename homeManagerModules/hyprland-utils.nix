@@ -16,6 +16,7 @@
       blueberry
       hyprpaper
       hyprpicker
+      hyprpolkitagent
       wlogout
     ];
     home.file = {
