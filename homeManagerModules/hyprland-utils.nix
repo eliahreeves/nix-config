@@ -19,6 +19,7 @@
       hyprpolkitagent
       hyprsunset
       hypridle
+      hyprlock
       wlogout
     ];
     home.file = {
