@@ -15,7 +15,8 @@
       sha256 = "sha256-EDPwcJIkLxewlTwbgcwS77a5iRZVBgpD8KdAazbeFk4=";
     };
     postInstall = ''
-      find $target -type f -print0 | sed -i -e 's|fzf |${pkgs.fzf}/bin/fzf |g' $target/scripts/launch.sh
+      sed -i -e 's|\bfzf\b|${pkgs.fzf}/bin/fzf|g' $target/scripts/launch.sh
+      sed -i -e 's|\byq\b|${pkgs.yq-go}/bin/yq|g' $target/scripts/launch.sh
     '';
   };
 in {
