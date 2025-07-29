@@ -14,6 +14,7 @@
       loupe
       gnome-disk-utility
       papers
+      udisks
     ];
   };
 }
