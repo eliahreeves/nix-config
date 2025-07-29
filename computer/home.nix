@@ -11,6 +11,8 @@
     firefox
     nerd-fonts.caskaydia-mono
     wl-clipboard
+    fastfetch
+    btop
   ];
 
   minecraft.enable = true;

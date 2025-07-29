@@ -5,6 +5,7 @@
   config,
   pkgs,
   inputs,
+  lib,
   ...
 }: {
   nix.settings.experimental-features = [
@@ -12,12 +13,10 @@
     "flakes"
   ];
   imports = [
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
   ];
 
-  # Bootloader.
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
     loader = {
@@ -27,23 +26,23 @@
     };
   };
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "computer";
 
   networking.networkmanager.enable = true;
 
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
+  hardware = {
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
   };
 
-  networking.firewall.allowedTCPPorts = [
-    25565
-  ];
-
-  # Set your time zone.
   time.timeZone = "America/Los_Angeles";
 
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
@@ -62,7 +61,6 @@
     variant = "";
   };
 
-  # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -97,8 +95,8 @@
   ];
 
   system76-utils.enable = true;
-  amd-utils.enable = true;
   power-button-sleep.enable = true;
+  minecraft-server.enable = true;
 
-  system.stateVersion = "25.05"; # Did you read the comment?
+  system.stateVersion = "25.05";
 }

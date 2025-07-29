@@ -11,7 +11,6 @@
     programs.nix-ld = {
       enable = true;
       libraries = with pkgs; [
-        # Common libraries that many dynamic binaries expect
         stdenv.cc.cc
         zlib
         fuse3
@@ -20,7 +19,6 @@
         openssl
         curl
         expat
-        # Add more libraries as needed
       ];
     };
   };

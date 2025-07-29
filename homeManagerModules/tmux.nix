@@ -3,31 +3,57 @@
   lib,
   config,
   ...
-}: {
+}: let
+  layouts = pkgs.tmuxPlugins.mkTmuxPlugin {
+    pluginName = "layouts";
+    version = "dev";
+    rtpFilePath = "sessions.tmux";
+    src = pkgs.fetchFromGitHub {
+      owner = "eliahreeves";
+      repo = "tmux-sessions";
+      rev = "b5c313dbf62135058deb9f7691c0d787dcaebcaf";
+      sha256 = "sha256-EDPwcJIkLxewlTwbgcwS77a5iRZVBgpD8KdAazbeFk4=";
+    };
+    postInstall = ''
+      find $target -type f -print0 | sed -i -e 's|fzf |${pkgs.fzf}/bin/fzf |g' $target/scripts/launch.sh
+    '';
+  };
+in {
   options = {
     tmux.enable = lib.mkEnableOption "Enable tmux";
   };
   config = lib.mkIf config.tmux.enable {
+    home.packages = with pkgs; [yq-go];
     programs.tmux = {
       enable = true;
-      plugins = with pkgs.tmuxPlugins; [
-        {
-          plugin = catppuccin;
-          extraConfig = ''
-            set -g @catppuccin_flavor 'mocha'
-            set -g @catppuccin_window_status_style "rounded"
-          '';
-        }
-        {
-          plugin = fingers;
-          extraConfig = ''
-            set -g @fingers-hint-style "bg=red,fg=black,bold"
-               set -g @fingers-backdrop-style "dim"
-               set -g @fingers-highlight-style "bg=green,fg=black"
-          '';
-        }
-        mode-indicator
-      ];
+      plugins = with pkgs.tmuxPlugins;
+        [
+          {
+            plugin = catppuccin;
+            extraConfig = ''
+              set -g @catppuccin_flavor 'mocha'
+              set -g @catppuccin_window_status_style "rounded"
+            '';
+          }
+          {
+            plugin = fingers;
+            extraConfig = ''
+              set -g @fingers-hint-style "bg=red,fg=black,bold"
+              set -g @fingers-backdrop-style "dim"
+              set -g @fingers-highlight-style "bg=green,fg=black"
+            '';
+          }
+          mode-indicator
+        ]
+        ++ [
+          {
+            plugin = layouts;
+            extraConfig = ''
+              set -g @sessions-project-paths '~/repos'
+              set -g @sessions-finder-key 'f'
+            '';
+          }
+        ];
       extraConfig = ''
         set -sg escape-time 5
         set -g prefix C-a

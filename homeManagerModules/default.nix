@@ -11,8 +11,10 @@
     ./theme.nix
     ./gnome-tools.nix
     ./zen-browser.nix
+    ./direnv.nix
   ];
   git.enable = lib.mkDefault true;
+  direnv.enable = lib.mkDefault true;
   hyprland-utils.enable = lib.mkDefault false;
   gnome-tools.enable = lib.mkDefault false;
   vscode.enable = lib.mkDefault true;
