@@ -32,8 +32,8 @@
       shellAliases = {
         rcat = "cat";
         cat = "bat";
-        rnix-shell = "nix-shell";
-        nix-shell = "nix-shell --command $SHELL";
+        nshell = "nix-shell --command $SHELL";
+        ndev = "nix develop --command $SHELL";
       };
       syntaxHighlighting.enable = true;
       autosuggestion.enable = true;
