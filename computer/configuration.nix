@@ -70,6 +70,9 @@
     pulse.enable = true;
   };
 
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
+
   users.users.erreeves = {
     isNormalUser = true;
     description = "Eliah Reeves";
@@ -97,6 +100,7 @@
   system76-utils.enable = true;
   power-button-sleep.enable = true;
   minecraft-server.enable = true;
+  adwaita-qt.enable = true;
 
   system.stateVersion = "25.05";
 }

@@ -10,13 +10,17 @@
   config = lib.mkIf config.theme.enable {
     home.sessionVariables = {
       GTK_THEME = "Adwaita-dark";
-      QT_STYLE_OVERRIDE = "adwaita-dark";
+      COLOR_SCHEME = "prefer-dark";
     };
     gtk = {
       enable = true;
       theme = {
         name = "Adwaita-dark";
         package = pkgs.gnome-themes-extra;
+      };
+      iconTheme = {
+        package = pkgs.adwaita-icon-theme;
+        name = "Adwaita";
       };
     };
     dconf.settings = {
@@ -27,13 +31,10 @@
     };
     home.pointerCursor = {
       gtk.enable = true;
-      x11.enable = true;
+      # x11.enable = true;
       name = "Adwaita";
-      size = 24;
       package = pkgs.adwaita-icon-theme;
+      size = 24;
     };
-    home.packages = with pkgs; [
-      adwaita-qt
-    ];
   };
 }

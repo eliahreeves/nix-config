@@ -6,13 +6,13 @@
 }: let
   layouts = pkgs.tmuxPlugins.mkTmuxPlugin {
     pluginName = "layouts";
-    version = "dev";
-    rtpFilePath = "sessions.tmux";
+    version = "0.1.0";
+    rtpFilePath = "layouts.tmux";
     src = pkgs.fetchFromGitHub {
       owner = "eliahreeves";
-      repo = "tmux-sessions";
-      rev = "b5c313dbf62135058deb9f7691c0d787dcaebcaf";
-      sha256 = "sha256-EDPwcJIkLxewlTwbgcwS77a5iRZVBgpD8KdAazbeFk4=";
+      repo = "tmux-layouts";
+      rev = "e98a7a05e9eee5e4e064789779120de19288c7fe";
+      sha256 = "sha256-fVJp10cCJPq4HENPh2gcljPUd7Q3Jqu3OO7kp0ZCOUc=";
     };
     postInstall = ''
       sed -i -e 's|\bfzf\b|${pkgs.fzf}/bin/fzf|g' $target/scripts/launch.sh
@@ -50,8 +50,8 @@ in {
           {
             plugin = layouts;
             extraConfig = ''
-              set -g @sessions-project-paths '~/repos'
-              set -g @sessions-finder-key 'f'
+                     set -g @layouts-project-paths '~/repos/*;~/nixos-config;~/.dotfiles'
+              set -g @layouts-finder-key 'f'
             '';
           }
         ];

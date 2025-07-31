@@ -10,6 +10,7 @@
       enable = true;
       xwayland.enable = true;
     };
+    environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
     services.greetd = {
       enable = true;
@@ -25,6 +26,10 @@
         };
       };
     };
+
+    # These might not be needed. added to make nautilus detect disks.
     security.pam.services.greetd = {};
+    programs.dconf.enable = true;
+    services.gnome.gnome-keyring.enable = true;
   };
 }

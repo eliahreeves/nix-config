@@ -1,6 +1,7 @@
 {lib, ...}: {
   imports = [
     ./hyprland.nix
+    ./adwaita-qt.nix
     ./minecraft-server.nix
     ./home-manager.nix
     ./capslock-arrow-keys.nix
@@ -9,6 +10,7 @@
     ./nix-ld.nix
   ];
   system76-utils.enable = lib.mkDefault false;
+  adwaita-qt.enable = lib.mkDefault false;
   capslock-arrow-keys.enable = lib.mkDefault true;
   hyprland.enable = lib.mkDefault true;
   power-button-sleep.enable = lib.mkDefault false;
