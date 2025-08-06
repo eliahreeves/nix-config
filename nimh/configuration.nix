@@ -86,6 +86,7 @@
 
   openssh.enable = true;
   immich.enable = true;
+  nimh-networking.enable = true;
 
   home-manager = {
     enable = true;

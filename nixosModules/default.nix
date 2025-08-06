@@ -11,6 +11,7 @@
     ./nix-ld.nix
     ./openssh.nix
     ./immich.nix
+    ./nimh-networking.nix
   ];
   system76-utils.enable = lib.mkDefault false;
   adwaita-qt.enable = lib.mkDefault false;
@@ -22,4 +23,5 @@
   auto-power-profile.enable = lib.mkDefault false;
   openssh.enable = lib.mkDefault false;
   immich.enable = lib.mkDefault false;
+  nimh-networking.enable = lib.mkDefault false;
 }
