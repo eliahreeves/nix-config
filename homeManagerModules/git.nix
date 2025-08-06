@@ -6,6 +6,11 @@
 }: {
   options = {
     git.enable = lib.mkEnableOption "Enable git";
+    git.sign = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+      description = "sign commit";
+    };
   };
   config = lib.mkIf config.git.enable {
     programs.git = {
@@ -13,7 +18,7 @@
       userName = "Eliah Reeves";
       userEmail = "ereeclimb@gmail.com";
       signing = {
-        signByDefault = true;
+        signByDefault = git.sign;
       };
       extraConfig = {
         init = {

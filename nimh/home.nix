@@ -24,4 +24,5 @@
   };
 
   zsh.autolaunchTmux = false;
+  git.sign = false;
 }
