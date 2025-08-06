@@ -9,6 +9,7 @@
     ./system76-utils.nix
     ./power-button-sleep.nix
     ./nix-ld.nix
+    ./openssh.nix
   ];
   system76-utils.enable = lib.mkDefault false;
   adwaita-qt.enable = lib.mkDefault false;
@@ -18,4 +19,5 @@
   nix-ld.enable = lib.mkDefault true;
   minecraft-server.enable = lib.mkDefault false;
   auto-power-profile.enable = lib.mkDefault false;
+  openssh.enable = lib.mkDefault false;
 }
