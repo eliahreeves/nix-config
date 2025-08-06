@@ -86,7 +86,6 @@
 
   home-manager = {
     enable = true;
-    homePath = "../nimh/home.nix";
   };
   system.stateVersion = "25.05";
 }
