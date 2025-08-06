@@ -18,7 +18,7 @@
       userName = "Eliah Reeves";
       userEmail = "ereeclimb@gmail.com";
       signing = {
-        signByDefault = git.sign;
+        signByDefault = config.git.sign;
       };
       extraConfig = {
         init = {
