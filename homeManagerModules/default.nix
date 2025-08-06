@@ -1,5 +1,6 @@
 {lib, ...}: {
   imports = [
+    ./firefox.nix
     ./git.nix
     ./hyprland-utils.nix
     ./vscode.nix
@@ -17,7 +18,7 @@
   direnv.enable = lib.mkDefault true;
   hyprland-utils.enable = lib.mkDefault false;
   gnome-tools.enable = lib.mkDefault false;
-  vscode.enable = lib.mkDefault true;
+  vscode.enable = lib.mkDefault false;
   minecraft.enable = lib.mkDefault false;
   zsh.enable = lib.mkDefault true;
   tmux.enable = lib.mkDefault false;
@@ -25,4 +26,5 @@
   ghostty.enable = lib.mkDefault false;
   theme.enable = lib.mkDefault false;
   zen-browser.enable = lib.mkDefault false;
+  firefox.enable = lib.mkDefault false;
 }

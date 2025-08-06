@@ -4,15 +4,12 @@
   pkgs,
   inputs,
   ...
-}:
-with lib; let
-  cfg = config.zen-browser;
-in {
+}: {
   options.zen-browser = {
-    enable = mkEnableOption "zen-browser";
+    enable = lib.mkEnableOption "zen-browser";
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf config.zen-browser.enable {
     home.packages = [
       inputs.zen-browser.packages.${pkgs.system}.default
     ];

@@ -21,7 +21,7 @@
       };
       serverProperties = {
         level-name = "eli-world";
-        difficulty = "hard";
+        difficulty = "normal";
         view-distance = 18;
         white-list = true;
       };

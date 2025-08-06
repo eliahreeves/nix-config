@@ -6,6 +6,11 @@
 }: {
   options = {
     zsh.enable = lib.mkEnableOption "Enable zsh";
+    zsh.autolaunchTmux = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+      description = "Auto-launch tmux session when opening terminal";
+    };
   };
   config = lib.mkIf config.zsh.enable {
     programs.zsh = {
@@ -19,7 +24,9 @@
         ];
       };
       initContent = ''
-        if [ -z "$TMUX" ] && [ "$TERM_PROGRAM" != "vscode" ]; then tmux attach -t main || tmux new -s main; fi
+        ${lib.optionalString config.zsh.autolaunchTmux ''
+          if [ -z "$TMUX" ] && [ "$TERM_PROGRAM" != "vscode" ]; then tmux attach -t main || tmux new -s main; fi
+        ''}
         source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
         source /home/erreeves/.dotfiles/p10k/.p10k.zsh
         rebuild-nixos() {

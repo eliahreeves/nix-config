@@ -20,12 +20,24 @@
     nixpkgs,
     ...
   } @ inputs: {
-    # use "nixos", or your hostname as the name of the configuration
-    # it's a better practice than "default" shown in the video
     nixosConfigurations.computer = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs;};
+      specialArgs = {
+        inherit inputs;
+        homePath = ./computer/home.nix;
+      };
       modules = [
         ./computer/configuration.nix
+        inputs.home-manager.nixosModules.default
+        ./nixosModules
+      ];
+    };
+    nixosConfigurations.nimh = nixpkgs.lib.nixosSystem {
+      specialArgs = {
+        inherit inputs;
+        homePath = ./nimh/home.nix;
+      };
+      modules = [
+        ./nimh/configuration.nix
         inputs.home-manager.nixosModules.default
         ./nixosModules
       ];

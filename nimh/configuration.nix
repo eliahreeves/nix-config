@@ -26,20 +26,9 @@
     };
   };
 
-  networking.hostName = "computer";
+  networking.hostName = "nimh";
 
   networking.networkmanager.enable = true;
-
-  hardware = {
-    bluetooth = {
-      enable = true;
-      powerOnBoot = true;
-    };
-    graphics = {
-      enable = true;
-      enable32Bit = true;
-    };
-  };
 
   time.timeZone = "America/Los_Angeles";
 
@@ -83,8 +72,6 @@
     shell = pkgs.zsh;
   };
 
-  programs.gdk-pixbuf.modulePackages = [pkgs.librsvg];
-
   programs.zsh.enable = true;
 
   nixpkgs.config.allowUnfree = true;
@@ -97,15 +84,9 @@
     git
   ];
 
-  system76-utils.enable = true;
-  power-button-sleep.enable = true;
-  minecraft-server.enable = true;
-  adwaita-qt.enable = true;
-  capslock-arrow-keys.enable = true;
-  auto-power-profile.enable = true;
-  hyprland.enable = true;
-
-  home-manager.enable = true;
-
+  home-manager = {
+    enable = true;
+    homePath = "../nimh/home.nix";
+  };
   system.stateVersion = "25.05";
 }

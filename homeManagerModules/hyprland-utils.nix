@@ -20,6 +20,8 @@
       hyprsunset
       hypridle
       hyprlock
+      slurp
+      grim
       wlogout
     ];
     home.file = {

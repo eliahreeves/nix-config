@@ -8,24 +8,10 @@
   home.username = "erreeves";
   home.stateVersion = "25.05"; # Please read the comment before changing.
   home.packages = with pkgs; [
-    nerd-fonts.caskaydia-mono
     ncdu
-    brave
     wl-clipboard
-    fastfetch
     btop
-    spotify
   ];
-
-  minecraft.enable = true;
-  tmux.enable = true;
-  ghostty.enable = true;
-  zen-browser.enable = true;
-  firefox.enable = true;
-  hyprland-utils.enable = nixosConfig.hyprland.enable or false;
-  gnome-tools.enable = nixosConfig.hyprland.enable or false;
-  theme.enable = true;
-  vscode.enable = true;
 
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -36,4 +22,6 @@
     home-manager.enable = true;
     lazygit.enable = true;
   };
+
+  zsh.autolaunchTmux = false;
 }
