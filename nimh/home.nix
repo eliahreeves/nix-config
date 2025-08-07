@@ -25,4 +25,6 @@
 
   zsh.autolaunchTmux = false;
   git.sign = false;
+  tmux.enable = true;
+  tmux.prefix = "b";
 }

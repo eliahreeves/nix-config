@@ -10,9 +10,9 @@
   config = lib.mkIf config.neovim.enable {
     programs.neovim = {
       enable = true;
-      plugins = with pkgs; [
-        vimPlugins.nvim-treesitter.withAllGrammars
-      ];
+      #   plugins = with pkgs; [
+      #     vimPlugins.nvim-treesitter.withAllGrammars
+      #   ];
     };
     home.file = {
       ".config/nvim".source =
@@ -22,7 +22,6 @@
       alejandra
       stylua
       lua-language-server
-      gnumake
     ];
     home.sessionVariables = {
       NIX_NEOVIM = 1;

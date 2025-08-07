@@ -14,8 +14,8 @@
       loupe
       gnome-disk-utility
       papers
-      # added to make nautilus detect removable media. May not be required
       gvfs
+      vlc
     ];
     home.file = {
       ".config/gtk-3.0/bookmarks".text = ''

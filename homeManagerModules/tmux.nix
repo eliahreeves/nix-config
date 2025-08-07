@@ -22,6 +22,11 @@
 in {
   options = {
     tmux.enable = lib.mkEnableOption "Enable tmux";
+    tmux.prefix = lib.mkOption {
+      type = lib.types.string;
+      default = "a";
+      description = "tmux prefix";
+    };
   };
   config = lib.mkIf config.tmux.enable {
     home.packages = with pkgs; [yq-go];
@@ -57,9 +62,9 @@ in {
         ];
       extraConfig = ''
         set -sg escape-time 5
-        set -g prefix C-a
+        set -g prefix C-${config.tmux.prefix}
         unbind-key C-b
-        bind-key C-a send-prefix
+        bind-key C-${config.tmux.prefix} send-prefix
 
         set -g status-left ""
         set -g status-right "#{E:@catppuccin_status_application}#{tmux_mode_indicator}"
