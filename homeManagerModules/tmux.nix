@@ -23,7 +23,7 @@ in {
   options = {
     tmux.enable = lib.mkEnableOption "Enable tmux";
     tmux.prefix = lib.mkOption {
-      type = lib.types.string;
+      type = lib.types.str;
       default = "a";
       description = "tmux prefix";
     };
