@@ -22,6 +22,10 @@
       alejandra
       stylua
       lua-language-server
+      shfmt
+      bash-language-server
+      nixd
+      ripgrep
     ];
     home.sessionVariables = {
       NIX_NEOVIM = 1;

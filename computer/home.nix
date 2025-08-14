@@ -15,6 +15,7 @@
     fastfetch
     btop
     spotify
+    nodejs_24
   ];
 
   minecraft.enable = true;

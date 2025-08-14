@@ -55,7 +55,7 @@ in {
           {
             plugin = layouts;
             extraConfig = ''
-                     set -g @layouts-project-paths '~/repos/*;~/nixos-config;~/.dotfiles'
+              set -g @layouts-project-paths '~/repos/*;~/nixos-config;~/.dotfiles;~/.config'
               set -g @layouts-finder-key 'f'
             '';
           }
