@@ -13,6 +13,7 @@
       seahorse
       loupe
       gnome-disk-utility
+      gnome-control-center
       papers
       gvfs
       vlc

@@ -8,6 +8,7 @@
   home.username = "erreeves";
   home.stateVersion = "25.05"; # Please read the comment before changing.
   home.packages = with pkgs; [
+    immich-go
     ncdu
     wl-clipboard
     btop
@@ -23,7 +24,7 @@
     lazygit.enable = true;
   };
 
-  zsh.autolaunchTmux = false;
+  zsh.autolaunchTmux = true;
   git.sign = false;
   tmux.enable = true;
   tmux.prefix = "b";
