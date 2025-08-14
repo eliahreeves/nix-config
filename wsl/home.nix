@@ -6,11 +6,14 @@
   ...
 }: {
   home.username = "erreeves";
+  home.homeDirectory = "/home/erreeves";
   home.stateVersion = "25.05"; # Please read the comment before changing.
   home.packages = with pkgs; [
-    immich-go
-    wl-clipboard
+    nodejs_24
   ];
+
+  tmux.enable = true;
+  git.sign = false;
 
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -19,11 +22,5 @@
 
   programs = {
     home-manager.enable = true;
-    lazygit.enable = true;
   };
-
-  zsh.autolaunchTmux = true;
-  git.sign = false;
-  tmux.enable = true;
-  tmux.prefix = "b";
 }

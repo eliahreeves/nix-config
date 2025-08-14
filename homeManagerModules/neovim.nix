@@ -10,9 +10,6 @@
   config = lib.mkIf config.neovim.enable {
     programs.neovim = {
       enable = true;
-      #   plugins = with pkgs; [
-      #     vimPlugins.nvim-treesitter.withAllGrammars
-      #   ];
     };
     home.file = {
       ".config/nvim".source =
@@ -25,7 +22,6 @@
       shfmt
       bash-language-server
       nixd
-      ripgrep
     ];
     home.sessionVariables = {
       NIX_NEOVIM = 1;

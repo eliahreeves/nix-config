@@ -9,11 +9,8 @@
   home.stateVersion = "25.05"; # Please read the comment before changing.
   home.packages = with pkgs; [
     nerd-fonts.caskaydia-mono
-    ncdu
     brave
     wl-clipboard
-    fastfetch
-    btop
     spotify
     nodejs_24
   ];

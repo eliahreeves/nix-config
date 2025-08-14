@@ -13,7 +13,9 @@
     ./gnome-tools.nix
     ./zen-browser.nix
     ./direnv.nix
+    ./core.nix
   ];
+  core.enable = lib.mkDefault true;
   git.enable = lib.mkDefault true;
   direnv.enable = lib.mkDefault true;
   hyprland-utils.enable = lib.mkDefault false;

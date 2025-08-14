@@ -20,28 +20,47 @@
     nixpkgs,
     ...
   } @ inputs: {
-    nixosConfigurations.computer = nixpkgs.lib.nixosSystem {
-      specialArgs = {
-        inherit inputs;
-        homePath = ./computer/home.nix;
+    nixosConfigurations = {
+      computer = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs;
+          homePath = ./computer/home.nix;
+          tag = "computer";
+        };
+        modules = [
+          ./computer/configuration.nix
+          inputs.home-manager.nixosModules.default
+          ./nixosModules
+        ];
       };
-      modules = [
-        ./computer/configuration.nix
-        inputs.home-manager.nixosModules.default
-        ./nixosModules
-      ];
-    };
-    nixosConfigurations.nimh = nixpkgs.lib.nixosSystem {
-      specialArgs = {
-        inherit inputs;
-        homePath = ./nimh/home.nix;
+      nimh = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs;
+          homePath = ./nimh/home.nix;
+          tag = "nimh";
+        };
+        modules = [
+          ./nimh/configuration.nix
+          inputs.home-manager.nixosModules.default
+          ./nixosModules
+        ];
       };
-      modules = [
-        ./nimh/configuration.nix
-        inputs.home-manager.nixosModules.default
-        ./nixosModules
-      ];
     };
     homeManagerModules.default = import ./homeManagerModules;
+    homeConfigurations = {
+      wsl = inputs.home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+        };
+        modules = [
+          ./wsl/home.nix
+          self.homeManagerModules.default
+        ];
+        extraSpecialArgs = {
+          inherit inputs;
+          tag = "wsl";
+        };
+      };
+    };
   };
 }

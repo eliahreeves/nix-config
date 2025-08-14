@@ -2,8 +2,12 @@
   pkgs,
   lib,
   config,
+  tag,
   ...
-}: {
+}: let
+  rebuild-nix =
+    pkgs.writeShellScript "rebuild-nix.sh" (builtins.readFile ./scripts/rebuild-nix.sh);
+in {
   options = {
     zsh.enable = lib.mkEnableOption "Enable zsh";
     zsh.autolaunchTmux = lib.mkOption {
@@ -29,9 +33,7 @@
         ''}
         source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
         source /home/erreeves/.dotfiles/p10k/.p10k.zsh
-        rebuild-nixos() {
-          $HOME/.dotfiles/no-stow/scripts/rebuild-nix.sh
-        }
+        alias rebuild-nix="${rebuild-nix} ${tag}"
       '';
       shellAliases = {
         rcat = "cat";
