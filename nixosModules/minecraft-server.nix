@@ -11,7 +11,7 @@
     services.minecraft-server = {
       enable = true;
       eula = true;
-      jvmOpts = "-Xmx8192M -Xms2048M";
+      jvmOpts = "-Xmx4096M -Xms1024M";
       declarative = true;
       openFirewall = true;
       whitelist = {

@@ -81,12 +81,15 @@
     rsync
     cryptsetup
     vim
+    gvfs
     git
+    glib
   ];
 
   openssh.enable = true;
   immich.enable = true;
   nimh-networking.enable = true;
+  minecraft-server.enable = true;
 
   home-manager = {
     enable = true;
