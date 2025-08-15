@@ -87,9 +87,21 @@
   ];
 
   openssh.enable = true;
-  immich.enable = true;
   nimh-networking.enable = true;
   minecraft-server.enable = true;
+  immich.enable = true;
+
+  fileSystems."/mnt/theratpack" = {
+    device = "//192.168.0.123/theratpack";
+    fsType = "cifs";
+    options = [
+      "credentials=/etc/nixos/smbcredentials"
+      "uid=1000" # Your user UID
+      "gid=1000" # Your group GID
+      "iocharset=utf8"
+      "vers=3.0" # SMB protocol version
+    ];
+  };
 
   home-manager = {
     enable = true;

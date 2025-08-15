@@ -11,6 +11,8 @@
     home.packages = with pkgs; [
       ncdu
       fastfetch
+      curl
+      wget
       btop
       ripgrep
       lazygit
