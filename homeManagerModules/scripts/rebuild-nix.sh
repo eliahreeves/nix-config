@@ -10,16 +10,13 @@ git --no-pager diff --staged
 
 if grep -q '^ID=nixos$' /etc/os-release; then
 	echo "NixOS Rebuilding..."
-	if sudo nixos-rebuild switch --flake "$HOME/nixos-config#$1" 2>&1 | tee nixos-switch.log && [ "${PIPESTATUS[0]}" -eq 0 ]; then
-		gen=$(sudo nixos-rebuild list-generations | grep True | awk '{print $1}')
-		echo "$gen" >>nixos-switch.log
-		echo "Rebuild successful, generation $gen"
-	else
-		popd >/dev/null
-		exit 1
-	fi
+	sudo nixos-rebuild switch --flake "$HOME/nixos-config#$1"
+	gen=$(sudo nixos-rebuild list-generations | grep True | awk '{print $1}')
+	echo "Rebuild successful, generation $gen"
 else
+	echo "Home Manager Rebuilding..."
 	home-manager --flake "$HOME/nixos-config#$1" switch
+	echo "Rebuild successful"
 fi
 
 popd >/dev/null

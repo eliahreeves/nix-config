@@ -3,6 +3,7 @@
   lib,
   config,
   homePath,
+  tag,
   ...
 }: {
   options = {
@@ -12,6 +13,7 @@
     home-manager = {
       extraSpecialArgs = {
         inherit inputs;
+        inherit tag;
         nixosConfig = config;
       };
       users = {
