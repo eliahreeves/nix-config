@@ -13,7 +13,7 @@
     };
     home.file = {
       ".config/ghostty".source =
-        config.lib.file.mkOutOfStoreSymlink "/home/erreeves/.dotfiles/ghostty/.config/ghostty";
+        config.lib.file.mkOutOfStoreSymlink "/home/erreeves/.dotfiles/ghostty";
     };
   };
 }

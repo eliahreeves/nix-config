@@ -7,6 +7,8 @@
 }: let
   rebuild-nix =
     pkgs.writeShellScript "rebuild-nix.sh" (builtins.readFile ./scripts/rebuild-nix.sh);
+  p10k =
+    pkgs.writeText ".p10k.zsh" (builtins.readFile ./scripts/.p10k16.zsh);
 in {
   options = {
     zsh.enable = lib.mkEnableOption "Enable zsh";
@@ -32,7 +34,7 @@ in {
           if [ -z "$TMUX" ] && [ "$TERM_PROGRAM" != "vscode" ]; then tmux attach -t main || tmux new -s main; fi
         ''}
         source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-        source /home/erreeves/.dotfiles/p10k/.p10k.zsh
+        source ${p10k}
         alias rebuild-nix="${rebuild-nix} ${tag}"
       '';
       shellAliases = {

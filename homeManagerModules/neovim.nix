@@ -13,7 +13,7 @@
     };
     home.file = {
       ".config/nvim".source =
-        config.lib.file.mkOutOfStoreSymlink "/home/erreeves/.dotfiles/nvim/.config/nvim";
+        config.lib.file.mkOutOfStoreSymlink "/home/erreeves/.dotfiles/nvim";
     };
     home.packages = with pkgs; [
       alejandra
@@ -22,6 +22,8 @@
       shfmt
       bash-language-server
       nixd
+      gopls
+      gofumpt
     ];
     home.sessionVariables = {
       NIX_NEOVIM = 1;

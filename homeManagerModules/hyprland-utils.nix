@@ -26,15 +26,15 @@
     ];
     home.file = {
       ".config/swaync".source =
-        config.lib.file.mkOutOfStoreSymlink "/home/erreeves/.dotfiles/swaync/.config/swaync";
+        config.lib.file.mkOutOfStoreSymlink "/home/erreeves/.dotfiles/swaync";
       ".config/hypr".source =
-        config.lib.file.mkOutOfStoreSymlink "/home/erreeves/.dotfiles/hyprland/.config/hypr";
+        config.lib.file.mkOutOfStoreSymlink "/home/erreeves/.dotfiles/hyprland";
       ".config/wlogout".source =
-        config.lib.file.mkOutOfStoreSymlink "/home/erreeves/.dotfiles/wlogout/.config/wlogout";
+        config.lib.file.mkOutOfStoreSymlink "/home/erreeves/.dotfiles/wlogout";
       ".config/waybar".source =
-        config.lib.file.mkOutOfStoreSymlink "/home/erreeves/.dotfiles/waybar/.config/waybar";
+        config.lib.file.mkOutOfStoreSymlink "/home/erreeves/.dotfiles/waybar";
       ".config/walker".source =
-        config.lib.file.mkOutOfStoreSymlink "/home/erreeves/.dotfiles/walker/.config/walker";
+        config.lib.file.mkOutOfStoreSymlink "/home/erreeves/.dotfiles/walker";
     };
   };
 }

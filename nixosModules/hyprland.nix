@@ -27,7 +27,7 @@
     };
 
     # These might not be needed. added to make nautilus detect disks.
-    security.pam.services.greetd = {};
+    security.pam.services.greetd.enableGnomeKeyring = true;
     programs.dconf.enable = true;
     services.gnome.gnome-keyring.enable = true;
   };
