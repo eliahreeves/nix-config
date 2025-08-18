@@ -23,6 +23,7 @@
   };
 
   zsh.autolaunchTmux = true;
+  zsh.simplify = true;
   git.sign = false;
   tmux.enable = true;
   tmux.prefix = "b";

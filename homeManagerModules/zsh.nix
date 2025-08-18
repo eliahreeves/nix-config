@@ -17,6 +17,11 @@ in {
       default = true;
       description = "Auto-launch tmux session when opening terminal";
     };
+    zsh.simplify = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "remove themes";
+    };
   };
   config = lib.mkIf config.zsh.enable {
     programs.zsh = {
@@ -30,12 +35,14 @@ in {
         ];
       };
       initContent = ''
-        ${lib.optionalString config.zsh.autolaunchTmux ''
+            ${lib.optionalString config.zsh.autolaunchTmux ''
           if [ -z "$TMUX" ] && [ "$TERM_PROGRAM" != "vscode" ]; then tmux attach -t main || tmux new -s main; fi
         ''}
-        source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-        source ${p10k}
-        alias rebuild-nix="${rebuild-nix} ${tag}"
+        ${lib.optionalString config.zsh.simplify ''
+          source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+          source ${p10k}
+        ''}
+            alias rebuild-nix="${rebuild-nix} ${tag}"
       '';
       shellAliases = {
         rcat = "cat";
@@ -43,7 +50,7 @@ in {
         nshell = "nix-shell --command $SHELL";
         ndev = "nix develop --command $SHELL";
       };
-      syntaxHighlighting.enable = true;
+      syntaxHighlighting.enable = ! config.zsh.simplify;
       autosuggestion.enable = true;
     };
     programs.bat = {
