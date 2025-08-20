@@ -16,14 +16,24 @@
         config.lib.file.mkOutOfStoreSymlink "/home/erreeves/.dotfiles/nvim";
     };
     home.packages = with pkgs; [
+      # nix
       alejandra
+      nixd
+      # lua
       stylua
       lua-language-server
+      # bash
       shfmt
       bash-language-server
-      nixd
+      # go
       gopls
       gofumpt
+      # python
+      ruff
+      pyright
+      # ts
+      vtsls
+      eslint
     ];
     home.sessionVariables = {
       NIX_NEOVIM = 1;
