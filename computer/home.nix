@@ -13,6 +13,7 @@
     wl-clipboard
     spotify
     nodejs_24
+    dbeaver-bin
   ];
 
   minecraft.enable = true;

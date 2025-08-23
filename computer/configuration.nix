@@ -30,6 +30,13 @@
 
   networking.networkmanager.enable = true;
 
+  services.printing.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+
   hardware = {
     bluetooth = {
       enable = true;
@@ -104,6 +111,8 @@
   capslock-arrow-keys.enable = true;
   auto-power-profile.enable = true;
   hyprland.enable = true;
+  ollama.
+    enable = true;
 
   home-manager.enable = true;
 

@@ -12,7 +12,9 @@
     ./openssh.nix
     ./immich.nix
     ./nimh-networking.nix
+    ./ollama.nix
   ];
+  ollama.enable = lib.mkDefault false;
   system76-utils.enable = lib.mkDefault false;
   adwaita-qt.enable = lib.mkDefault false;
   capslock-arrow-keys.enable = lib.mkDefault false;
