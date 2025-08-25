@@ -3,6 +3,7 @@
     ./auto-power-profile.nix
     ./hyprland.nix
     ./adwaita-qt.nix
+    ./battery-notice.nix
     ./minecraft-server.nix
     ./home-manager.nix
     ./capslock-arrow-keys.nix
@@ -14,6 +15,7 @@
     ./nimh-networking.nix
     ./ollama.nix
   ];
+  battery-notice.enable = lib.mkDefault false;
   ollama.enable = lib.mkDefault false;
   system76-utils.enable = lib.mkDefault false;
   adwaita-qt.enable = lib.mkDefault false;

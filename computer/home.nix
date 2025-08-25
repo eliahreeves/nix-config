@@ -10,6 +10,7 @@
   home.packages = with pkgs; [
     nerd-fonts.caskaydia-mono
     brave
+    bluetuith
     wl-clipboard
     spotify
     nodejs_24

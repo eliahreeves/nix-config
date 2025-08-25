@@ -23,6 +23,7 @@
       slurp
       grim
       wlogout
+      libnotify
     ];
     home.file = {
       ".config/swaync".source =
