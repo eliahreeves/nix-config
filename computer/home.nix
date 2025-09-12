@@ -26,6 +26,7 @@
   gnome-tools.enable = nixosConfig.hyprland.enable or false;
   theme.enable = true;
   vscode.enable = true;
+  obsidian.enable = true;
 
   home.sessionVariables = {
     EDITOR = "nvim";

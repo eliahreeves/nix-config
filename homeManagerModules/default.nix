@@ -1,6 +1,7 @@
 {lib, ...}: {
   imports = [
     ./firefox.nix
+    ./obsidian.nix
     ./git.nix
     ./hyprland-utils.nix
     ./vscode.nix
@@ -16,6 +17,7 @@
     ./core.nix
   ];
 
+  obsidian.enable = lib.mkDefault false;
   core.enable = lib.mkDefault true;
   git.enable = lib.mkDefault true;
   direnv.enable = lib.mkDefault true;
