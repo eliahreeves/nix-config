@@ -17,10 +17,10 @@ On a non-NixOS system you will first need to install Nix packages and Home Manag
 echo "experimental-features = nix-command flakes" | sudo tee -a /etc/nix/nix.conf >/dev/null
 
 # install home manager from a flake
-nix run github:nix-community/home-manager -- switch --flake ~/nixos-config#wsl
+nix run github:nix-community/home-manager -- switch --flake ~/nix-config#wsl
 ```
 
-After Home Manager is installed you can rebuild using `home-manager --flake "$HOME/nixos-config#NAME_OF_HOST" switch`
+After Home Manager is installed you can rebuild using `home-manager --flake "$HOME/nix-config#NAME_OF_HOST" switch`
 
 After the first build the command aliased in my zsh module `rebuild-nix` should work for either system. Note that if you are on Mac OS you will probably need to change things a bit to use the darwin command.
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-pushd "$HOME/nixos-config" >/dev/null
+pushd "$HOME/nix-config" >/dev/null
 
 alejandra .
 
@@ -10,12 +10,12 @@ git --no-pager diff --staged
 
 if grep -q '^ID=nixos$' /etc/os-release; then
 	echo "NixOS Rebuilding..."
-	sudo nixos-rebuild switch --flake "$HOME/nixos-config#$1"
+	sudo nixos-rebuild switch --flake "$HOME/nix-config#$1"
 	gen=$(sudo nixos-rebuild list-generations | grep True | awk '{print $1}')
 	echo "Rebuild successful, generation $gen"
 else
 	echo "Home Manager Rebuilding..."
-	home-manager --flake "$HOME/nixos-config#$1" switch
+	home-manager --flake "$HOME/nix-config#$1" switch
 	echo "Rebuild successful"
 fi
 
