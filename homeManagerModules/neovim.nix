@@ -13,7 +13,7 @@
     };
     home.file = {
       ".config/nvim".source =
-        config.lib.file.mkOutOfStoreSymlink "/home/erreeves/.dotfiles/nvim";
+        config.lib.file.mkOutOfStoreSymlink "/home/${config.home.username}/.dotfiles/nvim";
     };
     home.packages = with pkgs; [
       # nix

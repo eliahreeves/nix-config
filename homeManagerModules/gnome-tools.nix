@@ -3,7 +3,9 @@
   lib,
   config,
   ...
-}: {
+}: let
+  homeDir = "/home/${config.home.username}";
+in {
   options = {
     gnome-tools.enable = lib.mkEnableOption "Enable gnome-tools";
   };
@@ -20,11 +22,11 @@
     ];
     home.file = {
       ".config/gtk-3.0/bookmarks".text = ''
-        file:///home/erreeves/Documents Documents
-        file:///home/erreeves/Pictures Pictures
-        file:///home/erreeves/Programs Programs
-        file:///home/erreeves/repos Repos
-        file:///home/erreeves/Downloads Downloads
+        file://${homeDir}/Documents Documents
+        file://${homeDir}/Pictures Pictures
+        file://${homeDir}/Programs Programs
+        file://${homeDir}/repos Repos
+        file://${homeDir}/Downloads Downloads
       '';
     };
   };

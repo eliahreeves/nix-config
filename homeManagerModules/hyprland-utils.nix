@@ -3,7 +3,9 @@
   lib,
   config,
   ...
-}: {
+}: let
+  homeDir = "/home/${config.home.username}";
+in {
   options = {
     hyprland-utils.enable = lib.mkEnableOption "Enable hyprland-utils";
   };
@@ -27,15 +29,15 @@
     ];
     home.file = {
       ".config/swaync".source =
-        config.lib.file.mkOutOfStoreSymlink "/home/erreeves/.dotfiles/swaync";
+        config.lib.file.mkOutOfStoreSymlink "${homeDir}/.dotfiles/swaync";
       ".config/hypr".source =
-        config.lib.file.mkOutOfStoreSymlink "/home/erreeves/.dotfiles/hyprland";
+        config.lib.file.mkOutOfStoreSymlink "${homeDir}/.dotfiles/hyprland";
       ".config/wlogout".source =
-        config.lib.file.mkOutOfStoreSymlink "/home/erreeves/.dotfiles/wlogout";
+        config.lib.file.mkOutOfStoreSymlink "${homeDir}/.dotfiles/wlogout";
       ".config/waybar".source =
-        config.lib.file.mkOutOfStoreSymlink "/home/erreeves/.dotfiles/waybar";
+        config.lib.file.mkOutOfStoreSymlink "${homeDir}/.dotfiles/waybar";
       ".config/walker".source =
-        config.lib.file.mkOutOfStoreSymlink "/home/erreeves/.dotfiles/walker";
+        config.lib.file.mkOutOfStoreSymlink "${homeDir}/.dotfiles/walker";
     };
   };
 }

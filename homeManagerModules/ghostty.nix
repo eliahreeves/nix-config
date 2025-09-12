@@ -13,7 +13,7 @@
     };
     home.file = {
       ".config/ghostty".source =
-        config.lib.file.mkOutOfStoreSymlink "/home/erreeves/.dotfiles/ghostty";
+        config.lib.file.mkOutOfStoreSymlink "/home/${config.home.username}/.dotfiles/ghostty";
     };
   };
 }
