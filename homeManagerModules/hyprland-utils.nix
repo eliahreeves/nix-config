@@ -15,6 +15,7 @@ in {
       swayosd
       waybar
       walker
+      brightnessctl
       blueberry
       hyprpaper
       hyprpicker

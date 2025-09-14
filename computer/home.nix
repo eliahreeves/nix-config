@@ -15,6 +15,7 @@
     spotify
     nodejs_24
     dbeaver-bin
+    gocryptfs
   ];
 
   minecraft.enable = true;
