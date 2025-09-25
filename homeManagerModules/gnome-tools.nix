@@ -11,23 +11,19 @@ in {
   };
   config = lib.mkIf config.gnome-tools.enable {
     home.packages = with pkgs; [
-      nautilus
       seahorse
       loupe
       gnome-disk-utility
-      gnome-control-center
       papers
-      gvfs
-      vlc
     ];
-    home.file = {
-      ".config/gtk-3.0/bookmarks".text = ''
-        file://${homeDir}/Documents Documents
-        file://${homeDir}/Pictures Pictures
-        file://${homeDir}/Programs Programs
-        file://${homeDir}/repos Repos
-        file://${homeDir}/Downloads Downloads
-      '';
-    };
+    # home.file = {
+    #   ".config/gtk-3.0/bookmarks".text = ''
+    #     file://${homeDir}/Documents Documents
+    #     file://${homeDir}/Pictures Pictures
+    #     file://${homeDir}/Programs Programs
+    #     file://${homeDir}/repos Repos
+    #     file://${homeDir}/Downloads Downloads
+    #   '';
+    # };
   };
 }

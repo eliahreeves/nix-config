@@ -39,10 +39,9 @@
           };
         in
           listToAttrs [
-            (extension "ublock-origin" "uBlock0@raymondhill.net" "force_install")
+            (extension "ublock-origin" "uBlock0@raymondhill.net" "normal_installed")
             (extension "proton-pass" "78272b6fa58f4a1abaac99321d503a20@proton.me" "normal_installed")
-            (extension "sponsorblock" "sponsorBlocker@ajay.app" "force_install")
-            (extension "dark-nivgvrv" "dd5f0c02-70f9-4e87-82fa-b4d4f8541518" "normal_installed")
+            (extension "sponsorblock" "sponsorBlocker@ajay.app" "normal_installed")
           ];
         # To add additional extensions, find it on addons.mozilla.org, find
         # the short ID in the url (like https://addons.mozilla.org/en-US/firefox/addon/!SHORT_ID!/)

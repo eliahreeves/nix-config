@@ -14,6 +14,11 @@
         extensions = with pkgs.vscode-extensions; [
           jnoortheen.nix-ide
         ];
+        userSettings = {
+          "files.autoSave" = "on";
+          "editor.fontFamily" = "CaskaydiaMono NF";
+          "telemetry.telemetryLevel" = "off";
+        };
       };
     };
   };

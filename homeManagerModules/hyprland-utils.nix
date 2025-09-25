@@ -16,12 +16,14 @@ in {
       waybar
       walker
       brightnessctl
-      blueberry
       hyprpaper
       hyprpicker
       hyprpolkitagent
+      networkmanagerapplet
       hyprsunset
       hypridle
+      bluetuith
+      vlc
       hyprlock
       slurp
       grim

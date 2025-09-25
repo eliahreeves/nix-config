@@ -8,6 +8,8 @@
     power-button-sleep.enable = lib.mkEnableOption "enables power button sleep";
   };
   config = lib.mkIf config.power-button-sleep.enable {
-    services.logind.settings.Login.HandlePowerKey = "suspend";
+    services.logind.extraConfig = ''
+      HandlePowerKey=suspend
+    '';
   };
 }

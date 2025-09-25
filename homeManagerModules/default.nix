@@ -1,6 +1,7 @@
 {lib, ...}: {
   imports = [
     ./firefox.nix
+    ./xfce-utils.nix
     ./obsidian.nix
     ./git.nix
     ./hyprland-utils.nix
@@ -12,11 +13,11 @@
     ./ghostty.nix
     ./theme.nix
     ./gnome-tools.nix
-    ./zen-browser.nix
     ./direnv.nix
     ./core.nix
   ];
 
+  xfce-utils.enable = lib.mkDefault false;
   obsidian.enable = lib.mkDefault false;
   core.enable = lib.mkDefault true;
   git.enable = lib.mkDefault true;
@@ -30,6 +31,5 @@
   neovim.enable = lib.mkDefault true;
   ghostty.enable = lib.mkDefault false;
   theme.enable = lib.mkDefault false;
-  zen-browser.enable = lib.mkDefault false;
   firefox.enable = lib.mkDefault false;
 }

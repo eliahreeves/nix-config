@@ -11,6 +11,7 @@
     home.packages = with pkgs; [
       ncdu
       fastfetch
+      gnumake
       curl
       wget
       btop
