@@ -15,7 +15,7 @@
           jnoortheen.nix-ide
         ];
         userSettings = {
-          "files.autoSave" = "on";
+          "files.autoSave" = "onChange";
           "editor.fontFamily" = "CaskaydiaMono NF";
           "telemetry.telemetryLevel" = "off";
         };

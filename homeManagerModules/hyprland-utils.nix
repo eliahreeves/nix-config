@@ -15,6 +15,7 @@ in {
       swayosd
       waybar
       walker
+      python313Packages.ipython
       brightnessctl
       hyprpaper
       hyprpicker

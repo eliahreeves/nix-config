@@ -15,6 +15,7 @@
         settings = {
           main = {
             capslock = "overload(capslock, esc)";
+            esc = "pause";
           };
 
           capslock = {

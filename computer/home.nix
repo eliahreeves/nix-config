@@ -12,6 +12,7 @@
     ungoogled-chromium
     wl-clipboard
     spotify
+    signal-desktop
     nodejs_24
     dbeaver-bin
     gocryptfs

@@ -23,8 +23,6 @@
           TopSites = false;
           Highlights = false;
           Snippets = false;
-          # "Search": true | false,
-          # "Locked": true | false
         };
         DisableTelemetry = true;
         OfferToSaveLogins = false;
@@ -51,6 +49,9 @@
         # about:support#addons
       };
       profiles.default = {
+        settings = {
+          "browser.sessionstore.resume_from_crash" = false;
+        };
         search = {
           force = true;
           default = "ddg";

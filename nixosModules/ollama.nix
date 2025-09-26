@@ -20,6 +20,6 @@
       enable = true;
       acceleration = "rocm";
     };
-    # systemd.services.ollama.wantedBy = lib.mkForce [];
+    systemd.services.ollama.wantedBy = lib.mkForce [];
   };
 }
