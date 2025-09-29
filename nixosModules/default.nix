@@ -14,7 +14,11 @@
     ./immich.nix
     ./nimh-networking.nix
     ./ollama.nix
+    ./steam.nix
+    ./distrobox.nix
   ];
+  distrobox.enable = lib.mkDefault false;
+  steam.enable = lib.mkDefault false;
   battery-notice.enable = lib.mkDefault false;
   ollama.enable = lib.mkDefault false;
   system76-utils.enable = lib.mkDefault false;

@@ -113,6 +113,8 @@
   hyprland.enable = true;
   ollama.enable = true;
   battery-notice.enable = true;
+  steam.enable = true;
+  distrobox.enable = true;
 
   home-manager.enable = true;
 

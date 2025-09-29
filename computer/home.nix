@@ -16,6 +16,7 @@
     nodejs_24
     dbeaver-bin
     gocryptfs
+    galaxy-buds-client
   ];
 
   xfce-utils.enable = true;

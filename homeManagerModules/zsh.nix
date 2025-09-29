@@ -35,14 +35,15 @@ in {
         ];
       };
       initContent = ''
-            ${lib.optionalString config.zsh.autolaunchTmux ''
+              ${lib.optionalString config.zsh.autolaunchTmux ''
           if [ -z "$TMUX" ] && [ "$TERM_PROGRAM" != "vscode" ]; then tmux attach -t main || tmux new -s main; fi
         ''}
-        ${lib.optionalString (! config.zsh.simplify) ''
+          ${lib.optionalString (! config.zsh.simplify) ''
           source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
           source ${p10k}
         ''}
-            alias rebuild-nix="${rebuild-nix} ${tag}"
+              alias rebuild-nix="${rebuild-nix} ${tag}"
+        export PATH="/home/erreeves/.local/bin:$PATH"
       '';
       shellAliases = {
         rcat = "cat";
