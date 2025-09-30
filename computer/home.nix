@@ -29,6 +29,7 @@
   theme.enable = true;
   vscode.enable = true;
   obsidian.enable = true;
+  latex.enable = true;
 
   home.sessionVariables = {
     EDITOR = "nvim";

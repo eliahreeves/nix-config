@@ -15,8 +15,10 @@
     ./gnome-tools.nix
     ./direnv.nix
     ./core.nix
+    ./latex.nix
   ];
 
+  latex.enable = lib.mkDefault false;
   xfce-utils.enable = lib.mkDefault false;
   obsidian.enable = lib.mkDefault false;
   core.enable = lib.mkDefault true;

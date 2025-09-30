@@ -102,6 +102,7 @@
     cryptsetup
     vim
     git
+    protonvpn-gui
   ];
 
   system76-utils.enable = true;
