@@ -11,6 +11,8 @@
     home.packages = with pkgs; [
       ncdu
       jq
+      uv
+      unzip
       fastfetch
       gnumake
       clang

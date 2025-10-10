@@ -44,6 +44,7 @@ in {
         ''}
               alias rebuild-nix="${rebuild-nix} ${tag}"
         export PATH="/home/erreeves/.local/bin:$PATH"
+        export PATH="/home/erreeves/repos/slang-server/build/bin:$PATH"
       '';
       shellAliases = {
         rcat = "cat";

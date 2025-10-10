@@ -19,6 +19,7 @@
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
+    kernelParams = ["mt7921_common.disable_clc=1"];
     loader = {
       systemd-boot.enable = true;
       timeout = 2;

@@ -34,6 +34,9 @@
       # ts
       vtsls
       eslint
+      # rust
+      rust-analyzer
+      rustfmt
     ];
     home.sessionVariables = {
       NIX_NEOVIM = 1;
