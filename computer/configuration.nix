@@ -113,10 +113,11 @@
   capslock-arrow-keys.enable = true;
   auto-power-profile.enable = true;
   hyprland.enable = true;
-  ollama.enable = true;
+  ollama.enable = false;
   battery-notice.enable = true;
   steam.enable = true;
   distrobox.enable = true;
+  amd-gpu.enable = true;
 
   home-manager.enable = true;
 

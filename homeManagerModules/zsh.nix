@@ -36,7 +36,7 @@ in {
       };
       initContent = ''
               ${lib.optionalString config.zsh.autolaunchTmux ''
-          if [ -z "$TMUX" ] && [ "$TERM_PROGRAM" != "vscode" ]; then tmux attach -t main || tmux new -s main; fi
+          if [ -z "$TMUX" ] && [ "$TERM_PROGRAM" != "vscode" ] && [ -z "$ZED" ]; then tmux attach -t main || tmux new -s main; fi
         ''}
           ${lib.optionalString (! config.zsh.simplify) ''
           source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme

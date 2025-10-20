@@ -1,6 +1,7 @@
 {lib, ...}: {
   imports = [
     ./auto-power-profile.nix
+    ./amd-gpu.nix
     ./hyprland.nix
     ./adwaita-qt.nix
     ./battery-notice.nix
@@ -17,6 +18,7 @@
     ./steam.nix
     ./distrobox.nix
   ];
+  amd-gpu.enable = lib.mkDefault false;
   distrobox.enable = lib.mkDefault false;
   steam.enable = lib.mkDefault false;
   battery-notice.enable = lib.mkDefault false;

@@ -19,6 +19,11 @@
         openssl
         curl
         expat
+        bzip2
+        libffi
+        xz
+        sqlite
+        readline
       ];
     };
   };

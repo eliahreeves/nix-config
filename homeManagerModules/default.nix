@@ -2,6 +2,7 @@
   imports = [
     ./plasma.nix
     ./firefox.nix
+    ./zed.nix
     ./xfce-utils.nix
     ./obsidian.nix
     ./git.nix

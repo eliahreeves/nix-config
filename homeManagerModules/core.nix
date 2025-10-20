@@ -9,6 +9,8 @@
   };
   config = lib.mkIf config.core.enable {
     home.packages = with pkgs; [
+      waypipe
+      lynx
       ncdu
       jq
       uv
@@ -17,7 +19,6 @@
       gnumake
       clang
       cmake
-      python3
       curl
       wget
       btop

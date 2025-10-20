@@ -11,6 +11,7 @@
     nerd-fonts.caskaydia-mono
     ungoogled-chromium
     wl-clipboard
+    airstrike
     spotify
     signal-desktop
     nodejs_24
@@ -30,6 +31,7 @@
   vscode.enable = true;
   obsidian.enable = true;
   latex.enable = true;
+  zed.enable = true;
 
   home.sessionVariables = {
     EDITOR = "nvim";
