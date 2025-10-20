@@ -5,11 +5,11 @@
   nixosConfig ? null,
   ...
 }: {
-  home.username = "erreeves";
+  home.username = "rlreeves";
   home.stateVersion = "25.05"; # Please read the comment before changing.
   home.packages = with pkgs; [
-    immich-go
     wl-clipboard
+    google-chrome
   ];
 
   home.sessionVariables = {
@@ -22,10 +22,12 @@
     lazygit.enable = true;
   };
 
+  firefox.enable = true;
+
   zsh.autolaunchTmux = true;
   zsh.simplify = true;
   git.sign = false;
   tmux.enable = true;
   tmux.prefix = "b";
-  firefox.enable = true;
+  plasma.enable = false;
 }

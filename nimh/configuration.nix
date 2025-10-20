@@ -50,6 +50,13 @@
     variant = "";
   };
 
+  systemd.sleep.extraConfig = ''
+    AllowSuspend=no
+    AllowHibernation=no
+    AllowHybridSleep=no
+    AllowSuspendThenHibernate=no
+  '';
+
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -62,9 +69,22 @@
   services.gvfs.enable = true;
   services.udisks2.enable = true;
 
+  # services.displayManager.sddm.enable = true;
+  # services.desktopManager.plasma6.enable = true;
+
   users.users.erreeves = {
     isNormalUser = true;
     description = "Eliah Reeves";
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
+    shell = pkgs.zsh;
+  };
+
+  users.users.rlreeves = {
+    isNormalUser = true;
+    description = "Ryan Reeves";
     extraGroups = [
       "networkmanager"
       "wheel"
@@ -84,27 +104,31 @@
     gvfs
     git
     glib
+    waypipe
   ];
 
   openssh.enable = true;
-  nimh-networking.enable = true;
-  minecraft-server.enable = true;
-  immich.enable = true;
+  nimh-networking.enable = false;
+  minecraft-server.enable = false;
+  immich.enable = false;
 
-  fileSystems."/mnt/theratpack" = {
-    device = "//192.168.0.123/theratpack";
-    fsType = "cifs";
-    options = [
-      "credentials=/etc/nixos/smbcredentials"
-      "uid=1000" # Your user UID
-      "gid=1000" # Your group GID
-      "iocharset=utf8"
-      "vers=3.0" # SMB protocol version
-    ];
-  };
+  # fileSystems."/mnt/theratpack" = {
+  #   device = "//192.168.0.123/theratpack";
+  #   fsType = "cifs";
+  #   options = [
+  #     "credentials=/etc/nixos/smbcredentials"
+  #     "uid=1000" # Your user UID
+  #     "gid=1000" # Your group GID
+  #     "iocharset=utf8"
+  #     "vers=3.0" # SMB protocol version
+  #   ];
+  # };
 
   home-manager = {
     enable = true;
+    extraUsers = {
+      "rlreeves" = ./home-ryan.nix;
+    };
   };
   system.stateVersion = "25.05";
 }
