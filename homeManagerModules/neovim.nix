@@ -21,8 +21,6 @@
     };
     home.packages = with pkgs; [
       tree-sitter
-      mermaid-cli
-      ghostscript
       # nix
       alejandra
       nixd
