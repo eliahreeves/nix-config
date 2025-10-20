@@ -1,5 +1,8 @@
 {lib, ...}: {
   imports = [
+    ./samba.nix
+    ./immich.nix
+    ./docker.nix
     ./auto-power-profile.nix
     ./amd-gpu.nix
     ./hyprland.nix
@@ -12,12 +15,14 @@
     ./power-button-sleep.nix
     ./nix-ld.nix
     ./openssh.nix
-    ./immich.nix
     ./nimh-networking.nix
     ./ollama.nix
     ./steam.nix
     ./distrobox.nix
   ];
+  immich.enable = lib.mkDefault false;
+  docker.enable = lib.mkDefault false;
+  samba.enable = lib.mkDefault false;
   amd-gpu.enable = lib.mkDefault false;
   distrobox.enable = lib.mkDefault false;
   steam.enable = lib.mkDefault false;
@@ -32,6 +37,5 @@
   minecraft-server.enable = lib.mkDefault false;
   auto-power-profile.enable = lib.mkDefault false;
   openssh.enable = lib.mkDefault false;
-  immich.enable = lib.mkDefault false;
   nimh-networking.enable = lib.mkDefault false;
 }

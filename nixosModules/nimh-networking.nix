@@ -3,22 +3,11 @@
   lib,
   config,
   ...
-}: let
-  nimhphotos = pkgs.writeShellScript "nimhphotos.sh" ''
-      #!/usr/bin/env bash
-    echo url="https://www.duckdns.org/update?domains=nimhphotos&token=1999df90-571b-4457-ace2-03f3f074ac34&ip=" | curl -k -o /tmp/duck.log -K -
-  '';
-in {
+}: {
   options = {
     nimh-networking.enable = lib.mkEnableOption "nimh-networking";
   };
   config = lib.mkIf config.nimh-networking.enable {
-    services.cron = {
-      enable = true;
-      systemCronJobs = [
-        "*/5 * * * *      ${nimhphotos} >/dev/null 2>&1"
-      ];
-    };
     networking.firewall.allowedTCPPorts = [80 443];
 
     services.nginx = {
@@ -31,13 +20,13 @@ in {
         limit_req_zone $binary_remote_addr zone=login:10m rate=10r/m;
       '';
 
-      virtualHosts."nimhphotos.duckdns.org" = {
+      virtualHosts."nimhphotos.tplinkdns.com" = {
         enableACME = true;
         forceSSL = true;
 
         locations = {
           "/" = {
-            proxyPass = "http://127.0.0.1:2283/";
+            proxyPass = "http://[::1]:2283/";
             proxyWebsockets = true;
           };
           "/auth/login" = {

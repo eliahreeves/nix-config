@@ -57,6 +57,22 @@
     AllowSuspendThenHibernate=no
   '';
 
+  networking.networkmanager.wifi.powersave = false;
+
+  fileSystems = {
+    "/srv/immich" = {
+      device = "/dev/disk/by-label/data";
+      fsType = "btrfs";
+      options = ["subvol=@subvolumes/immich" "compress=zstd" "noatime"];
+    };
+
+    "/srv/share" = {
+      device = "/dev/disk/by-label/data";
+      fsType = "btrfs";
+      options = ["subvol=@subvolumes/share" "compress=zstd" "nodiratime"];
+    };
+  };
+
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -69,6 +85,8 @@
   services.gvfs.enable = true;
   services.udisks2.enable = true;
 
+  # services.xserver.enable = true;
+
   # services.displayManager.sddm.enable = true;
   # services.desktopManager.plasma6.enable = true;
 
@@ -78,6 +96,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "docker"
     ];
     shell = pkgs.zsh;
   };
@@ -88,6 +107,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "docker"
     ];
     shell = pkgs.zsh;
   };
@@ -108,9 +128,11 @@
   ];
 
   openssh.enable = true;
-  nimh-networking.enable = false;
+  nimh-networking.enable = true;
   minecraft-server.enable = false;
-  immich.enable = false;
+  samba.enable = true;
+  docker.enable = false;
+  immich.enable = true;
 
   # fileSystems."/mnt/theratpack" = {
   #   device = "//192.168.0.123/theratpack";

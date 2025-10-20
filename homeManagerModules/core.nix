@@ -26,6 +26,7 @@
       lazygit
       fd
       imagemagick
+      btrfs-progs
     ];
   };
 }
