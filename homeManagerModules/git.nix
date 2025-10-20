@@ -15,18 +15,20 @@
   config = lib.mkIf config.git.enable {
     programs.git = {
       enable = true;
-      userName = "Eliah Reeves";
-      userEmail = "ereeclimb@gmail.com";
-      signing = {
-        signByDefault = config.git.sign;
-      };
-      extraConfig = {
+      settings = {
+        user = {
+          name = "Eliah Reeves";
+          email = "ereeclimb@gmail.com";
+        };
         init = {
           defaultBranch = "main";
         };
         pull = {
           rebase = false;
         };
+      };
+      signing = {
+        signByDefault = config.git.sign;
       };
     };
   };

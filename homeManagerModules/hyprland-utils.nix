@@ -14,7 +14,7 @@ in {
       swaynotificationcenter
       swayosd
       waybar
-      walker
+      rofi
       python313Packages.ipython
       brightnessctl
       hyprpaper

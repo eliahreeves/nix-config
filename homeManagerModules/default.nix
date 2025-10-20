@@ -1,6 +1,7 @@
 {lib, ...}: {
   imports = [
     ./firefox.nix
+    ./zed.nix
     ./xfce-utils.nix
     ./obsidian.nix
     ./git.nix
@@ -18,6 +19,7 @@
     ./latex.nix
   ];
 
+  zed.enable = lib.mkDefault false;
   latex.enable = lib.mkDefault false;
   xfce-utils.enable = lib.mkDefault false;
   obsidian.enable = lib.mkDefault false;
