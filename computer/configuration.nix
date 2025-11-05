@@ -8,10 +8,14 @@
   lib,
   ...
 }: {
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  nix.settings = {
+    extra-substituters = ["https://nix-cache.fossi-foundation.org"];
+    extra-trusted-public-keys = ["nix-cache.fossi-foundation.org:3+K59iFwXqKsL7BNu6Guy0v+uTlwsxYQxjspXzqLYQs="];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+  };
   imports = [
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
@@ -19,10 +23,9 @@
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelParams = ["mt7921_common.disable_clc=1"];
     loader = {
       systemd-boot.enable = true;
-      timeout = 2;
+      timeout = 1;
       efi.canTouchEfiVariables = true;
     };
   };

@@ -5,8 +5,28 @@
   tag,
   ...
 }: let
-  rebuild-nix =
-    pkgs.writeShellScript "rebuild-nix.sh" (builtins.readFile ./scripts/rebuild-nix.sh);
+  rebuild-nix = pkgs.writeShellScript "rebuild-nix.sh" ''
+      #!/usr/bin/env bash
+      set -euo pipefail
+
+      pushd "$HOME/nix-config" > /dev/null
+
+    alejandra . > /dev/null 2>&1
+
+      git add .
+      if grep -q '^ID=nixos$' /etc/os-release; then
+      	echo "NixOS Rebuilding..."
+      	sudo nixos-rebuild switch --flake $HOME/nix-config#${tag}
+      	gen=$(sudo nixos-rebuild list-generations | grep True | awk '{print $1}')
+      	echo "Rebuild successful, generation $gen"
+      else
+      	echo "Home Manager Rebuilding..."
+      	home-manager switch --flake $HOME/nix-config#${tag}
+      	echo "Rebuild successful"
+      fi
+
+      popd >/dev/null
+  '';
   p10k =
     pkgs.writeText ".p10k.zsh" (builtins.readFile ./scripts/.p10k16.zsh);
 in {
@@ -42,7 +62,7 @@ in {
           source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
           source ${p10k}
         ''}
-              alias rebuild-nix="${rebuild-nix} ${tag}"
+              alias rebuild-nix="${rebuild-nix}"
         export PATH="/home/erreeves/.local/bin:$PATH"
         export PATH="/home/erreeves/repos/slang-server/build/bin:$PATH"
       '';

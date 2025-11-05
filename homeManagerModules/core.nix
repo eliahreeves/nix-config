@@ -13,6 +13,7 @@
       lynx
       ncdu
       jq
+      nh
       uv
       unzip
       fastfetch

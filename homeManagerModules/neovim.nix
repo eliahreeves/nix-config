@@ -20,6 +20,7 @@
         config.lib.file.mkOutOfStoreSymlink "/home/${config.home.username}/.dotfiles/nvim";
     };
     home.packages = with pkgs; [
+      ghostscript
       tree-sitter
       # nix
       alejandra
@@ -35,7 +36,7 @@
       gofumpt
       # python
       ruff
-      basedpyright
+      pyright
       # ts
       vtsls
       eslint

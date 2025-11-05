@@ -10,12 +10,14 @@
   home.packages = with pkgs; [
     nerd-fonts.caskaydia-mono
     ungoogled-chromium
+    gemini-cli
     wl-clipboard
+    qbittorrent
+    zulip
     airstrike
     spotify
     signal-desktop
     nodejs_24
-    dbeaver-bin
     gocryptfs
     galaxy-buds-client
   ];
