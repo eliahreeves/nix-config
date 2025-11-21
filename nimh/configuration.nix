@@ -85,7 +85,7 @@
   services.gvfs.enable = true;
   services.udisks2.enable = true;
 
-  # services.xserver.enable = true;
+  services.xserver.enable = true;
 
   # services.displayManager.sddm.enable = true;
   # services.desktopManager.plasma6.enable = true;
@@ -129,7 +129,7 @@
 
   openssh.enable = true;
   nimh-networking.enable = true;
-  minecraft-server.enable = false;
+  minecraft-server.enable = true;
   samba.enable = true;
   docker.enable = false;
   immich.enable = true;

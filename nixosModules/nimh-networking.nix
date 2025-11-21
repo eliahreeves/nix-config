@@ -15,6 +15,7 @@
       recommendedGzipSettings = true;
       recommendedOptimisation = true;
       recommendedProxySettings = true;
+      clientMaxBodySize = "15G";
 
       commonHttpConfig = ''
         limit_req_zone $binary_remote_addr zone=login:10m rate=10r/m;
