@@ -90,6 +90,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "docker"
     ];
     shell = pkgs.zsh;
   };
@@ -121,7 +122,7 @@
   steam.enable = true;
   distrobox.enable = true;
   amd-gpu.enable = true;
-
+  services.envfs.enable = true;
   home-manager.enable = true;
 
   system.stateVersion = "25.05";

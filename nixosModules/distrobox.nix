@@ -10,10 +10,8 @@
   config = lib.mkIf config.distrobox.enable {
     virtualisation.containers.enable = true;
     virtualisation = {
-      podman = {
+      docker = {
         enable = true;
-        # Required for containers under podman-compose to be able to talk to each other.
-        defaultNetwork.settings.dns_enabled = true;
       };
     };
 

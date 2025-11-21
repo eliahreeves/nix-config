@@ -24,7 +24,7 @@
           defaultBranch = "main";
         };
         pull = {
-          rebase = false;
+          rebase = true;
         };
       };
       signing = {
