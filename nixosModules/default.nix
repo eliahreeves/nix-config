@@ -19,7 +19,9 @@
     ./ollama.nix
     ./steam.nix
     ./distrobox.nix
+    # ./next-cloud.nix
   ];
+  # next-cloud.enable = lib.mkDefault false;
   immich.enable = lib.mkDefault false;
   docker.enable = lib.mkDefault false;
   samba.enable = lib.mkDefault false;
