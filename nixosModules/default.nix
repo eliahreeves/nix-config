@@ -1,5 +1,7 @@
 {lib, ...}: {
   imports = [
+    ./gnome.nix
+    ./greetd.nix
     ./samba.nix
     ./immich.nix
     ./docker.nix
@@ -22,6 +24,8 @@
     ./next-cloud.nix
   ];
   next-cloud.enable = lib.mkDefault false;
+  greetd.enable = lib.mkDefault false;
+  gnome.enable = lib.mkDefault false;
   immich.enable = lib.mkDefault false;
   docker.enable = lib.mkDefault false;
   samba.enable = lib.mkDefault false;

@@ -9,8 +9,8 @@
   ...
 }: {
   nix.settings = {
-    extra-substituters = ["https://nix-cache.fossi-foundation.org"];
-    extra-trusted-public-keys = ["nix-cache.fossi-foundation.org:3+K59iFwXqKsL7BNu6Guy0v+uTlwsxYQxjspXzqLYQs="];
+    # extra-substituters = ["https://nix-cache.fossi-foundation.org"];
+    # extra-trusted-public-keys = ["nix-cache.fossi-foundation.org:3+K59iFwXqKsL7BNu6Guy0v+uTlwsxYQxjspXzqLYQs="];
     experimental-features = [
       "nix-command"
       "flakes"
@@ -124,6 +124,14 @@
   amd-gpu.enable = true;
   services.envfs.enable = true;
   home-manager.enable = true;
+  gnome.enable = false;
+  greetd.enable = true;
+  services.flatpak.enable = true;
+
+  system.autoUpgrade = {
+    enable = true;
+    flake = "/etc/nixos";
+  };
 
   system.stateVersion = "25.05";
 }

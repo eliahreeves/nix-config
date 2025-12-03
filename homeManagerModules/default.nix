@@ -1,6 +1,7 @@
 {lib, ...}: {
   imports = [
     ./plasma.nix
+    ./python.nix
     ./firefox.nix
     ./zed.nix
     ./xfce-utils.nix
@@ -21,6 +22,7 @@
   ];
 
   plasma.enable = lib.mkDefault false;
+  python.enable = lib.mkDefault false;
   latex.enable = lib.mkDefault false;
   xfce-utils.enable = lib.mkDefault false;
   obsidian.enable = lib.mkDefault false;

@@ -29,7 +29,6 @@ in {
       slurp
       grim
       wlogout
-      mpv
       libnotify
     ];
     home.file = {

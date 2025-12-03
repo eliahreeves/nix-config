@@ -14,12 +14,12 @@
     wl-clipboard
     qbittorrent
     zulip
-    airstrike
     spotify
     signal-desktop
     nodejs_24
     gocryptfs
     galaxy-buds-client
+    gnome-software
   ];
 
   xfce-utils.enable = true;
@@ -34,6 +34,7 @@
   obsidian.enable = true;
   latex.enable = true;
   zed.enable = true;
+  python.enable = true;
 
   home.sessionVariables = {
     EDITOR = "nvim";
