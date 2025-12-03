@@ -133,6 +133,7 @@
   samba.enable = true;
   docker.enable = false;
   immich.enable = true;
+  next-cloud.enable = true;
 
   # fileSystems."/mnt/theratpack" = {
   #   device = "//192.168.0.123/theratpack";

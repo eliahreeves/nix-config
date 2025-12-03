@@ -55,6 +55,10 @@
             };
           };
         };
+        "nimhfiles.duckdns.org" = {
+          enableACME = true;
+          forceSSL = true;
+        };
       };
     };
 
