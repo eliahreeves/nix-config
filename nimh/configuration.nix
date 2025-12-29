@@ -65,11 +65,20 @@
       fsType = "btrfs";
       options = ["subvol=@subvolumes/immich" "compress=zstd" "noatime"];
     };
-
     "/srv/share" = {
       device = "/dev/disk/by-label/data";
       fsType = "btrfs";
       options = ["subvol=@subvolumes/share" "compress=zstd" "nodiratime"];
+    };
+    "/srv/minecraft" = {
+      device = "/dev/disk/by-label/data";
+      fsType = "btrfs";
+      options = ["subvol=@subvolumes/minecraft" "compress=zstd" "noatime"];
+    };
+    "/srv/postgres" = {
+      device = "/dev/disk/by-label/data";
+      fsType = "btrfs";
+      options = ["subvol=@subvolumes/postgres" "compress=zstd" "noatime"];
     };
   };
 
@@ -133,7 +142,6 @@
   samba.enable = true;
   docker.enable = false;
   immich.enable = true;
-  next-cloud.enable = true;
 
   # fileSystems."/mnt/theratpack" = {
   #   device = "//192.168.0.123/theratpack";
