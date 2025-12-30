@@ -10,12 +10,11 @@
   config = lib.mkIf config.core.enable {
     home.packages = with pkgs; [
       waypipe
-      lynx
       ncdu
       jq
-      nh
       uv
       unzip
+      zip
       fastfetch
       gnumake
       clang

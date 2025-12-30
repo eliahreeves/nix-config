@@ -13,6 +13,7 @@
     ./minecraft-server.nix
     ./home-manager.nix
     ./capslock-arrow-keys.nix
+    ./alt-win-swap.nix
     ./system76-utils.nix
     ./power-button-sleep.nix
     ./nix-ld.nix
@@ -37,6 +38,7 @@
   system76-utils.enable = lib.mkDefault false;
   adwaita-qt.enable = lib.mkDefault false;
   capslock-arrow-keys.enable = lib.mkDefault false;
+  alt-win-swap.enable = lib.mkDefault false;
   hyprland.enable = lib.mkDefault false;
   power-button-sleep.enable = lib.mkDefault false;
   nix-ld.enable = lib.mkDefault true;

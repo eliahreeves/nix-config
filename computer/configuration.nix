@@ -19,6 +19,7 @@
   imports = [
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
+    # inputs.eko-messenger.nixosModules.default
   ];
 
   boot = {
@@ -110,11 +111,17 @@
     protonvpn-gui
   ];
 
+  environment.variables = {
+    SSL_CERT_FILE = "/etc/ssl/certs/ca-bundle.crt";
+    SSL_CERT_DIR = "/etc/ssl/certs";
+  };
+
   system76-utils.enable = true;
   power-button-sleep.enable = true;
   minecraft-server.enable = true;
   adwaita-qt.enable = true;
   capslock-arrow-keys.enable = true;
+  alt-win-swap.enable = true;
   auto-power-profile.enable = true;
   hyprland.enable = true;
   ollama.enable = false;
@@ -134,4 +141,11 @@
   };
 
   system.stateVersion = "25.05";
+
+  # services.eko-messenger = {
+  #   enable = false;
+  #   domain = "127.0.0.1:3000";
+  #   firebaseApiKey = "";
+  #   jwtSecret = "";
+  # };
 }
