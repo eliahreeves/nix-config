@@ -28,12 +28,11 @@
   ghostty.enable = true;
   firefox.enable = true;
   hyprland-utils.enable = nixosConfig.hyprland.enable or false;
-  gnome-tools.enable = nixosConfig.hyprland.enable or false;
+  niri-utils.enable = nixosConfig.niri.enable or false;
+  gnome-tools.enable = nixosConfig.hyprland.enable or nixosConfig.niri.enable or false;
   theme.enable = true;
   vscode.enable = true;
-  obsidian.enable = true;
   latex.enable = true;
-  zed.enable = true;
   python.enable = true;
 
   home.sessionVariables = {

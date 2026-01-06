@@ -10,7 +10,7 @@
   config = lib.mkIf config.xfce-utils.enable {
     home.packages = with pkgs; [
       xfce.thunar
-      xfce.tumbler
+      tumbler
       # xfce.xfconf
       # xfce.exo
     ];

@@ -16,14 +16,5 @@ in {
       gnome-disk-utility
       papers
     ];
-    # home.file = {
-    #   ".config/gtk-3.0/bookmarks".text = ''
-    #     file://${homeDir}/Documents Documents
-    #     file://${homeDir}/Pictures Pictures
-    #     file://${homeDir}/Programs Programs
-    #     file://${homeDir}/repos Repos
-    #     file://${homeDir}/Downloads Downloads
-    #   '';
-    # };
   };
 }

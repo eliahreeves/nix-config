@@ -123,21 +123,21 @@
   capslock-arrow-keys.enable = true;
   alt-win-swap.enable = true;
   auto-power-profile.enable = true;
-  hyprland.enable = true;
-  ollama.enable = false;
+  hyprland.enable = false;
+  niri.enable = true;
   battery-notice.enable = true;
   steam.enable = true;
   distrobox.enable = true;
   amd-gpu.enable = true;
   services.envfs.enable = true;
   home-manager.enable = true;
-  gnome.enable = false;
   greetd.enable = true;
   services.flatpak.enable = true;
+  dms.enable = true;
 
   system.autoUpgrade = {
     enable = true;
-    flake = "/etc/nixos";
+    flake = "/home/erreeves/nix-config/";
   };
 
   system.stateVersion = "25.05";
