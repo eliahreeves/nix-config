@@ -9,7 +9,7 @@
   home.stateVersion = "25.05"; # Please read the comment before changing.
   home.packages = with pkgs; [
     wl-clipboard
-    google-chrome
+    immich-go
   ];
 
   home.sessionVariables = {
@@ -24,10 +24,8 @@
 
   firefox.enable = true;
 
-  zsh.autolaunchTmux = true;
+  zsh.autolaunchTmux = false;
   zsh.simplify = true;
   git.sign = false;
-  tmux.enable = true;
-  tmux.prefix = "b";
-  plasma.enable = false;
+  tmux.enable = false;
 }

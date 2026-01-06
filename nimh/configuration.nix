@@ -94,8 +94,15 @@
   services.gvfs.enable = true;
   services.udisks2.enable = true;
 
-  services.xserver.enable = true;
+  services.xserver = {
+    enable = true;
+    desktopManager = {
+      xterm.enable = false;
+      xfce.enable = true;
+    };
+  };
 
+  services.displayManager.defaultSession = "xfce";
   # services.displayManager.sddm.enable = true;
   # services.desktopManager.plasma6.enable = true;
 

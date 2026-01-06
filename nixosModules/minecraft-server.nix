@@ -12,6 +12,7 @@
       enable = true;
       eula = true;
       jvmOpts = "-Xmx4096M -Xms1024M";
+      dataDir = "/srv/minecraft";
       declarative = true;
       openFirewall = true;
       whitelist = {
@@ -19,6 +20,7 @@
         TomorrowSalmon = "337b540e-79ee-4764-bb44-2ecc6ac690f8";
         knabster03 = "b96d9fd1-8551-4bae-8bd6-2589e4fc31f1";
         FlyingFish800 = "1b01dfa9-e9bc-432d-9063-33fc20616eb6";
+        uiscupcake19 = "68a5d05a-1a39-4ea8-ba9c-4219498676b2";
       };
       serverProperties = {
         level-name = "world";
@@ -27,6 +29,6 @@
         white-list = true;
       };
     };
-    systemd.services.minecraft-server.wantedBy = lib.mkForce [];
+    # systemd.services.minecraft-server.wantedBy = lib.mkForce [];
   };
 }

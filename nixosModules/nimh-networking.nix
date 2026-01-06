@@ -10,23 +10,23 @@
   config = lib.mkIf config.nimh-networking.enable {
     networking.firewall.allowedTCPPorts = [80 443];
 
-    systemd.services.updatedns = {
-      path = [pkgs.curl pkgs.jq pkgs.bind pkgs.coreutils];
-      description = "Run update every 10 minutes";
-      serviceConfig = {
-        Type = "oneshot";
-        ExecStart = "/usr/bin/updatedns.sh";
-      };
-    };
-
-    systemd.timers.updatedns = {
-      wantedBy = ["timers.target"];
-      timerConfig = {
-        OnBootSec = "5min";
-        OnUnitActiveSec = "10min";
-        AccuracySec = "5min";
-      };
-    };
+    # systemd.services.updatedns = {
+    #   path = [pkgs.curl pkgs.jq pkgs.bind pkgs.coreutils];
+    #   description = "Run update every 10 minutes";
+    #   serviceConfig = {
+    #     Type = "oneshot";
+    #     ExecStart = "/usr/bin/updatedns.sh";
+    #   };
+    # };
+    #
+    # systemd.timers.updatedns = {
+    #   wantedBy = ["timers.target"];
+    #   timerConfig = {
+    #     OnBootSec = "5min";
+    #     OnUnitActiveSec = "10min";
+    #     AccuracySec = "5min";
+    #   };
+    # };
 
     services.nginx = {
       enable = true;
@@ -40,7 +40,7 @@
       '';
 
       virtualHosts = {
-        "nimhphotos.duckdns.org" = {
+        "nimhphotos.tplinkdns.com" = {
           enableACME = true;
           forceSSL = true;
           locations = {

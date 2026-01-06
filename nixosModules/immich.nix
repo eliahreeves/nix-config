@@ -12,11 +12,11 @@
       enable = true;
       openFirewall = true;
       database.enable = true;
-      mediaLocation = "/srv/immich/library/";
+      mediaLocation = "/srv/immich/";
     };
     services.postgresql = {
       enable = true;
-      dataDir = "/srv/immich/postgres/";
+      dataDir = "/srv/postgres/";
       package = pkgs.postgresql_14;
     };
   };
