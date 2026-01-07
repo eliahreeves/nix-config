@@ -122,7 +122,6 @@
   adwaita-qt.enable = true;
   capslock-arrow-keys.enable = true;
   alt-win-swap.enable = true;
-  auto-power-profile.enable = true;
   hyprland.enable = false;
   niri.enable = true;
   battery-notice.enable = true;
