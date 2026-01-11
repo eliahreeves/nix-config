@@ -9,6 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # eko-messenger = {
     #   url = "path:/home/erreeves/repos/eko-messenger";
     #   inputs.nixpkgs.follows = "nixpkgs";

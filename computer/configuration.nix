@@ -124,7 +124,6 @@
   alt-win-swap.enable = true;
   hyprland.enable = false;
   niri.enable = true;
-  battery-notice.enable = true;
   steam.enable = true;
   distrobox.enable = true;
   amd-gpu.enable = true;
@@ -133,11 +132,6 @@
   greetd.enable = true;
   services.flatpak.enable = true;
   dms.enable = true;
-
-  system.autoUpgrade = {
-    enable = true;
-    flake = "/home/erreeves/nix-config/";
-  };
 
   system.stateVersion = "25.05";
 

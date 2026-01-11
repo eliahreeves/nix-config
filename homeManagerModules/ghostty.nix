@@ -18,7 +18,7 @@
 
     xdg.desktopEntries = {
       nvim-ghostty = {
-        name = "Neovim (Ghostty/Tmux)";
+        name = "Neovim (Ghostty)";
         genericName = "Text Editor";
         # We use ${pkgs.package} to get the absolute path in the Nix store
         exec = "ghostty -e nvim %F";
@@ -29,7 +29,6 @@
       };
     };
 
-    # This helps Thunar and other apps find the terminal emulator
     home.sessionVariables = {
       TERMINAL = "${pkgs.ghostty}/bin/ghostty";
     };
