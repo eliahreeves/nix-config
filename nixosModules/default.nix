@@ -19,13 +19,15 @@
     ./power-button-sleep.nix
     ./nix-ld.nix
     ./openssh.nix
-    ./nimh-networking.nix
+    ./nginx.nix
     ./ollama.nix
     ./steam.nix
     ./distrobox.nix
     ./next-cloud.nix
     ./niri.nix
+    ./eko-messenger.nix
   ];
+  nginx.enable = lib.mkDefault false;
   dms.enable = lib.mkDefault false;
   next-cloud.enable = lib.mkDefault false;
   niri.enable = lib.mkDefault false;
@@ -49,5 +51,5 @@
   minecraft-server.enable = lib.mkDefault false;
   auto-power-profile.enable = lib.mkDefault false;
   openssh.enable = lib.mkDefault false;
-  nimh-networking.enable = lib.mkDefault false;
+  eko-messenger.enable = lib.mkDefault false;
 }

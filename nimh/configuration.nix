@@ -8,10 +8,19 @@
   lib,
   ...
 }: {
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  nix.settings = {
+    extra-substituters = [
+      "https://eko-network.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "eko-network.cachix.org-1:1xHfovoNlydsTCzXxr5AstUoJUmGR/tRq0PQSCyPab8="
+    ];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+    trusted-users = ["root" "@wheel"];
+  };
   imports = [
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
@@ -144,11 +153,10 @@
   ];
 
   openssh.enable = true;
-  nimh-networking.enable = true;
   minecraft-server.enable = true;
   samba.enable = true;
-  docker.enable = false;
   immich.enable = true;
+  eko-messenger.enable = true;
 
   # fileSystems."/mnt/theratpack" = {
   #   device = "//192.168.0.123/theratpack";

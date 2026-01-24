@@ -9,6 +9,7 @@
   };
   config = lib.mkIf config.core.enable {
     home.packages = with pkgs; [
+      tree
       waypipe
       ncdu
       jq

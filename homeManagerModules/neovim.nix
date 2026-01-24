@@ -46,6 +46,8 @@
       # latex
       texlab
       ltex-ls-plus
+      # sql
+      sql-formatter
     ];
     home.sessionVariables = {
       NIX_NEOVIM = 1;

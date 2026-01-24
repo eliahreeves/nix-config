@@ -14,10 +14,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # eko-messenger = {
-    #   url = "path:/home/erreeves/repos/eko-messenger";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    eko-messenger = {
+      url = "github:eko-network/eko-messenger";
+    };
   };
 
   outputs = {

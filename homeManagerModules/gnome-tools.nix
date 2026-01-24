@@ -3,9 +3,7 @@
   lib,
   config,
   ...
-}: let
-  homeDir = "/home/${config.home.username}";
-in {
+}: {
   options = {
     gnome-tools.enable = lib.mkEnableOption "Enable gnome-tools";
   };
@@ -15,6 +13,7 @@ in {
       loupe
       gnome-disk-utility
       papers
+      gnome-mines
     ];
   };
 }

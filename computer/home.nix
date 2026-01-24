@@ -18,8 +18,7 @@
     signal-desktop
     nodejs_24
     gocryptfs
-    galaxy-buds-client
-    gnome-software
+    opencode
   ];
 
   xfce-utils.enable = true;
@@ -29,7 +28,7 @@
   firefox.enable = true;
   hyprland-utils.enable = nixosConfig.hyprland.enable or false;
   niri-utils.enable = nixosConfig.niri.enable or false;
-  gnome-tools.enable = nixosConfig.hyprland.enable or nixosConfig.niri.enable or false;
+  gnome-tools.enable = true;
   theme.enable = true;
   vscode.enable = true;
   latex.enable = true;
