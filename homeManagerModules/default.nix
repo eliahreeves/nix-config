@@ -20,6 +20,7 @@
     ./direnv.nix
     ./core.nix
     ./latex.nix
+    ./eko-messenger-client.nix
   ];
 
   core.enable = lib.mkDefault true;
@@ -27,6 +28,7 @@
   direnv.enable = lib.mkDefault true;
   zsh.enable = lib.mkDefault true;
 
+  eko-messenger-client.enable = lib.mkDefault false;
   niri-utils.enable = lib.mkDefault false;
   plasma.enable = lib.mkDefault false;
   python.enable = lib.mkDefault false;

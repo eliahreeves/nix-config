@@ -26,6 +26,7 @@
   tmux.enable = true;
   ghostty.enable = true;
   firefox.enable = true;
+  eko-messenger-client.enable = true;
   hyprland-utils.enable = nixosConfig.hyprland.enable or false;
   niri-utils.enable = nixosConfig.niri.enable or false;
   gnome-tools.enable = true;

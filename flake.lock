@@ -8,11 +8,11 @@
         "quickshell": "quickshell"
       },
       "locked": {
-        "lastModified": 1769227824,
-        "narHash": "sha256-gSHuF84M9Gfuc0KZz3tpZ9wCtjf9JyVeSWxEtX8WZnY=",
+        "lastModified": 1769288895,
+        "narHash": "sha256-2rhdnlwnnBDqwQIWJfE1X5EnBFiGkU2g9Y7gU/ov/V4=",
         "owner": "AvengeMedia",
         "repo": "DankMaterialShell",
-        "rev": "816819bf9ffed85de43a1bb8ad6cbdae33cededb",
+        "rev": "4e3b24ffbb3bb2142abf01b1f531d54add7517bf",
         "type": "github"
       },
       "original": {
@@ -40,6 +40,43 @@
         "type": "github"
       }
     },
+    "eko-messenger-client": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1769289940,
+        "narHash": "sha256-XXfdQWPLhfaEY3MRuix690C0oYLkEk/8R6sozEbDk0A=",
+        "owner": "eko-network",
+        "repo": "eko-messenger-client",
+        "rev": "23a8487ce787eccfe8e96c18eadef161aa8daa1f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "eko-network",
+        "repo": "eko-messenger-client",
+        "type": "github"
+      }
+    },
+    "flake-utils": {
+      "inputs": {
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -47,11 +84,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1769187349,
-        "narHash": "sha256-clG+nT6I2qxjIgk5WoSDKJyNhzKJs9jzbCujPF2S/yg=",
+        "lastModified": 1769289524,
+        "narHash": "sha256-6Cwtvzrw79cOk1lCzN2aKSVrpgSOSQoYhyMmhXXZjTA=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "082a4cd87c6089d1d9c58ebe52655f9e07245fcb",
+        "rev": "2539eba97a6df237d75617c25cd2dbef92df3d5b",
         "type": "github"
       },
       "original": {
@@ -77,6 +114,22 @@
       }
     },
     "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1763283776,
+        "narHash": "sha256-Y7TDFPK4GlqrKrivOcsHG8xSGqQx3A6c+i7novT85Uk=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "50a96edd8d0db6cc8db57dab6bb6d6ee1f3dc49a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
       "locked": {
         "lastModified": 1769018530,
         "narHash": "sha256-MJ27Cy2NtBEV5tsK+YraYr2g851f3Fl1LpNHDzDX15c=",
@@ -118,8 +171,9 @@
       "inputs": {
         "dms": "dms",
         "eko-messenger": "eko-messenger",
+        "eko-messenger-client": "eko-messenger-client",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_3"
       }
     },
     "rust-overlay": {
@@ -140,6 +194,21 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "systems": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
         "type": "github"
       }
     }

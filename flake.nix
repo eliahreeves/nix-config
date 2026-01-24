@@ -17,6 +17,10 @@
     eko-messenger = {
       url = "github:eko-network/eko-messenger";
     };
+
+    eko-messenger-client = {
+      url = "github:eko-network/eko-messenger-client";
+    };
   };
 
   outputs = {
