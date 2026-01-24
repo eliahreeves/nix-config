@@ -32,13 +32,8 @@
           forceSSL = true;
           locations = {
             "/" = {
-              proxyPass = "http://[::1]:1265/";
+              proxyPass = "http://127.0.0.1:1265/";
               proxyWebsockets = true;
-            };
-            "/auth/login" = {
-              extraConfig = ''
-                limit_req zone=login burst=5 nodelay;
-              '';
             };
           };
         };

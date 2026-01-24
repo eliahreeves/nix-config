@@ -9,6 +9,13 @@
   };
   config = lib.mkIf config.nginx.enable {
     networking.firewall.allowedTCPPorts = [80 443];
+
+    services.nginx.virtualHosts."_" = {
+      default = true;
+      rejectSSL = true;
+      locations."/".return = "404";
+    };
+
     services.nginx = {
       enable = true;
       recommendedGzipSettings = true;
