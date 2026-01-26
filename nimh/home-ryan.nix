@@ -10,6 +10,8 @@
   home.packages = with pkgs; [
     wl-clipboard
     immich-go
+    signal-desktop
+    gnome-text-editor
   ];
 
   home.sessionVariables = {
