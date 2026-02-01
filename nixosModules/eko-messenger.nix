@@ -17,7 +17,7 @@
     services.eko-messenger = {
       enable = true;
       port = 1265;
-      # package = inputs.eko-messenger.packages.${pkgs.system}.default;
+      package = inputs.eko-messenger.packages.${pkgs.system}.firebase;
       domain = "https://messages.eko-app.com";
       authProvider = "firebase";
       firebaseServiceAccount = "/var/lib/eko-messenger/firebase.json";
