@@ -123,20 +123,19 @@
     SSL_CERT_DIR = "/etc/ssl/certs";
   };
 
+  services.upower.enable = true;
+  services.flatpak.enable = true;
+
   system76-utils.enable = true;
   power-button-sleep.enable = true;
-  adwaita-qt.enable = true;
+  # adwaita-qt.enable = true;
   capslock-arrow-keys.enable = true;
   alt-win-swap.enable = true;
   hyprland.enable = false;
   niri.enable = true;
   steam.enable = true;
-  distrobox.enable = true;
   amd-gpu.enable = true;
   home-manager.enable = true;
   greetd.enable = true;
-  services.flatpak.enable = true;
-  dms.enable = true;
-  # eko-messenger.enable = true;
   system.stateVersion = "25.05";
 }

@@ -1,5 +1,6 @@
 {lib, ...}: {
   imports = [
+    ./noctalia.nix
     ./niri-utils.nix
     ./plasma.nix
     ./python.nix
@@ -28,6 +29,7 @@
   direnv.enable = lib.mkDefault true;
   zsh.enable = lib.mkDefault true;
 
+  noctalia.enable = lib.mkDefault false;
   eko-messenger-client.enable = lib.mkDefault false;
   niri-utils.enable = lib.mkDefault false;
   plasma.enable = lib.mkDefault false;

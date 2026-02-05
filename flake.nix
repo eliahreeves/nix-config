@@ -9,17 +9,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    dms = {
-      url = "github:AvengeMedia/DankMaterialShell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     eko-messenger = {
       url = "github:eko-network/eko-messenger";
     };
 
     eko-messenger-client = {
       url = "github:eko-network/eko-messenger-client";
+    };
+
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -63,6 +63,7 @@
         modules = [
           ./wsl/home.nix
           self.homeManagerModules.default
+          inputs.stylix.homeModules.stylix
         ];
         extraSpecialArgs = {
           inherit inputs;

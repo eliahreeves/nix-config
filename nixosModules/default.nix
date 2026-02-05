@@ -1,6 +1,5 @@
 {lib, ...}: {
   imports = [
-    ./dms.nix
     ./gnome.nix
     ./greetd.nix
     ./samba.nix
@@ -28,7 +27,6 @@
     ./eko-messenger.nix
   ];
   nginx.enable = lib.mkDefault false;
-  dms.enable = lib.mkDefault false;
   next-cloud.enable = lib.mkDefault false;
   niri.enable = lib.mkDefault false;
   greetd.enable = lib.mkDefault false;

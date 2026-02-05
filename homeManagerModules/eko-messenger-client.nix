@@ -10,7 +10,7 @@
   };
   config = lib.mkIf config.eko-messenger-client.enable {
     home.packages = [
-      inputs.eko-messenger-client.packages.${pkgs.system}.default
+      inputs.eko-messenger-client.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
   };
 }

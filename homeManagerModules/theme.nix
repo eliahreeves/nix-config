@@ -8,10 +8,6 @@
     theme.enable = lib.mkEnableOption "Enable theme";
   };
   config = lib.mkIf config.theme.enable {
-    home.sessionVariables = {
-      GTK_THEME = "Adwaita-dark";
-      COLOR_SCHEME = "prefer-dark";
-    };
     gtk = {
       enable = true;
       theme = {
@@ -31,9 +27,8 @@
     };
     home.pointerCursor = {
       gtk.enable = true;
-      # x11.enable = true;
-      name = "Adwaita";
-      package = pkgs.adwaita-icon-theme;
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Classic";
       size = 24;
     };
   };

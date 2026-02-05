@@ -16,9 +16,13 @@
     zulip
     spotify
     signal-desktop
+    gh
     nodejs_24
     gocryptfs
     opencode
+    inkscape
+    quickemu
+    fontforge-gtk
   ];
 
   xfce-utils.enable = true;
@@ -34,6 +38,7 @@
   vscode.enable = true;
   latex.enable = true;
   python.enable = true;
+  noctalia.enable = true;
 
   home.sessionVariables = {
     EDITOR = "nvim";

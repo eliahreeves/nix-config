@@ -9,11 +9,10 @@
   };
   config = lib.mkIf config.gnome-tools.enable {
     home.packages = with pkgs; [
-      seahorse
       loupe
-      gnome-disk-utility
       papers
       gnome-mines
+      warp
     ];
   };
 }
