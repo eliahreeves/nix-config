@@ -1,5 +1,5 @@
 {
-  description = "Nixos config flake";
+  description = "Nix config flake";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -27,48 +27,30 @@
     self,
     nixpkgs,
     ...
-  } @ inputs: {
-    nixosConfigurations = {
-      computer = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs;
-          homePath = ./computer/home.nix;
-          tag = "computer";
-        };
-        modules = [
-          ./computer/configuration.nix
-          inputs.home-manager.nixosModules.default
-          ./nixosModules
-        ];
-      };
-      nimh = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs;
-          homePath = ./nimh/home.nix;
-          tag = "nimh";
-        };
-        modules = [
-          ./nimh/configuration.nix
-          inputs.home-manager.nixosModules.default
-          ./nixosModules
-        ];
+  } @ inputs: let
+    helpers = import ./lib/helpers.nix {inherit (nixpkgs) lib;};
+  in {
+    homeManagerModules = {
+      default = import ./modules/home-manager {
+        inherit helpers;
+        lib = nixpkgs.lib;
       };
     };
-    homeManagerModules.default = import ./homeManagerModules;
+
+    nixosConfigurations = {
+      computer = helpers.mkNixosHost {
+        name = "computer";
+        inherit nixpkgs inputs helpers;
+      };
+      nimh = helpers.mkNixosHost {
+        name = "nimh";
+        inherit nixpkgs inputs helpers;
+      };
+    };
     homeConfigurations = {
-      wsl = inputs.home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          system = "x86_64-linux";
-        };
-        modules = [
-          ./wsl/home.nix
-          self.homeManagerModules.default
-          inputs.stylix.homeModules.stylix
-        ];
-        extraSpecialArgs = {
-          inherit inputs;
-          tag = "wsl";
-        };
+      wsl = helpers.mkHomeManagerHost {
+        name = "wsl";
+        inherit nixpkgs inputs helpers self;
       };
     };
   };
