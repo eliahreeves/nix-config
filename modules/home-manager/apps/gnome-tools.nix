@@ -10,6 +10,7 @@ helpers.mkModule config {
     home.packages = with pkgs; [
       loupe
       papers
+      gnome-disk-utility
       gnome-mines
       warp
       evolution

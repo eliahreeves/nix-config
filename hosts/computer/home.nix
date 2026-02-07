@@ -8,6 +8,7 @@
     ungoogled-chromium
     gemini-cli
     wl-clipboard
+    ladybird
     qbittorrent
     zulip
     spotify
@@ -36,6 +37,7 @@
   noctalia.enable = true;
   core.enable = true;
   opencode.enable = true;
+  tmplt.enable = true;
   git = {
     enable = true;
     name = "Eliah Reeves";
