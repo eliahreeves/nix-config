@@ -12,7 +12,6 @@ helpers.mkModule config {
       brightnessctl
       bluetuith
       vlc
-      libnotify
     ];
     home.file = {
       ".config/niri".source =

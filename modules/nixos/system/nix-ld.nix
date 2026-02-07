@@ -12,17 +12,12 @@ helpers.mkModule config {
       libraries = with pkgs; [
         stdenv.cc.cc
         zlib
-        fuse3
-        icu
-        nss
         openssl
         curl
         expat
         bzip2
         libffi
         xz
-        sqlite
-        readline
       ];
     };
   };

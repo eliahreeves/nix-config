@@ -1,13 +1,9 @@
-{
-  config,
-  pkgs,
-  lib,
-  nixosConfig ? null,
-  ...
-}: {
+{pkgs, ...}: {
   home.username = "erreeves";
   home.stateVersion = "25.05"; # Please read the comment before changing.
   home.packages = with pkgs; [
+    qwen-code
+    aerc
     nerd-fonts.caskaydia-mono
     ungoogled-chromium
     gemini-cli
@@ -17,11 +13,12 @@
     spotify
     signal-desktop
     gh
+    nh
     nodejs_24
     gocryptfs
     inkscape
     quickemu
-    fontforge-gtk
+    protonvpn-gui
   ];
 
   xfce-utils.enable = true;
@@ -30,8 +27,7 @@
   ghostty.enable = true;
   firefox.enable = true;
   eko-messenger-client.enable = true;
-  hyprland-utils.enable = nixosConfig.hyprland.enable or false;
-  niri-utils.enable = nixosConfig.niri.enable or false;
+  niri-utils.enable = true;
   gnome-tools.enable = true;
   theme.enable = true;
   vscode.enable = true;
@@ -51,7 +47,6 @@
 
   home.sessionVariables = {
     EDITOR = "nvim";
-    NIXPKGS_ALLOW_UNFREE = 1;
   };
 
   programs = {

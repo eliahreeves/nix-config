@@ -36,9 +36,6 @@ helpers.mkModule config {
       # python
       ruff
       pyright
-      # ts
-      vtsls
-      eslint
       # rust
       rust-analyzer
       rustfmt
@@ -49,6 +46,8 @@ helpers.mkModule config {
       sql-formatter
       # kdl
       kdlfmt
+      # verilog
+      verible
     ];
     home.sessionVariables = {
       NIX_NEOVIM = 1;
