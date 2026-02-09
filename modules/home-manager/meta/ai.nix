@@ -1,15 +1,16 @@
 {
-  pkgs,
   config,
   helpers,
+  pkgs,
   ...
 }:
 helpers.mkModule config {
-  name = "xfce-utils";
+  name = "ai";
   cfg = {
+    opencode.enable = true;
     home.packages = with pkgs; [
-      thunar
-      tumbler
+      qwen-code
+      gemini-cli
     ];
   };
 }

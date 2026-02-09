@@ -7,6 +7,9 @@
 helpers.mkModule config {
   name = "theme";
   cfg = {
+    home.packages = with pkgs; [
+      nerd-fonts.caskaydia-mono
+    ];
     gtk = {
       enable = true;
       theme = {

@@ -12,7 +12,6 @@ helpers.mkModule config {
       waypipe
       ncdu
       jq
-      uv
       unzip
       zip
       fastfetch
@@ -23,10 +22,10 @@ helpers.mkModule config {
       wget
       btop
       ripgrep
-      lazygit
       fd
+      fzf
+      wl-clipboard
       imagemagick
-      btrfs-progs
     ];
   };
 }

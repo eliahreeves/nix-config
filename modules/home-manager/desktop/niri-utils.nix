@@ -11,8 +11,8 @@ helpers.mkModule config {
       python313Packages.ipython
       brightnessctl
       bluetuith
-      vlc
     ];
+    vlc.enable = true;
     home.file = {
       ".config/niri".source =
         config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/niri";

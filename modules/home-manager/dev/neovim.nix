@@ -50,7 +50,7 @@ helpers.mkModule config {
       verible
     ];
     home.sessionVariables = {
-      NIX_NEOVIM = 1;
+      EDITOR = "nvim";
     };
   };
 }

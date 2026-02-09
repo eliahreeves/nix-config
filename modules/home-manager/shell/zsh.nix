@@ -48,6 +48,7 @@ in
     cfg = cfgValue: {
       programs.zsh = {
         enable = true;
+
         oh-my-zsh = {
           enable = true;
           theme = "";
@@ -56,27 +57,34 @@ in
             "sudo"
           ];
         };
+
+        autosuggestion.enable = true;
+        syntaxHighlighting.enable = !cfgValue.simplify;
+
+        shellAliases = {
+          rebuild-nix = "${rebuild-nix}";
+          cat = "bat";
+          nix-shell = "nix-shell --command $SHELL";
+        };
+
         initContent = ''
-                ${lib.optionalString cfgValue.autolaunchTmux ''
-            if [ -z "$TMUX" ] && [ "$TERM_PROGRAM" != "vscode" ] && [ -z "$ZED" ]; then tmux attach -t main || tmux new -s main; fi
+          ${lib.optionalString cfgValue.autolaunchTmux ''
+            if [ -z "$TMUX" ] && [ "$TERM_PROGRAM" != "vscode" ] && [ -z "$ZED" ]; then
+              tmux attach -t main || tmux new -s main
+            fi
           ''}
-            ${lib.optionalString (!cfgValue.simplify) ''
+          ${lib.optionalString (!cfgValue.simplify) ''
             source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
             source ${p10k}
           ''}
-                alias rebuild-nix="${rebuild-nix}"
-          export PATH="/home/erreeves/.local/bin:$PATH"
-          export PATH="/home/erreeves/repos/slang-server/build/bin:$PATH"
         '';
-        shellAliases = {
-          rcat = "cat";
-          cat = "bat";
-          nshell = "nix-shell --command $SHELL";
-          ndev = "nix develop --command $SHELL";
-        };
-        syntaxHighlighting.enable = !cfgValue.simplify;
-        autosuggestion.enable = true;
       };
+
+      home.sessionPath = [
+        "/home/erreeves/.local/bin"
+        "/home/erreeves/repos/slang-server/build/bin"
+      ];
+
       programs.bat = {
         enable = true;
         config = {
