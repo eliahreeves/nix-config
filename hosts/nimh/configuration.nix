@@ -98,7 +98,7 @@
 
   home-manager-config = {
     enable = true;
-    extraUsers = {
+    users = {
       "erreeves" = ./home.nix;
       "rlreeves" = ./home-ryan.nix;
     };

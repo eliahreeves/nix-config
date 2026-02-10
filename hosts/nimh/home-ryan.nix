@@ -34,6 +34,8 @@
   git = {
     sign = false;
     enable = true;
+    name = "Eliah Reeves";
+    email = "ereeclimb@gmail.com";
   };
 
   core.enable = true;
