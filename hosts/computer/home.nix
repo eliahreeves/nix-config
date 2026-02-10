@@ -30,6 +30,7 @@
   noctalia.enable = true;
   shell-env.enable = true;
   ai.enable = true;
+  kunifiedpush.enable = true;
 
   programs = {
     home-manager.enable = true;

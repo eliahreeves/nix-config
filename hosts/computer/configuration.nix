@@ -13,10 +13,13 @@
   nix.settings = {
     extra-substituters = [
       "https://eko-network.cachix.org"
+      "https://nix-cache.fossi-foundation.org"
     ];
     extra-trusted-public-keys = [
       "eko-network.cachix.org-1:1xHfovoNlydsTCzXxr5AstUoJUmGR/tRq0PQSCyPab8="
+      "nix-cache.fossi-foundation.org:3+K59iFwXqKsL7BNu6Guy0v+uTlwsxYQxjspXzqLYQs="
     ];
+
     experimental-features = [
       "nix-command"
       "flakes"
@@ -42,6 +45,7 @@
       "networkmanager"
       "wheel"
       "docker"
+      "podman"
     ];
     shell = pkgs.zsh;
   };
@@ -67,5 +71,7 @@
   steam.enable = true;
   amd-gpu.enable = true;
   greetd.enable = true;
+  podman.enable = true;
+
   system.stateVersion = "25.05";
 }
