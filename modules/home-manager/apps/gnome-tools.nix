@@ -11,7 +11,7 @@ helpers.mkModule config {
       loupe
       papers
       gnome-disk-utility
-      gnome-mines
+      snapshot
       warp
       evolution
     ];

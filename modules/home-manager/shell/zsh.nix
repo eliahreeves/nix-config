@@ -62,7 +62,7 @@ in
         syntaxHighlighting.enable = !cfgValue.simplify;
 
         shellAliases = {
-          rebuild-nix = "${rebuild-nix}";
+          # rebuild-nix = "${rebuild-nix}";
           cat = "bat";
           nix-shell = "nix-shell --command $SHELL";
         };

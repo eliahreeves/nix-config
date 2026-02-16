@@ -20,7 +20,7 @@
   minecraft.enable = true;
   ghostty.enable = true;
   firefox.enable = true;
-  eko-messenger-client.enable = true;
+  eko-messenger-client.enable = false;
   niri-utils.enable = true;
   gnome-tools.enable = true;
   theme.enable = true;
