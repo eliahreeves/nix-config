@@ -26,6 +26,7 @@ helpers.mkModule config {
     programs.git = {
       enable = true;
       settings = {
+        safe.directory = "/etc/nixos";
         user = {
           name = cfgValue.name;
           email = cfgValue.email;

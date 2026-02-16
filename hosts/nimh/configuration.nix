@@ -3,6 +3,10 @@
   inputs,
   ...
 }: {
+  environment.variables = {
+    NH_FLAKE = "/etc/nixos";
+  };
+
   imports = [
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
