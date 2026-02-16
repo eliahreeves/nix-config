@@ -10,15 +10,11 @@ helpers.mkModule config {
     services.immich = {
       enable = true;
       openFirewall = true;
-      database.enable = true;
       mediaLocation = "/srv/immich/";
+      database.enableVectors = false;
     };
 
-    services.postgresql = {
-      enable = true;
-      dataDir = "/srv/postgres/";
-      package = pkgs.postgresql_14;
-    };
+    postgres.enable = true;
 
     nginx.enable = true;
     services.nginx = {

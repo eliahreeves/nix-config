@@ -23,6 +23,8 @@
       jwtSecret = "not-very-secret-key";
     };
 
+    postgres.enable = true;
+
     nginx.enable = true;
     services.nginx = {
       virtualHosts = {

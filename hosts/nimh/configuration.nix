@@ -55,11 +55,11 @@
       fsType = "btrfs";
       options = ["subvol=@subvolumes/minecraft" "compress=zstd" "noatime"];
     };
-    "/srv/postgres" = {
-      device = "/dev/disk/by-label/data";
-      fsType = "btrfs";
-      options = ["subvol=@subvolumes/postgres" "compress=zstd" "noatime"];
-    };
+    # "/srv/postgres" = {
+    #   device = "/dev/disk/by-label/data";
+    #   fsType = "btrfs";
+    #   options = ["subvol=@subvolumes/postgres" "compress=zstd" "noatime"];
+    # };
   };
 
   services.xserver = {
@@ -71,6 +71,7 @@
   };
 
   services.displayManager.defaultSession = "xfce";
+  users.groups.nix-admins = {};
 
   users.users.erreeves = {
     isNormalUser = true;
@@ -79,10 +80,41 @@
       "networkmanager"
       "wheel"
       "docker"
+      "nix-admins"
     ];
     shell = pkgs.zsh;
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJT4WXnfL1SCvyBo6p3+pUNSBI+ZxyTADd4NzX5GKd0Z ereeclimb@gmail.com"
+    ];
   };
-
+  users.users.ctknab = {
+    isNormalUser = true;
+    description = "Christian";
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+      "nix-admins"
+    ];
+    shell = pkgs.zsh;
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKZnymIHOfUPHQuCbaW8aPC9lkrV7kHBaE0sEQDaykG3 christiantknab@gmail.com"
+    ];
+  };
+  users.users.ericbreh = {
+    isNormalUser = true;
+    description = "Eric";
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+      "nix-admins"
+    ];
+    shell = pkgs.zsh;
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOanOZf0P4dP7gnyYLQ8WcxTm3ln5rFZE+J/1RhTewVR ericchuang94@gmail.com"
+    ];
+  };
   users.users.rlreeves = {
     isNormalUser = true;
     description = "Ryan Reeves";
@@ -92,8 +124,10 @@
       "docker"
     ];
     shell = pkgs.zsh;
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICrsuj0ydqjTHAmiTyVTFsWl3HHGKglxYQVQdlvNa/hL 75mmnorm@gmail.com"
+    ];
   };
-
   environment.systemPackages = with pkgs; [
     waypipe
   ];
@@ -105,6 +139,8 @@
     users = {
       "erreeves" = ./home.nix;
       "rlreeves" = ./home-ryan.nix;
+      "ctknab" = ./home-ctknab.nix;
+      "ericbreh" = ./home-ericbreh.nix;
     };
   };
 
