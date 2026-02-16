@@ -17,7 +17,7 @@
       git add .
       if grep -q '^ID=nixos$' /etc/os-release; then
       	echo "NixOS Rebuilding..."
-      	sudo nixos-rebuild switch --flake $HOME/nix-config#${tag}
+    sudo nixos-rebuild switch --flake $NH_FLAKE#${tag}
       	gen=$(sudo nixos-rebuild list-generations | grep True | awk '{print $1}')
       	echo "Rebuild successful, generation $gen"
       else
@@ -46,6 +46,7 @@ in
       };
     };
     cfg = cfgValue: {
+      home.packages = with pkgs; [nh git alejandra];
       programs.zsh = {
         enable = true;
 
@@ -62,7 +63,7 @@ in
         syntaxHighlighting.enable = !cfgValue.simplify;
 
         shellAliases = {
-          # rebuild-nix = "${rebuild-nix}";
+          rebuild-nix = "${rebuild-nix}";
           cat = "bat";
           nix-shell = "nix-shell --command $SHELL";
         };
