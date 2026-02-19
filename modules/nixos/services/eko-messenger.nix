@@ -21,6 +21,7 @@
       authProvider = "firebase";
       firebaseServiceAccount = "/var/lib/eko-messenger/firebase.json";
       jwtSecret = "not-very-secret-key";
+      logLevel = "debug";
     };
 
     postgres.enable = true;

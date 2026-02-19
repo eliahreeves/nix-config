@@ -6,11 +6,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1771262845,
-        "narHash": "sha256-7FhwzrbIRx1Pn6Wenn7nHUbkO2rTU9jvOage0hVGWbA=",
+        "lastModified": 1771283566,
+        "narHash": "sha256-o1CoomCMoeD8VAJpCjtFU9sdf1BZ7pHaQIRqkDmXvQM=",
         "owner": "eko-network",
         "repo": "eko-messenger",
-        "rev": "921eb62c89f1ecc1b90c90dfa537019c5ad56060",
+        "rev": "4f44f53ad191b4e0a57abef0242d688fd240194e",
         "type": "github"
       },
       "original": {
