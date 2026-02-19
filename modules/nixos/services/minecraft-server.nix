@@ -21,6 +21,8 @@ helpers.mkModule config {
         uiscupcake19 = "68a5d05a-1a39-4ea8-ba9c-4219498676b2";
         ericbreh = "dc4e6ed0-55fe-41b7-b969-34894258c430";
         studfinder_walls = "4f9db19a-2dc0-460e-a374-8331c2e79e20";
+        TSbrisaPMO = "429a0d8d-a28e-42d1-8a8b-1bf809130e3f";
+        Blue_Sushi = "c12ddbb3-ca9b-4fde-b485-e75b597ecc5c";
       };
       serverProperties = {
         level-name = "world";
