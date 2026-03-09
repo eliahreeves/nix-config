@@ -31,6 +31,7 @@
   python.enable = true;
   noctalia.enable = true;
   shell-env.enable = true;
+  neovim.full = true;
   ai.enable = true;
   kunifiedpush.enable = false;
   pulse-vpn.enable = true;
