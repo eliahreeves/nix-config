@@ -7,23 +7,6 @@
 helpers.mkModule config {
   name = "firefox";
   cfg = {
-    xdg.mimeApps = {
-      enable = true;
-      defaultApplications = {
-        "text/html" = ["firefox.desktop"];
-        "x-scheme-handler/http" = ["firefox.desktop"];
-        "x-scheme-handler/https" = ["firefox.desktop"];
-
-        "x-scheme-handler/chrome" = ["firefox.desktop"];
-        "application/x-extension-htm" = ["firefox.desktop"];
-        "application/x-extension-html" = ["firefox.desktop"];
-        "application/x-extension-shtml" = ["firefox.desktop"];
-        "application/xhtml+xml" = ["firefox.desktop"];
-        "application/x-extension-xhtml" = ["firefox.desktop"];
-        "application/x-extension-xht" = ["firefox.desktop"];
-      };
-    };
-
     programs.firefox = {
       enable = true;
       policies = {
@@ -65,6 +48,19 @@ helpers.mkModule config {
       profiles.default = {
         settings = {
           "browser.sessionstore.resume_from_crash" = false;
+          # AI
+          "browser.ai.control.default" = "blocked";
+          "browser.ai.control.linkPreviewKeyPoints" = "blocked";
+          "browser.ai.control.pdfjsAltText" = "blocked";
+          "browser.ai.control.sidebarChatbot" = "blocked";
+          "browser.ai.control.smartTabGroups" = "blocked";
+          "extensions.ml.enabled" = false;
+          "pdfjs.enableAltText" = false;
+          "browser.ml.chat.enabled" = false;
+          "browser.ml.chat.page" = false;
+          "browser.ml.linkPreview.enabled" = false;
+          "browser.tabs.groups.smart.enabled" = false;
+          "browser.tabs.groups.smart.userEnabled" = false;
         };
         search = {
           force = true;

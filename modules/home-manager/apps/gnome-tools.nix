@@ -13,11 +13,13 @@ helpers.mkModule config {
       gnome-disk-utility
       snapshot
       warp
+      nautilus
       evolution
     ];
     xdg.mimeApps = {
       enable = true;
       defaultApplications = {
+        "inode/directory" = ["org.gnome.Nautilus.desktop"];
         "application/pdf" = ["org.gnome.Papers.desktop"];
 
         "image/png" = ["org.gnome.Loupe.desktop"];

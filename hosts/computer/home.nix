@@ -4,7 +4,6 @@
   home.packages = with pkgs; [
     aerc
     ungoogled-chromium
-    ladybird
     qbittorrent
     zulip
     spotify
@@ -13,15 +12,18 @@
     quickemu
     protonvpn-gui
     gocryptfs
+    gapless
+    esptool
+    rnote
   ];
 
   signal.enable = true;
-  thunar.enable = true;
   minecraft.enable = true;
   ghostty.enable = true;
   firefox.enable = true;
-  eko-messenger-client.enable = false;
+  eko-messenger-client.enable = true;
   niri-utils.enable = true;
+  zen-browser.enable = true;
   gnome-tools.enable = true;
   theme.enable = true;
   vscode.enable = true;
@@ -30,7 +32,22 @@
   noctalia.enable = true;
   shell-env.enable = true;
   ai.enable = true;
-  kunifiedpush.enable = true;
+  kunifiedpush.enable = false;
+  pulse-vpn.enable = true;
+
+  gtk.gtk3.bookmarks = let
+    homePath = "file:///home/erreeves/";
+    folders = [
+      "repos"
+      "Documents"
+      "Downloads"
+      "Pictures"
+      "Videos"
+      "Audiobooks"
+      "Music"
+    ];
+  in
+    map (folder: "${homePath}${folder}") folders;
 
   programs = {
     home-manager.enable = true;

@@ -2,6 +2,7 @@
   pkgs,
   config,
   helpers,
+  inputs,
   ...
 }:
 helpers.mkModule config {
@@ -19,6 +20,7 @@ helpers.mkModule config {
         config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/nvim";
     };
     home.packages = with pkgs; [
+      nodejs
       ghostscript
       tree-sitter
       # nix
@@ -48,6 +50,9 @@ helpers.mkModule config {
       kdlfmt
       # verilog
       verible
+      clang-tools
+      # slang
+      inputs.slang-server.packages.${stdenv.hostPlatform.system}.default
     ];
     home.sessionVariables = {
       EDITOR = "nvim";

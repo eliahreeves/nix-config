@@ -76,5 +76,6 @@
   greetd.enable = true;
   podman.enable = true;
 
+  services.tlp.enable = true;
   system.stateVersion = "25.05";
 }
