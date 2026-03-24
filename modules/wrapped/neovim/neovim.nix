@@ -23,7 +23,7 @@
 
       settings.config_directory = lib.mkIf (!config.settings.full) ./config;
 
-      specs.general = lib.mkIf (!config.settings.full) (with pkgs.vimPlugins; [
+      specs.general = lib.mkIf (config.settings.full) (with pkgs.vimPlugins; [
         treesitter
         treesitter.allGrammers
       ]);

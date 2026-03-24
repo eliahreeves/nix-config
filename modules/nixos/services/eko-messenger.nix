@@ -23,9 +23,6 @@
       logLevel = "debug";
     };
 
-    postgres.enable = true;
-
-    nginx.enable = true;
     services.nginx = {
       virtualHosts = {
         "messages.eko-app.com" = {

@@ -8,12 +8,8 @@
       enable = true;
       openFirewall = true;
       mediaLocation = "/srv/immich/";
-      database.enableVectors = false;
     };
 
-    postgres.enable = true;
-
-    nginx.enable = true;
     services.nginx = {
       virtualHosts = {
         "nimhphotos.tplinkdns.com" = {

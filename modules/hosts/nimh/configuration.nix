@@ -13,6 +13,8 @@
       openssh
       minecraft-server
       samba
+      nginx
+      postgres
       immich
       eko-messenger
     ];
