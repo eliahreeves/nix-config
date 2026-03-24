@@ -1,11 +1,9 @@
 {
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "nginx";
-  cfg = {
+}: {
+  flake.nixosModules.nginx = {pkgs, ...}: {
     networking.firewall.allowedTCPPorts = [80 443];
 
     services.nginx.virtualHosts."_" = {

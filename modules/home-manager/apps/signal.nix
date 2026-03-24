@@ -1,12 +1,13 @@
 {
-  helpers,
-  config,
-  pkgs,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "signal";
-  cfg = {
+}: {
+  flake.homeManagerModules.signal = {
+    config,
+    pkgs,
+    ...
+  }: {
     home.packages = with pkgs; [signal-desktop];
     xdg.mimeApps = {
       enable = true;

@@ -1,13 +1,14 @@
 {
-  pkgs,
-  lib,
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "minecraft";
-  cfg = {
+}: {
+  flake.homeManagerModules.minecraft = {
+    pkgs,
+    lib,
+    config,
+    ...
+  }: {
     home.packages = with pkgs; [prismlauncher];
   };
 }

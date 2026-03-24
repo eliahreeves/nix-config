@@ -1,14 +1,10 @@
 {
-  helpers,
-  config,
-  pkgs,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "base-gui";
-  cfg = {
-    base.enable = true;
-    sound-config.enable = true;
+}: {
+  flake.nixosModules.base-gui = {pkgs, ...}: {
+    imports = with self.nixosModules; [base sound-config];
 
     hardware = {
       bluetooth = {

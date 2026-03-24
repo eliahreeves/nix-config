@@ -1,11 +1,9 @@
 {
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "direnv";
-  cfg = {
+}: {
+  flake.homeManagerModules.direnv = {config, ...}: {
     programs.direnv = {
       enable = true;
       enableZshIntegration = true;

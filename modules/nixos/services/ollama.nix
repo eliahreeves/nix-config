@@ -1,13 +1,13 @@
 {
-  pkgs,
-  lib,
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "ollama";
-  cfg = {
+}: {
+  flake.nixosModules.ollama = {
+    pkgs,
+    lib,
+    ...
+  }: {
     environment.systemPackages = with pkgs; [
       rocmPackages.rocminfo
       rocmPackages.rocm-smi

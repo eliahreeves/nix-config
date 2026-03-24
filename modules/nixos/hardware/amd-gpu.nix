@@ -1,12 +1,9 @@
 {
-  pkgs,
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "amd-gpu";
-  cfg = {
+}: {
+  flake.nixosModules.amd-gpu = {pkgs, ...}: {
     environment.systemPackages = with pkgs; [
       rocmPackages.rocm-smi
     ];

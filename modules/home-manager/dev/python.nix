@@ -1,12 +1,13 @@
 {
-  pkgs,
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "python";
-  cfg = {
+}: {
+  flake.homeManagerModules.python = {
+    pkgs,
+    config,
+    ...
+  }: {
     home.packages = with pkgs; [
       (python312.withPackages (p:
         with p; [

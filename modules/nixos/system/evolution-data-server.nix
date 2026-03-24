@@ -1,11 +1,9 @@
 {
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "evolution-data-server";
-  cfg = {
+}: {
+  flake.nixosModules.evolution-data-server = {...}: {
     services.gnome.evolution-data-server.enable = true;
   };
 }

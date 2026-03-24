@@ -1,12 +1,13 @@
 {
-  pkgs,
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "core";
-  cfg = {
+}: {
+  flake.homeManagerModules.core = {
+    pkgs,
+    config,
+    ...
+  }: {
     home.packages = with pkgs; [
       tree
       waypipe

@@ -1,11 +1,9 @@
 {
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "adwaita-qt";
-  cfg = {
+}: {
+  flake.nixosModules.adwaita-qt = {pkgs, ...}: {
     qt = {
       enable = true;
       style = "adwaita-dark";

@@ -1,12 +1,13 @@
 {
-  pkgs,
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "obsidian";
-  cfg = {
+}: {
+  flake.homeManagerModules.obsidian = {
+    pkgs,
+    config,
+    ...
+  }: {
     home.packages = with pkgs; [obsidian];
   };
 }

@@ -1,13 +1,14 @@
 {
-  pkgs,
-  lib,
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "gnome";
-  cfg = {
+}: {
+  flake.nixosModules.gnome = {
+    pkgs,
+    lib,
+    config,
+    ...
+  }: {
     services.displayManager.gdm.enable = true;
     services.desktopManager.gnome.enable = true;
   };

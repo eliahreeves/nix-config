@@ -1,43 +1,35 @@
-{
-  config,
-  inputs,
-  lib,
-  pkgs,
-  ...
-}: let
-  mkLockedAttrs = builtins.mapAttrs (_: value: {
-    Value = value;
-    Status = "locked";
-  });
+{inputs, ...}: {
+  flake.homeManagerModules.zen-browser = {...}: let
+    mkLockedAttrs = builtins.mapAttrs (_: value: {
+      Value = value;
+      Status = "locked";
+    });
 
-  mkPluginUrl = id: "https://addons.mozilla.org/firefox/downloads/latest/${id}/latest.xpi";
+    mkPluginUrl = id: "https://addons.mozilla.org/firefox/downloads/latest/${id}/latest.xpi";
 
-  mkExtensionEntry = {
-    id,
-    pinned ? false,
-  }: let
-    base = {
-      install_url = mkPluginUrl id;
-      installation_mode = "force_installed";
-    };
-  in
-    if pinned
-    then base // {default_area = "navbar";}
-    else base;
+    mkExtensionEntry = {
+      id,
+      pinned ? false,
+    }: let
+      base = {
+        install_url = mkPluginUrl id;
+        installation_mode = "force_installed";
+      };
+    in
+      if pinned
+      then base // {default_area = "navbar";}
+      else base;
 
-  mkExtensionSettings = builtins.mapAttrs (_: entry:
-    if builtins.isAttrs entry
-    then entry
-    else mkExtensionEntry {id = entry;});
-in {
-  imports = [
-    inputs.zen-browser.homeModules.beta
-  ];
-  options.zen-browser.enable = lib.mkEnableOption "Enable Zen";
-  config = lib.mkIf config.zen-browser.enable {
+    mkExtensionSettings = builtins.mapAttrs (_: entry:
+      if builtins.isAttrs entry
+      then entry
+      else mkExtensionEntry {id = entry;});
+  in {
+    imports = [
+      inputs.zen-browser.homeModules.beta
+    ];
     programs.zen-browser = {
       enable = true;
-      suppressXdgMigrationWarning = true;
       profiles.default = {
         search = {
           force = true;
@@ -189,10 +181,7 @@ in {
       };
     };
     xdg.mimeApps = let
-      value = let
-        zen-browser = inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.beta; # or twilight
-      in
-        zen-browser.meta.desktopFileName;
+      value = "zen-beta.desktop";
 
       associations = builtins.listToAttrs (map (name: {
           inherit name value;

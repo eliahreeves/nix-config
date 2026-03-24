@@ -1,12 +1,9 @@
 {
-  pkgs,
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "immich";
-  cfg = {
+}: {
+  flake.nixosModules.immich = {pkgs, ...}: {
     services.immich = {
       enable = true;
       openFirewall = true;

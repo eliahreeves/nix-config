@@ -1,12 +1,9 @@
 {
-  pkgs,
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "podman";
-  cfg = {
+}: {
+  flake.nixosModules.podman = {pkgs, ...}: {
     virtualisation = {
       containers.enable = true;
       podman = {

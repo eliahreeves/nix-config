@@ -1,12 +1,9 @@
 {
-  pkgs,
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "next-cloud";
-  cfg = {
+}: {
+  flake.nixosModules.next-cloud = {pkgs, ...}: {
     services.nextcloud = {
       package = pkgs.nextcloud32;
       enable = true;

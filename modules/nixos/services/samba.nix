@@ -1,11 +1,9 @@
 {
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "samba";
-  cfg = {
+}: {
+  flake.nixosModules.samba = {pkgs, ...}: {
     services.samba = {
       enable = true;
       openFirewall = true;

@@ -1,21 +1,20 @@
 {
-  pkgs,
-  config,
+  self,
   inputs,
-  helpers,
   ...
-}:
-{
-  imports = [
-    inputs.noctalia.homeModules.default
-  ];
-}
-// helpers.mkModule config {
-  name = "noctalia";
-  cfg = cfgValue: {
+}: {
+  flake.homeManagerModules.noctalia = {
+    pkgs,
+    config,
+    ...
+  }: {
+    imports = [
+      inputs.noctalia.homeModules.default
+    ];
+
     programs.noctalia-shell = {
       enable = true;
-      systemd.enable = true;
+      systemd.enable = false;
       package = pkgs.noctalia-shell.override {calendarSupport = true;};
     };
 

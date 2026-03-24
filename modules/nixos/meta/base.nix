@@ -1,15 +1,10 @@
 {
-  helpers,
-  config,
-  pkgs,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "base";
-  cfg = {
-    locale.enable = true;
-    nix-ld.enable = true;
-    ssl-env.enable = true;
+}: {
+  flake.nixosModules.base = {pkgs, ...}: {
+    imports = with self.nixosModules; [locale nix-ld ssl-env];
     security.rtkit.enable = true;
 
     networking.networkmanager.enable = true;

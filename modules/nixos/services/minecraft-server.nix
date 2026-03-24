@@ -1,11 +1,9 @@
 {
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "minecraft-server";
-  cfg = {
+}: {
+  flake.nixosModules.minecraft-server = {pkgs, ...}: {
     services.minecraft-server = {
       enable = true;
       eula = true;

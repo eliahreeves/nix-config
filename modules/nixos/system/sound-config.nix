@@ -1,11 +1,9 @@
 {
-  helpers,
-  config,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "sound-config";
-  cfg = {
+}: {
+  flake.nixosModules.sound-config = {pkgs, ...}: {
     services.pulseaudio.enable = false;
     services.pipewire = {
       enable = true;

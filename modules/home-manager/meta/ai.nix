@@ -1,13 +1,14 @@
 {
-  config,
-  helpers,
-  pkgs,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "ai";
-  cfg = {
-    opencode.enable = true;
+}: {
+  flake.homeManagerModules.ai = {
+    config,
+    pkgs,
+    ...
+  }: {
+    imports = [self.homeManagerModules.opencode];
     home.packages = with pkgs; [
       qwen-code
       gemini-cli

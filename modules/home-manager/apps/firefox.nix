@@ -1,12 +1,13 @@
 {
-  config,
-  pkgs,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "firefox";
-  cfg = {
+}: {
+  flake.homeManagerModules.firefox = {
+    config,
+    pkgs,
+    ...
+  }: {
     programs.firefox = {
       enable = true;
       policies = {

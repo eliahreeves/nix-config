@@ -12,6 +12,11 @@
       };
     };
 
+    neovim-nightly = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     slang-server = {
       url = "github:eliahreeves/slang-server-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -34,37 +39,15 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-  };
 
-  outputs = {
-    self,
-    nixpkgs,
-    ...
-  } @ inputs: let
-    helpers = import ./lib/helpers.nix {inherit (nixpkgs) lib;};
-  in {
-    homeManagerModules = {
-      default = import ./modules/home-manager {
-        inherit helpers;
-        lib = nixpkgs.lib;
-      };
+    wrapper-modules = {
+      url = "github:BirdeeHub/nix-wrapper-modules";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixosConfigurations = {
-      computer = helpers.mkNixosHost {
-        name = "computer";
-        inherit nixpkgs inputs helpers;
-      };
-      nimh = helpers.mkNixosHost {
-        name = "nimh";
-        inherit nixpkgs inputs helpers;
-      };
-    };
-    homeConfigurations = {
-      wsl = helpers.mkHomeManagerHost {
-        name = "wsl";
-        inherit nixpkgs inputs helpers self;
-      };
-    };
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    import-tree.url = "github:vic/import-tree";
   };
+
+  outputs = inputs: inputs.flake-parts.lib.mkFlake {inherit inputs;} (inputs.import-tree ./modules);
 }

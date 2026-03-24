@@ -1,12 +1,9 @@
 {
-  pkgs,
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "distrobox";
-  cfg = {
+}: {
+  flake.nixosModules.distrobox = {pkgs, ...}: {
     virtualisation = {
       containers.enable = true;
       docker = {

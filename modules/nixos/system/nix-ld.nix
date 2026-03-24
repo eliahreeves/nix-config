@@ -1,12 +1,9 @@
 {
-  pkgs,
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "nix-ld";
-  cfg = {
+}: {
+  flake.nixosModules.nix-ld = {pkgs, ...}: {
     programs.nix-ld = {
       enable = true;
       libraries = with pkgs; [

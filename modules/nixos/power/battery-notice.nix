@@ -1,12 +1,9 @@
 {
-  pkgs,
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "battery-notice";
-  cfg = {
+}: {
+  flake.nixosModules.battery-notice = {pkgs, ...}: {
     environment.systemPackages = with pkgs; [
       libnotify
     ];

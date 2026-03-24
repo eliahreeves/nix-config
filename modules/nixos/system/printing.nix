@@ -1,11 +1,9 @@
 {
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "printing";
-  cfg = {
+}: {
+  flake.nixosModules.printing = {pkgs, ...}: {
     services.printing.enable = true;
 
     services.avahi = {

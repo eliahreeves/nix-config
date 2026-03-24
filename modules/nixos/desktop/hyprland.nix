@@ -1,11 +1,9 @@
 {
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "hyprland";
-  cfg = {
+}: {
+  flake.nixosModules.hyprland = {pkgs, ...}: {
     programs.hyprland = {
       enable = true;
       xwayland.enable = true;

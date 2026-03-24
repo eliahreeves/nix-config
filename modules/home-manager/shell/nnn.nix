@@ -1,12 +1,13 @@
 {
-  config,
-  helpers,
-  pkgs,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "nnn";
-  cfg = {
+}: {
+  flake.homeManagerModules.nnn = {
+    config,
+    pkgs,
+    ...
+  }: {
     programs.nnn = {
       enable = true;
       plugins = {};

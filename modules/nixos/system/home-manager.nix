@@ -1,41 +1,43 @@
 {
+  self,
   inputs,
-  config,
-  tag,
-  lib,
-  helpers,
   ...
-}:
-helpers.mkModule config {
-  name = "home-manager-config";
-  options = {
-    users = lib.mkOption {
-      type = lib.types.attrsOf lib.types.path;
-      default = {};
-      example = {
-        alice = ./home/alice.nix;
-        bob = ./home/bob.nix;
+}: {
+  flake.nixosModules.home-manager-config = {
+    config,
+    lib,
+    ...
+  }: {
+    options.home-manager-config = {
+      enable = lib.mkEnableOption "home-manager-config";
+      users = lib.mkOption {
+        type = lib.types.attrsOf lib.types.path;
+        default = {};
+        example = {
+          alice = ./home/alice.nix;
+          bob = ./home/bob.nix;
+        };
+        description = "A map of usernames to their Home Manager configuration files.";
       };
-      description = "A map of usernames to their Home Manager configuration files.";
     };
-  };
-  cfg = cfgValue: {
-    home-manager = {
-      extraSpecialArgs = {
-        inherit inputs helpers;
-        inherit tag;
-        nixosConfig = config;
+
+    config = lib.mkIf config.home-manager-config.enable {
+      home-manager = {
+        extraSpecialArgs = {
+          inherit inputs;
+          nixosConfig = config;
+        };
+        users =
+          lib.mapAttrs (username: path: {
+            imports = [
+              path
+              self.homeManagerModules.default
+            ];
+          })
+          config.home-manager-config.users;
       };
-      users =
-        lib.mapAttrs (username: path: {
-          imports = [
-            path
-            inputs.self.outputs.homeManagerModules.default
-          ];
-        })
-        cfgValue.users;
+      home-manager.useGlobalPkgs = true;
+      home-manager.useUserPackages = true;
     };
-    home-manager.useGlobalPkgs = true;
-    home-manager.useUserPackages = true;
   };
 }

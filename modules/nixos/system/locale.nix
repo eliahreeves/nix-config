@@ -1,11 +1,9 @@
 {
-  helpers,
-  config,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "locale";
-  cfg = {
+}: {
+  flake.nixosModules.locale = {pkgs, ...}: {
     time.timeZone = "America/Los_Angeles";
 
     i18n.defaultLocale = "en_US.UTF-8";

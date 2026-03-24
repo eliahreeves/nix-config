@@ -1,25 +1,29 @@
 {
-  config,
-  helpers,
-  pkgs,
-  lib,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "shell-env";
-  cfg = {
+}: {
+  flake.homeManagerModules.shell-env = {
+    config,
+    pkgs,
+    lib,
+    ...
+  }: {
+    imports = with self.homeManagerModules; [
+      core
+      git
+      tmplt
+      direnv
+      zsh
+      tmux
+      nnn
+    ];
+
     git = {
-      enable = lib.mkDefault true;
       name = lib.mkDefault "Eliah Reeves";
       email = lib.mkDefault "ereeclimb@gmail.com";
     };
-    tmplt.enable = lib.mkDefault true;
-    direnv.enable = lib.mkDefault true;
-    zsh.enable = lib.mkDefault true;
-    neovim.enable = lib.mkDefault true;
-    core.enable = lib.mkDefault true;
-    tmux.enable = lib.mkDefault true;
-    nnn.enable = lib.mkDefault true;
+
     programs.lazygit.enable = lib.mkDefault true;
 
     home.packages = with pkgs; [

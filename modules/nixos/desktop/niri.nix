@@ -1,12 +1,9 @@
 {
-  pkgs,
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "niri";
-  cfg = {
+}: {
+  flake.nixosModules.niri = {pkgs, ...}: {
     programs.niri = {
       enable = true;
     };

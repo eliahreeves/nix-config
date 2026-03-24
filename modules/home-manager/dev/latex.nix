@@ -1,12 +1,13 @@
 {
-  pkgs,
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "latex";
-  cfg = {
+}: {
+  flake.homeManagerModules.latex = {
+    pkgs,
+    config,
+    ...
+  }: {
     home.packages = with pkgs; [
       texliveFull
     ];

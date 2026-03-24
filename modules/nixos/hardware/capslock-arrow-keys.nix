@@ -1,11 +1,9 @@
 {
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "capslock-arrow-keys";
-  cfg = {
+}: {
+  flake.nixosModules.capslock-arrow-keys = {pkgs, ...}: {
     services.keyd = {
       enable = true;
       keyboards.default = {

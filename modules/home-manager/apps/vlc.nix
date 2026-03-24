@@ -1,12 +1,13 @@
 {
-  config,
-  helpers,
-  pkgs,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "vlc";
-  cfg = {
+}: {
+  flake.homeManagerModules.vlc = {
+    config,
+    pkgs,
+    ...
+  }: {
     home.packages = with pkgs; [vlc];
     xdg.mimeApps = {
       enable = true;

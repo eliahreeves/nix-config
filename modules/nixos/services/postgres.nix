@@ -1,13 +1,13 @@
 {
-  pkgs,
-  config,
-  helpers,
-  lib,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "postgres";
-  cfg = {
+}: {
+  flake.nixosModules.postgres = {
+    pkgs,
+    lib,
+    ...
+  }: {
     services.postgresql = {
       enable = true;
       package = pkgs.postgresql_17;

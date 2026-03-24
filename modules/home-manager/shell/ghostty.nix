@@ -1,12 +1,13 @@
 {
-  pkgs,
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "ghostty";
-  cfg = {
+}: {
+  flake.homeManagerModules.ghostty = {
+    pkgs,
+    config,
+    ...
+  }: {
     programs.ghostty = {
       enable = true;
     };

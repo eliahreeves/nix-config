@@ -1,11 +1,9 @@
 {
-  helpers,
-  config,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "no-sleep";
-  cfg = {
+}: {
+  flake.nixosModules.no-sleep = {pkgs, ...}: {
     systemd.sleep.extraConfig = ''
       AllowSuspend=no
       AllowHibernation=no

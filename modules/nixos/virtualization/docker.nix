@@ -1,12 +1,9 @@
 {
-  pkgs,
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "docker";
-  cfg = {
+}: {
+  flake.nixosModules.docker = {pkgs, ...}: {
     virtualisation.docker = {
       enable = true;
       enableOnBoot = false;

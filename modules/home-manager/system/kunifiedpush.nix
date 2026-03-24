@@ -1,12 +1,13 @@
 {
-  config,
-  helpers,
-  pkgs,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "kunifiedpush";
-  cfg = {
+}: {
+  flake.homeManagerModules.kunifiedpush = {
+    config,
+    pkgs,
+    ...
+  }: {
     home.packages = with pkgs; [
       kdePackages.kunifiedpush
     ];

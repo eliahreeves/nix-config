@@ -1,16 +1,18 @@
 {
-  pkgs,
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "theme";
-  cfg = {
+}: {
+  flake.homeManagerModules.theme = {
+    pkgs,
+    config,
+    ...
+  }: {
     home.packages = with pkgs; [
       nerd-fonts.caskaydia-mono
     ];
     gtk = {
+      gtk4.theme = null;
       enable = true;
       theme = {
         name = "Adwaita-dark";

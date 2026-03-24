@@ -1,11 +1,9 @@
 {
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "zed";
-  cfg = {
+}: {
+  flake.homeManagerModules.zed = {config, ...}: {
     programs.zed-editor = {
       enable = true;
 

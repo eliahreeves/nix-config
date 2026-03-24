@@ -1,12 +1,13 @@
 {
-  pkgs,
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "vscode";
-  cfg = {
+}: {
+  flake.homeManagerModules.vscode = {
+    pkgs,
+    config,
+    ...
+  }: {
     programs.vscode = {
       enable = true;
       profiles.default = {

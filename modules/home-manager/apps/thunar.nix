@@ -1,12 +1,13 @@
 {
-  pkgs,
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "thunar";
-  cfg = {
+}: {
+  flake.homeManagerModules.thunar = {
+    pkgs,
+    config,
+    ...
+  }: {
     home.packages = with pkgs; [
       thunar
       tumbler

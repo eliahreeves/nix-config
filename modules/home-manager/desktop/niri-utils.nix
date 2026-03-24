@@ -1,18 +1,21 @@
 {
-  pkgs,
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "niri-utils";
-  cfg = {
+}: {
+  flake.homeManagerModules.niri-utils = {
+    pkgs,
+    config,
+    ...
+  }: {
+    imports = [self.homeManagerModules.vlc];
+
     home.packages = with pkgs; [
       python313Packages.ipython
       brightnessctl
       bluetuith
     ];
-    vlc.enable = true;
+
     home.file = {
       ".config/niri".source =
         config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/niri";

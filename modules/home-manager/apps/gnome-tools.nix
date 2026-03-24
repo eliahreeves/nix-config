@@ -1,12 +1,13 @@
 {
-  pkgs,
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "gnome-tools";
-  cfg = {
+}: {
+  flake.homeManagerModules.gnome-tools = {
+    pkgs,
+    config,
+    ...
+  }: {
     home.packages = with pkgs; [
       loupe
       papers
@@ -15,7 +16,13 @@ helpers.mkModule config {
       warp
       nautilus
       evolution
+      gnome-software
+      networkmanagerapplet
     ];
+    xdg.configFile."autostart/nm-applet.desktop".text = ''
+      [Desktop Entry]
+      Hidden=true
+    '';
     xdg.mimeApps = {
       enable = true;
       defaultApplications = {

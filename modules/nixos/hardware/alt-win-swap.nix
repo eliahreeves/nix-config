@@ -1,11 +1,9 @@
 {
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "alt-win-swap";
-  cfg = {
+}: {
+  flake.nixosModules.alt-win-swap = {pkgs, ...}: {
     services.keyd = {
       enable = true;
       keyboards.default = {

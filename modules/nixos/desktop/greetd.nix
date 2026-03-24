@@ -1,12 +1,9 @@
 {
-  pkgs,
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "greetd";
-  cfg = {
+}: {
+  flake.nixosModules.greetd = {pkgs, ...}: {
     security.pam.services.greetd.enableGnomeKeyring = true;
     services.greetd = {
       enable = true;

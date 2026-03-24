@@ -1,11 +1,9 @@
 {
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "power-button-sleep";
-  cfg = {
+}: {
+  flake.nixosModules.power-button-sleep = {pkgs, ...}: {
     services.logind.settings.Login.HandlePowerKey = "suspend";
   };
 }

@@ -1,12 +1,13 @@
 {
-  pkgs,
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "opencode";
-  cfg = cfgValue: {
+}: {
+  flake.homeManagerModules.opencode = {
+    pkgs,
+    config,
+    ...
+  }: {
     programs.opencode = {
       enable = true;
       settings = {

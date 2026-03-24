@@ -1,18 +1,17 @@
 {
-  config,
+  self,
   inputs,
-  pkgs,
-  helpers,
   ...
-}:
-{
-  imports = [
-    inputs.eko-messenger.nixosModules.default
-  ];
-}
-// helpers.mkModule config {
-  name = "eko-messenger";
-  cfg = {
+}: {
+  flake.nixosModules.eko-messenger = {
+    config,
+    pkgs,
+    ...
+  }: {
+    imports = [
+      inputs.eko-messenger.nixosModules.default
+    ];
+
     services.eko-messenger = {
       enable = true;
       port = 1265;

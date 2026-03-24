@@ -1,13 +1,13 @@
 {
-  pkgs,
-  config,
+  self,
   inputs,
-  helpers,
   ...
-}:
-helpers.mkModule config {
-  name = "eko-messenger-client";
-  cfg = {
+}: {
+  flake.homeManagerModules.eko-messenger-client = {
+    pkgs,
+    config,
+    ...
+  }: {
     home.packages = [
       inputs.eko-messenger-client.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];

@@ -1,11 +1,9 @@
 {
-  config,
-  helpers,
+  self,
+  inputs,
   ...
-}:
-helpers.mkModule config {
-  name = "openssh";
-  cfg = {
+}: {
+  flake.nixosModules.openssh = {pkgs, ...}: {
     services.fail2ban.enable = true;
     services.openssh = {
       enable = true;
