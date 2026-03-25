@@ -1,9 +1,6 @@
-{
-  self,
-  inputs,
-  ...
-}: {
-  flake.nixosModules.immich = {pkgs, ...}: {
+{self, ...}: {
+  flake.nixosModules.immich = {...}: {
+    imports = with self.nixosModules; [postgres nginx];
     services.immich = {
       enable = true;
       openFirewall = true;

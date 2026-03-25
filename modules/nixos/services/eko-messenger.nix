@@ -3,14 +3,15 @@
   inputs,
   ...
 }: {
-  flake.nixosModules.eko-messenger = {
-    config,
-    pkgs,
-    ...
-  }: {
-    imports = [
-      inputs.eko-messenger.nixosModules.default
-    ];
+  flake.nixosModules.eko-messenger = {pkgs, ...}: {
+    imports = with self.nixosModules;
+      [
+        postgres
+        nginx
+      ]
+      ++ [
+        inputs.eko-messenger.nixosModules.default
+      ];
 
     services.eko-messenger = {
       enable = true;
