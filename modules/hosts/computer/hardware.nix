@@ -1,5 +1,5 @@
 {...}: {
-  flake.nixosModules.computerHardware = {
+  flake.modules.nixos.computerHardware = {
     config,
     lib,
     modulesPath,

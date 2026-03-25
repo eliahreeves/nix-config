@@ -1,5 +1,5 @@
 {...}: {
-  flake.nixosModules.nginx = {...}: {
+  flake.modules.nixos.nginx = {...}: {
     key = "nginx.key";
     networking.firewall.allowedTCPPorts = [80 443];
 

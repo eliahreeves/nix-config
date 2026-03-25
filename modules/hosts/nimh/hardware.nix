@@ -1,5 +1,5 @@
 {...}: {
-  flake.nixosModules.nimhHardware = {
+  flake.modules.nixos.nimhHardware = {
     config,
     lib,
     modulesPath,

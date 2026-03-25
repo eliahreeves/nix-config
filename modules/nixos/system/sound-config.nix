@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.nixosModules.sound-config = {pkgs, ...}: {
+  flake.modules.nixos.sound-config = {pkgs, ...}: {
     services.pulseaudio.enable = false;
     services.pipewire = {
       enable = true;

@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.nixosModules.distrobox = {pkgs, ...}: {
+  flake.modules.nixos.distrobox = {pkgs, ...}: {
     virtualisation = {
       containers.enable = true;
       docker = {

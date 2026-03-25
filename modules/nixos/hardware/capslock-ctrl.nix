@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.nixosModules.capslock-ctrl = {pkgs, ...}: {
+  flake.modules.nixos.capslock-ctrl = {pkgs, ...}: {
     services.keyd = {
       enable = true;
       keyboards.default = {

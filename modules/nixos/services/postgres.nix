@@ -1,5 +1,5 @@
 {...}: {
-  flake.nixosModules.postgres = {pkgs, ...}: {
+  flake.modules.nixos.postgres = {pkgs, ...}: {
     key = "postgres.key";
     services.postgresql = {
       enable = true;

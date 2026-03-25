@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.nixosModules.next-cloud = {pkgs, ...}: {
+  flake.modules.nixos.next-cloud = {pkgs, ...}: {
     services.nextcloud = {
       package = pkgs.nextcloud32;
       enable = true;

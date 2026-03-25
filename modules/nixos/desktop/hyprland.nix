@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.nixosModules.hyprland = {pkgs, ...}: {
+  flake.modules.nixos.hyprland = {pkgs, ...}: {
     programs.hyprland = {
       enable = true;
       xwayland.enable = true;

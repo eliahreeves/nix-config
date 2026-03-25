@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.nixosModules.locale = {pkgs, ...}: {
+  flake.modules.nixos.locale = {pkgs, ...}: {
     time.timeZone = "America/Los_Angeles";
 
     i18n.defaultLocale = "en_US.UTF-8";

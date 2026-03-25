@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.nixosModules.openssh = {pkgs, ...}: {
+  flake.modules.nixos.openssh = {pkgs, ...}: {
     services.fail2ban.enable = true;
     services.openssh = {
       enable = true;

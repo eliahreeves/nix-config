@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.nixosModules.samba = {pkgs, ...}: {
+  flake.modules.nixos.samba = {pkgs, ...}: {
     services.samba = {
       enable = true;
       openFirewall = true;

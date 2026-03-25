@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.nixosModules.battery-notice = {pkgs, ...}: {
+  flake.modules.nixos.battery-notice = {pkgs, ...}: {
     environment.systemPackages = with pkgs; [
       libnotify
     ];

@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.nixosModules.power-button-sleep = {pkgs, ...}: {
+  flake.modules.nixos.power-button-sleep = {pkgs, ...}: {
     services.logind.settings.Login.HandlePowerKey = "suspend";
   };
 }

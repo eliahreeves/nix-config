@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.nixosModules.greetd = {pkgs, ...}: {
+  flake.modules.nixos.greetd = {pkgs, ...}: {
     security.pam.services.greetd.enableGnomeKeyring = true;
     services.greetd = {
       enable = true;

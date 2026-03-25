@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.nixosModules.minecraft-server = {pkgs, ...}: {
+  flake.modules.nixos.minecraft-server = {pkgs, ...}: {
     services.minecraft-server = {
       enable = true;
       eula = true;

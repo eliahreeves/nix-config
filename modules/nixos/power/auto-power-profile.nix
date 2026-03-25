@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.nixosModules.auto-power-profile = {pkgs, ...}: let
+  flake.modules.nixos.auto-power-profile = {pkgs, ...}: let
     powerScript = pkgs.writeShellScript "auto_power_mode.sh" ''
       #!/usr/bin/env bash
       ON_AC_POWER=$(cat /sys/class/power_supply/BAT0/status)

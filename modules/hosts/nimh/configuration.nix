@@ -1,10 +1,10 @@
 {self, ...}: {
-  flake.nixosModules.nimhConfiguration = {pkgs, ...}: {
+  flake.modules.nixos.nimhConfiguration = {pkgs, ...}: {
     environment.variables = {
       NH_FLAKE = "/etc/nixos";
     };
 
-    imports = with self.nixosModules; [
+    imports = with self.modules.nixos; [
       nimhHardware
 
       neovim

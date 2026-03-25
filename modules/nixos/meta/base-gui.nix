@@ -3,8 +3,8 @@
   inputs,
   ...
 }: {
-  flake.nixosModules.base-gui = {pkgs, ...}: {
-    imports = with self.nixosModules; [base sound-config];
+  flake.modules.nixos.base-gui = {pkgs, ...}: {
+    imports = with self.modules.nixos; [base sound-config];
 
     hardware = {
       bluetooth = {

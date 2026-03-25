@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.nixosModules.capslock-arrow-keys = {pkgs, ...}: {
+  flake.modules.nixos.capslock-arrow-keys = {pkgs, ...}: {
     services.keyd = {
       enable = true;
       keyboards.default = {

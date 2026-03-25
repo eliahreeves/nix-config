@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.nixosModules.printing = {pkgs, ...}: {
+  flake.modules.nixos.printing = {pkgs, ...}: {
     services.printing.enable = true;
 
     services.avahi = {

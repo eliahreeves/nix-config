@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.nixosModules.ollama = {
+  flake.modules.nixos.ollama = {
     pkgs,
     lib,
     ...

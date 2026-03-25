@@ -4,6 +4,6 @@
   ...
 }: {
   flake.nixosConfigurations.nimh = inputs.nixpkgs.lib.nixosSystem {
-    modules = [self.nixosModules.nimhConfiguration];
+    modules = [self.modules.nixos.nimhConfiguration];
   };
 }

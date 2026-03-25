@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.nixosModules.home-manager-config = {
+  flake.modules.nixos.home-manager-config = {
     config,
     lib,
     ...

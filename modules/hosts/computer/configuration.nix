@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.nixosModules.computerConfiguration = {
+  flake.modules.nixos.computerConfiguration = {
     pkgs,
     config,
     ...
@@ -11,7 +11,7 @@
     environment.variables = {
       NH_FLAKE = "/home/erreeves/nix-config/";
     };
-    imports = with self.nixosModules;
+    imports = with self.modules.nixos;
       [
         computerHardware
 

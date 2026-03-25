@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.nixosModules.gnome = {
+  flake.modules.nixos.gnome = {
     pkgs,
     lib,
     config,

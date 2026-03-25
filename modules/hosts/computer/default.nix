@@ -4,6 +4,6 @@
   ...
 }: {
   flake.nixosConfigurations.computer = inputs.nixpkgs.lib.nixosSystem {
-    modules = [self.nixosModules.computerConfiguration];
+    modules = [self.modules.nixos.computerConfiguration];
   };
 }

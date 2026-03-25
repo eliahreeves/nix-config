@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.nixosModules.alt-win-swap = {pkgs, ...}: {
+  flake.modules.nixos.alt-win-swap = {pkgs, ...}: {
     services.keyd = {
       enable = true;
       keyboards.default = {

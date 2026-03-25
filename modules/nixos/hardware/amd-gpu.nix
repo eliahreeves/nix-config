@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.nixosModules.amd-gpu = {pkgs, ...}: {
+  flake.modules.nixos.amd-gpu = {pkgs, ...}: {
     environment.systemPackages = with pkgs; [
       rocmPackages.rocm-smi
     ];

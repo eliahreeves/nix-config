@@ -3,8 +3,8 @@
   inputs,
   ...
 }: {
-  flake.nixosModules.base = {pkgs, ...}: {
-    imports = with self.nixosModules; [locale nix-ld ssl-env];
+  flake.modules.nixos.base = {pkgs, ...}: {
+    imports = with self.modules.nixos; [locale nix-ld ssl-env];
     security.rtkit.enable = true;
 
     networking.networkmanager.enable = true;

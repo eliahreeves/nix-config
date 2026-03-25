@@ -1,5 +1,5 @@
 {...}: {
-  flake.nixosModules.no-sleep = {...}: {
+  flake.modules.nixos.no-sleep = {...}: {
     systemd.sleep.settings.Sleep = {
       AllowSuspend = "no";
       AllowHibernation = "no";

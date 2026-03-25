@@ -3,8 +3,8 @@
   inputs,
   ...
 }: {
-  flake.nixosModules.eko-messenger = {pkgs, ...}: {
-    imports = with self.nixosModules;
+  flake.modules.nixos.eko-messenger = {pkgs, ...}: {
+    imports = with self.modules.nixos;
       [
         postgres
         nginx

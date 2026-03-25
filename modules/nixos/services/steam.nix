@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.nixosModules.steam = {pkgs, ...}: {
+  flake.modules.nixos.steam = {pkgs, ...}: {
     programs.steam = {
       enable = true;
       remotePlay.openFirewall = true;

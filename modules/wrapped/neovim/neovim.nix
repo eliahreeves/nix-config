@@ -69,7 +69,7 @@
     };
   };
 
-  flake.nixosModules.neovim = {
+  flake.modules.nixos.neovim = {
     pkgs,
     config,
     lib,
