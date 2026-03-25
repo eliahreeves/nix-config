@@ -8,18 +8,22 @@
       NH_FLAKE = "/etc/nixos";
     };
 
-    imports = with self.modules.nixos; [
-      nimhHardware
+    imports = with self.modules.nixos;
+      [
+        nimhHardware
 
-      neovim
-      base-gui
-      no-sleep
-      openssh
-      minecraft-server
-      samba
-      immich
-      eko-messenger
-    ];
+        neovim
+        base-gui
+        no-sleep
+        openssh
+        minecraft-server
+        samba
+        immich
+        eko-messenger
+      ]
+      ++ [
+        inputs.home-manager.nixosModules.default
+      ];
 
     nixpkgs.config.allowUnfree = true;
 

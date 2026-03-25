@@ -3,6 +3,7 @@
     imports = with self.modules.homeManager; [
       shell-env
     ];
+    git.sign = false;
 
     home.stateVersion = "25.05";
     programs = {
