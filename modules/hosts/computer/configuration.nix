@@ -26,7 +26,6 @@
         alt-win-swap
         steam
         amd-gpu
-        greetd
         podman
       ]
       ++ [

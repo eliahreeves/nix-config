@@ -15,7 +15,6 @@
       vscode
       latex
       python
-      noctalia
       shell-env
       pulse-vpn
     ];
