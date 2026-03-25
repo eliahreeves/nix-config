@@ -1,8 +1,4 @@
-{
-  self,
-  inputs,
-  ...
-}: {
+{...}: {
   flake.homeManagerModules.tmux = {
     pkgs,
     lib,
