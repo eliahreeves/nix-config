@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.homeManagerModules.noctalia = {
+  flake.modules.homeManager.noctalia = {
     pkgs,
     config,
     ...

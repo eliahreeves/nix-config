@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.homeManagerModules.theme = {
+  flake.modules.homeManager.theme = {
     pkgs,
     config,
     ...

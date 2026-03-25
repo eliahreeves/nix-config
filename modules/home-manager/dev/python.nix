@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.homeManagerModules.python = {
+  flake.modules.homeManager.python = {
     pkgs,
     config,
     ...

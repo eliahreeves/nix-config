@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.homeManagerModules.ghostty = {
+  flake.modules.homeManager.ghostty = {
     pkgs,
     config,
     ...

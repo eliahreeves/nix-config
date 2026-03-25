@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.homeManagerModules.zed = {config, ...}: {
+  flake.modules.homeManager.zed = {config, ...}: {
     programs.zed-editor = {
       enable = true;
 

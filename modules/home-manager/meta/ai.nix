@@ -3,12 +3,12 @@
   inputs,
   ...
 }: {
-  flake.homeManagerModules.ai = {
+  flake.modules.homeManager.ai = {
     config,
     pkgs,
     ...
   }: {
-    imports = [self.homeManagerModules.opencode];
+    imports = [self.modules.homeManager.opencode];
     home.packages = with pkgs; [
       qwen-code
       gemini-cli

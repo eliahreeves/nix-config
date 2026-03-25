@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.homeManagerModules.tmplt = {
+  flake.modules.homeManager.tmplt = {
     config,
     pkgs,
     ...

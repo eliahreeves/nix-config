@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.homeManagerModules.hyprland-utils = {
+  flake.modules.homeManager.hyprland-utils = {
     pkgs,
     config,
     ...

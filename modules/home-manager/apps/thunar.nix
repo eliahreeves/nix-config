@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.homeManagerModules.thunar = {
+  flake.modules.homeManager.thunar = {
     pkgs,
     config,
     ...

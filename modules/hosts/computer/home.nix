@@ -1,6 +1,8 @@
 {self, ...}: {
-  flake.homeManagerModules.computer-home = {pkgs, ...}: {
-    imports = with self.homeManagerModules; [
+  flake.modules.homeManager.computer-home = {pkgs, ...}: {
+    imports = with self.modules.homeManager; [
+      neovim
+
       ai
       signal
       minecraft
@@ -16,10 +18,10 @@
       noctalia
       shell-env
       pulse-vpn
-      neovim-symlink
     ];
 
     home.username = "erreeves";
+    home.homeDirectory = "/home/erreeves";
     home.stateVersion = "25.05";
     home.packages = with pkgs; [
       aerc
@@ -55,4 +57,13 @@
       home-manager.enable = true;
     };
   };
+
+  # flake.homeConfigurations.erreeves = inputs.home-manager.lib.homeManagerConfiguration {
+  #   pkgs = inputs.nixpkgs;
+  #   extraSpecialArgs = {inherit inputs;};
+  #   modules = [
+  #     {nixpkgs.config.allowUnfree = true;}
+  #     self.modules.homeManager.computer-home
+  #   ];
+  # };
 }

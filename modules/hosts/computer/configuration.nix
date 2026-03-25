@@ -32,7 +32,6 @@
       ++ [
         inputs.home-manager.nixosModules.default
       ];
-    neovim.full = true;
 
     nixpkgs.config.allowUnfree = true;
 
@@ -87,10 +86,9 @@
       useUserPackages = true;
       extraSpecialArgs = {
         inherit inputs;
-        nixosConfig = config;
       };
       users.erreeves = {
-        imports = [self.homeManagerModules.computer-home];
+        imports = [self.modules.homeManager.computer-home];
       };
     };
 

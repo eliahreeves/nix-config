@@ -1,5 +1,5 @@
 {inputs, ...}: {
-  flake.homeManagerModules.zen-browser = {...}: let
+  flake.modules.homeManager.zen-browser = {...}: let
     mkLockedAttrs = builtins.mapAttrs (_: value: {
       Value = value;
       Status = "locked";

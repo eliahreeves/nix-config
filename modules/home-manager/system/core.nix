@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.homeManagerModules.core = {
+  flake.modules.homeManager.core = {
     pkgs,
     config,
     ...

@@ -69,29 +69,28 @@
     };
   };
 
-  flake.modules.nixos.neovim = {
+  flake.modules.homeManager.neovim = {
     pkgs,
     config,
-    lib,
     ...
   }: {
-    options.neovim.full = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-      description = "Include full set of language servers and tools";
+    programs.neovim = {
+      enable = true;
+      package =
+        self.packages.${pkgs.stdenv.hostPlatform.system}.myNeovimMinimal;
     };
+    home.file = {
+      ".config/nvim".source =
+        config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/modules/wrapped/neovim/config";
+    };
+  };
 
-    config = lib.mkMerge [
-      {
-        programs.neovim = {
-          enable = true;
-          package =
-            if config.neovim.full
-            then self.packages.${pkgs.stdenv.hostPlatform.system}.myNeovim
-            else self.packages.${pkgs.stdenv.hostPlatform.system}.myNeovimMinimal;
-        };
-      }
-    ];
+  flake.modules.nixos.neovim = {pkgs, ...}: {
+    programs.neovim = {
+      enable = true;
+      package =
+        self.packages.${pkgs.stdenv.hostPlatform.system}.myNeovimMinimal;
+    };
   };
 
   perSystem = {pkgs, ...}: {

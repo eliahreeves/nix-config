@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.homeManagerModules.minecraft = {
+  flake.modules.homeManager.minecraft = {
     pkgs,
     lib,
     config,

@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.homeManagerModules.direnv = {config, ...}: {
+  flake.modules.homeManager.direnv = {config, ...}: {
     programs.direnv = {
       enable = true;
       enableZshIntegration = true;

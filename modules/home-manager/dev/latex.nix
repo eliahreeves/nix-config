@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.homeManagerModules.latex = {
+  flake.modules.homeManager.latex = {
     pkgs,
     config,
     ...

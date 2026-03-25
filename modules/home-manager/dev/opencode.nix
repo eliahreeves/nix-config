@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.homeManagerModules.opencode = {
+  flake.modules.homeManager.opencode = {
     pkgs,
     config,
     ...

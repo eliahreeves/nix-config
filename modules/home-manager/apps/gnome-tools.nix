@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.homeManagerModules.gnome-tools = {
+  flake.modules.homeManager.gnome-tools = {
     pkgs,
     config,
     ...

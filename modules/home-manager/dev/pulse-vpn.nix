@@ -4,7 +4,7 @@
   inputs,
   ...
 }: {
-  flake.homeManagerModules.pulse-vpn = {
+  flake.modules.homeManager.pulse-vpn = {
     pkgs,
     config,
     ...

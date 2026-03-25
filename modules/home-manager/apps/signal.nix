@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.homeManagerModules.signal = {
+  flake.modules.homeManager.signal = {
     config,
     pkgs,
     ...

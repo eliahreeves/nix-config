@@ -1,5 +1,5 @@
 {...}: {
-  flake.homeManagerModules.tmux = {
+  flake.modules.homeManager.tmux = {
     pkgs,
     lib,
     config,
@@ -59,7 +59,7 @@
             '';
           }
         ];
-        extraConfig = builtins.readFile ./scripts/.tmux.conf;
+        extraConfig = builtins.readFile ./data/.tmux.conf;
       };
     };
   };

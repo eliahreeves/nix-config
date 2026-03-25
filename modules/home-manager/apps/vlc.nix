@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.homeManagerModules.vlc = {
+  flake.modules.homeManager.vlc = {
     config,
     pkgs,
     ...

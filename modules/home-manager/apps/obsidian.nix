@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.homeManagerModules.obsidian = {
+  flake.modules.homeManager.obsidian = {
     pkgs,
     config,
     ...

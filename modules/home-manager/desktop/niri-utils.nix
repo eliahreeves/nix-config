@@ -3,12 +3,12 @@
   inputs,
   ...
 }: {
-  flake.homeManagerModules.niri-utils = {
+  flake.modules.homeManager.niri-utils = {
     pkgs,
     config,
     ...
   }: {
-    imports = [self.homeManagerModules.vlc];
+    imports = [self.modules.homeManager.vlc];
 
     home.packages = with pkgs; [
       python313Packages.ipython

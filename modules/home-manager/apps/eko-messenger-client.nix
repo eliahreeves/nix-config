@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.homeManagerModules.eko-messenger-client = {
+  flake.modules.homeManager.eko-messenger-client = {
     pkgs,
     config,
     ...

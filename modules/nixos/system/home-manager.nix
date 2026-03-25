@@ -31,7 +31,7 @@
           lib.mapAttrs (username: path: {
             imports = [
               path
-              self.homeManagerModules.default
+              self.modules.homeManager.default
             ];
           })
           config.home-manager-config.users;

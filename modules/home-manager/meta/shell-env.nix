@@ -3,13 +3,13 @@
   inputs,
   ...
 }: {
-  flake.homeManagerModules.shell-env = {
+  flake.modules.homeManager.shell-env = {
     config,
     pkgs,
     lib,
     ...
   }: {
-    imports = with self.homeManagerModules; [
+    imports = with self.modules.homeManager; [
       core
       git
       tmplt

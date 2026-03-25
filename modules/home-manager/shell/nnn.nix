@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.homeManagerModules.nnn = {
+  flake.modules.homeManager.nnn = {
     config,
     pkgs,
     ...

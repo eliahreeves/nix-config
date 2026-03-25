@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.homeManagerModules.kunifiedpush = {
+  flake.modules.homeManager.kunifiedpush = {
     config,
     pkgs,
     ...

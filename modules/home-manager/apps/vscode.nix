@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.homeManagerModules.vscode = {
+  flake.modules.homeManager.vscode = {
     pkgs,
     config,
     ...

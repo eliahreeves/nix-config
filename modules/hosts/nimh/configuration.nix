@@ -1,4 +1,8 @@
-{self, ...}: {
+{
+  self,
+  inputs,
+  ...
+}: {
   flake.modules.nixos.nimhConfiguration = {pkgs, ...}: {
     environment.variables = {
       NH_FLAKE = "/etc/nixos";
@@ -128,6 +132,18 @@
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICrsuj0ydqjTHAmiTyVTFsWl3HHGKglxYQVQdlvNa/hL 75mmnorm@gmail.com"
       ];
     };
+
+    home-manager = {
+      useGlobalPkgs = true;
+      useUserPackages = true;
+      extraSpecialArgs = {
+        inherit inputs;
+      };
+      users.erreeves = {
+        imports = [self.modules.homeManager.nimh-home-erreeves];
+      };
+    };
+
     environment.systemPackages = with pkgs; [
       waypipe
     ];
