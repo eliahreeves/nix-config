@@ -77,7 +77,7 @@
     programs.neovim = {
       enable = true;
       package =
-        self.packages.${pkgs.stdenv.hostPlatform.system}.myNeovimMinimal;
+        self.packages.${pkgs.stdenv.hostPlatform.system}.myNeovim;
     };
     home.file = {
       ".config/nvim".source =

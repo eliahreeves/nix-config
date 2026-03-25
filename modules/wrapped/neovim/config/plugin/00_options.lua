@@ -28,18 +28,18 @@ vim.o.splitright = true -- Vertical splits will be to the right
 vim.o.cmdheight = 0 -- No Command window
 vim.opt.fillchars = { eob = " " } --Don't show ~ at end of buffer
 vim.diagnostic.config({
-    signs = false,
-    virtual_text = {
-        spacing = 4,
-        source = "if_many",
-        prefix = "●",
-    },
-    severity_sort = true,
-    float = {
-        border = "rounded",
-    },
-    underline = true,
-    update_in_insert = false,
+  signs = false,
+  virtual_text = {
+    spacing = 4,
+    source = "if_many",
+    prefix = "●",
+  },
+  severity_sort = true,
+  float = {
+    border = "rounded",
+  },
+  underline = true,
+  update_in_insert = false,
 })
 
 -- Editing ====================================================================

@@ -16,7 +16,6 @@
         computerHardware
 
         niri
-        neovim
         base-gui
         printing
         evolution-data-server

@@ -1,49 +1,49 @@
 local map = vim.keymap.set
 -- Clues
 Config.leader_group_clues = {
-    { mode = "n", keys = "<Leader>b", desc = "+Buffer" },
-    { mode = "n", keys = "<Leader>w", desc = "+Window" },
-    { mode = "n", keys = "<Leader>c", desc = "+Code/Lsp" },
-    { mode = "n", keys = "<Leader>u", desc = "+Utility" },
+  { mode = "n", keys = "<Leader>b", desc = "+Buffer" },
+  { mode = "n", keys = "<Leader>w", desc = "+Window" },
+  { mode = "n", keys = "<Leader>c", desc = "+Code/Lsp" },
+  { mode = "n", keys = "<Leader>u", desc = "+Utility" },
 }
 -- General
 map({ "n", "i", "v" }, "<C-s>", "<cmd>w<CR>", { noremap = true, silent = true })
 vim.keymap.set({ "n", "x" }, "j", function()
-    return vim.v.count == 0 and "gj" or "j"
+  return vim.v.count == 0 and "gj" or "j"
 end, { expr = true })
 vim.keymap.set({ "n", "x" }, "k", function()
-    return vim.v.count == 0 and "gk" or "k"
+  return vim.v.count == 0 and "gk" or "k"
 end, { expr = true })
 
 -- Pick
 map("n", "<leader> ", function()
-    local pick = require("mini.pick")
-    pick.builtin.files(nil, {
-        tool = "rg",
-    })
+  local pick = require("mini.pick")
+  pick.builtin.files(nil, {
+    tool = "rg",
+  })
 end, { desc = "Pick files" })
 map("n", "<leader>/", "<Cmd>Pick grep_live<CR>", { desc = "Live grep" })
 map("n", "<leader>x", "<Cmd>Pick diagnostic<CR>", { desc = "Pick diagnostic" })
 
 -- Files
 map("n", "<leader>e", function()
-    local file = vim.api.nvim_buf_get_name(0)
-    if string.find(file, "ministarter://") then
-        require("mini.files").open()
-        return
-    end
-    require("mini.files").open(file)
+  local file = vim.api.nvim_buf_get_name(0)
+  if string.find(file, "ministarter://") then
+    require("mini.files").open()
+    return
+  end
+  require("mini.files").open(file)
 end, { desc = "Explore Directory" })
 
 -- Multi-Cursor
 map({ "n", "x" }, "<M-Up>", function()
-    require("multicursor-nvim").lineAddCursor(-1)
+  require("multicursor-nvim").lineAddCursor(-1)
 end)
 map({ "n", "x" }, "<M-Down>", function()
-    require("multicursor-nvim").lineAddCursor(1)
+  require("multicursor-nvim").lineAddCursor(1)
 end)
 map({ "n", "x" }, "<Leader>n", function()
-    require("multicursor-nvim").matchAddCursor(1)
+  require("multicursor-nvim").matchAddCursor(1)
 end, { desc = "Match add cursor" })
 
 -- Lsp
@@ -65,28 +65,28 @@ map("n", "<leader>up", "<cmd>PasteImage<cr>", { desc = "Paste image" })
 
 -- Dial
 map("n", "<C-k>", function()
-    require("dial.map").manipulate("increment", "normal")
+  require("dial.map").manipulate("increment", "normal")
 end)
 map("n", "<C-j>", function()
-    require("dial.map").manipulate("decrement", "normal")
+  require("dial.map").manipulate("decrement", "normal")
 end)
 map("n", "g<C-k>", function()
-    require("dial.map").manipulate("increment", "gnormal")
+  require("dial.map").manipulate("increment", "gnormal")
 end, { desc = "Increment" })
 map("n", "g<C-j>", function()
-    require("dial.map").manipulate("decrement", "gnormal")
+  require("dial.map").manipulate("decrement", "gnormal")
 end, { desc = "Decrement" })
 map("x", "<C-k>", function()
-    require("dial.map").manipulate("increment", "visual")
+  require("dial.map").manipulate("increment", "visual")
 end)
 map("x", "<C-j>", function()
-    require("dial.map").manipulate("decrement", "visual")
+  require("dial.map").manipulate("decrement", "visual")
 end)
 map("x", "g<C-k>", function()
-    require("dial.map").manipulate("increment", "gvisual")
+  require("dial.map").manipulate("increment", "gvisual")
 end, { desc = "Increment" })
 map("x", "g<C-j>", function()
-    require("dial.map").manipulate("decrement", "gvisual")
+  require("dial.map").manipulate("decrement", "gvisual")
 end, { desc = "Decrement" })
 
 -- buffer stuff
@@ -111,16 +111,16 @@ map("n", "<leader>ww", "<C-W>w", { desc = "Window next", remap = true })
 
 -- Color Scheme
 map("n", "<leader>uc", function()
-    require("persistent-color").pickAndSave()
+  require("persistent-color").pickAndSave()
 end, { desc = "Change colorscheme" })
 
 -- Completion
 map("i", "<CR>", function()
-    if vim.fn.pumvisible() == 1 then
-        return "<C-y>"
-    else
-        return "<CR>"
-    end
+  if vim.fn.pumvisible() == 1 then
+    return "<C-y>"
+  else
+    return "<CR>"
+  end
 end, { expr = true })
 
 -- unmaps
