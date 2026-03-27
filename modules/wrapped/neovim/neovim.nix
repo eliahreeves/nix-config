@@ -79,9 +79,14 @@
       package =
         self.packages.${pkgs.stdenv.hostPlatform.system}.myNeovim;
     };
-    home.file = {
-      ".config/nvim".source =
-        config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/modules/wrapped/neovim/config";
+    home = {
+      sessionVariables = {
+        EDITOR = "nvim";
+      };
+      file = {
+        ".config/nvim".source =
+          config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/modules/wrapped/neovim/config";
+      };
     };
   };
 

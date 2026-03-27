@@ -3,11 +3,7 @@
   inputs,
   ...
 }: {
-  flake.modules.nixos.computerConfiguration = {
-    pkgs,
-    config,
-    ...
-  }: {
+  flake.modules.nixos.computerConfiguration = {pkgs, ...}: {
     environment.variables = {
       NH_FLAKE = "/home/erreeves/nix-config/";
     };
@@ -26,6 +22,7 @@
         steam
         amd-gpu
         podman
+        sops
       ]
       ++ [
         inputs.home-manager.nixosModules.default
