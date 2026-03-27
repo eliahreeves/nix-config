@@ -4,6 +4,7 @@
       shell-env
     ];
     git.sign = false;
+    tmux.prefix = "b";
 
     home.stateVersion = "25.05";
     programs = {

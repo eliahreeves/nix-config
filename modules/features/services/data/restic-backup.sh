@@ -15,7 +15,7 @@ trap cleanup EXIT
 
 set -e
 
-restic snapshots >/dev/null 2>&1 || {
+restic cat config >/dev/null 2>&1 || {
   restic init
 }
 
@@ -26,5 +26,9 @@ btrfs subvolume snapshot -r "$SOURCE_SUBVOL" "$BACKUP_SNAPSHOT"
 
 restic backup "$BACKUP_SNAPSHOT" \
   --host "immich-server" \
-  --tag "scheduled-backup" \
-  --as-path "/$SUBVOL_NAME"
+  --tag "scheduled-backup"
+
+restic forget \
+  --keep-weekly 8 \
+  --keep-monthly 6 \
+  --prune
