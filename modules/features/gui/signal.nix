@@ -1,13 +1,8 @@
-{
-  self,
-  inputs,
-  ...
-}: {
-  flake.modules.homeManager.signal = {
-    config,
-    pkgs,
-    ...
-  }: {
+{self, ...}: {
+  flake.modules.nixos.signal = {
+    home-manager.sharedModules = [self.modules.homeManager.signal];
+  };
+  flake.modules.homeManager.signal = {pkgs, ...}: {
     home.packages = with pkgs; [signal-desktop];
     xdg.mimeApps = {
       enable = true;

@@ -1,5 +1,6 @@
 {self, ...}: {
   flake.modules.nixos.niri = {pkgs, ...}: {
+    home-manager.sharedModules = [self.modules.homeManager.niri];
     imports = [self.modules.nixos.greetd];
     programs.niri = {
       enable = true;
@@ -14,7 +15,7 @@
     ];
   };
 
-  flake.modules.homeManager.niri-utils = {
+  flake.modules.homeManager.niri = {
     pkgs,
     config,
     ...

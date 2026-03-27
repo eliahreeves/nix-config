@@ -1,4 +1,7 @@
-{...}: {
+{self, ...}: {
+  flake.modules.nixos.zsh = {
+    home-manager.sharedModules = [self.modules.homeManager.zsh];
+  };
   flake.modules.homeManager.zsh = {
     pkgs,
     lib,

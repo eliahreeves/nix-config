@@ -12,6 +12,19 @@
     programs.zsh.enable = true;
 
     environment.systemPackages = with pkgs; [
+      tree
+      waypipe
+      ncdu
+      unzip
+      zip
+      fastfetch
+      curl
+      wget
+      btop
+      ripgrep
+      fd
+      wl-clipboard
+      imagemagick
       gnupg
       rsync
       cryptsetup

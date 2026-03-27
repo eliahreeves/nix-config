@@ -1,6 +1,6 @@
 ## https://discourse.nixos.org/t/build-package-module-for-closed-source-binary-package-pulse-secure-vpn/29628/6
 {...}: {
-  flake.modules.homeManager.pulse-vpn = {pkgs, ...}: let
+  flake.modules.nixos.pulse-vpn = {pkgs, ...}: let
     pulse-cookie = pkgs.python3.pkgs.buildPythonApplication rec {
       pname = "pulse-cookie";
       version = "1.0";
@@ -61,6 +61,6 @@
       sudo ${pkgs.openconnect}/bin/openconnect --protocol nc -C DSID=$DSID $HOST
     '';
   in {
-    home.packages = [pkgs.openconnect pulse-vpn];
+    environment.systemPackages = [pkgs.openconnect pulse-vpn];
   };
 }

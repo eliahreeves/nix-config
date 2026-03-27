@@ -1,9 +1,10 @@
-{...}: {
+{self, ...}: {
   flake.modules.nixos.restic-backup = {
     config,
     pkgs,
     ...
   }: {
+    imports = with self.modules.nixos; [sops];
     sops = {
       secrets."restic_backblaze/account_id" = {};
       secrets."restic_backblaze/account_key" = {};

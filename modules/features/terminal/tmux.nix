@@ -1,4 +1,8 @@
-{...}: {
+{self, ...}: {
+  flake.modules.nixos.tmux = {
+    home-manager.sharedModules = [self.modules.homeManager.tmux];
+  };
+
   flake.modules.homeManager.tmux = {
     pkgs,
     lib,

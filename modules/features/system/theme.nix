@@ -1,13 +1,8 @@
-{
-  self,
-  inputs,
-  ...
-}: {
-  flake.modules.homeManager.theme = {
-    pkgs,
-    config,
-    ...
-  }: {
+{self, ...}: {
+  flake.modules.nixos.theme = {
+    home-manager.sharedModules = [self.modules.homeManager.theme];
+  };
+  flake.modules.homeManager.theme = {pkgs, ...}: {
     home.packages = with pkgs; [
       nerd-fonts.caskaydia-mono
     ];

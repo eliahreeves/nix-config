@@ -1,32 +1,39 @@
-{
-  self,
-  inputs,
-  ...
-}: {
+{self, ...}: {
   flake.modules.nixos.computerConfiguration = {pkgs, ...}: {
     environment.variables = {
       NH_FLAKE = "/home/erreeves/nix-config/";
     };
-    imports = with self.modules.nixos;
-      [
-        computerHardware
-
-        niri
-        base-gui
-        printing
-        evolution-data-server
-        system76-utils
-        power-button-sleep
-        capslock-ctrl
-        alt-win-swap
-        steam
-        amd-gpu
-        podman
-        sops
-      ]
-      ++ [
-        inputs.home-manager.nixosModules.default
-      ];
+    imports = with self.modules.nixos; [
+      computerHardware
+      niri
+      base-gui
+      printing
+      evolution-data-server
+      system76-utils
+      power-button-sleep
+      capslock-ctrl
+      alt-win-swap
+      steam
+      amd-gpu
+      podman
+      sops
+      tmux
+      neovim
+      theme
+      zen-browser
+      zsh
+      direnv
+      tmplt
+      python
+      git
+      pulse-vpn
+      signal
+      ghostty
+      firefox
+      vscode
+      gnome-tools
+      opencode
+    ];
 
     nixpkgs.config.allowUnfree = true;
 
@@ -76,18 +83,47 @@
     services.upower.enable = true;
     services.flatpak.enable = true;
 
-    home-manager = {
-      useGlobalPkgs = true;
-      useUserPackages = true;
-      extraSpecialArgs = {
-        inherit inputs;
-      };
-      users.erreeves = {
-        imports = [self.modules.homeManager.computer-home];
-      };
-    };
-
     services.tlp.enable = true;
     system.stateVersion = "25.05";
+    environment.systemPackages = with pkgs; [
+      ungoogled-chromium
+      qbittorrent
+      zulip
+      spotify
+      inkscape
+      protonvpn-gui
+      gocryptfs
+      gapless
+      rnote
+      texliveFull
+      prismlauncher
+    ];
+
+    home-manager = {
+      users.erreeves = {
+        home = {
+          username = "erreeves";
+          homeDirectory = "/home/erreeves";
+          stateVersion = "25.05";
+        };
+        gtk.gtk3.bookmarks = let
+          homePath = "file:///home/erreeves/";
+          folders = [
+            "repos"
+            "Documents"
+            "Downloads"
+            "Pictures"
+            "Videos"
+            "Audiobooks"
+            "Music"
+          ];
+        in
+          map (folder: "${homePath}${folder}") folders;
+        git = {
+          email = "ereeclimb@gmail.com";
+          name = "Eliah Reeves";
+        };
+      };
+    };
   };
 }

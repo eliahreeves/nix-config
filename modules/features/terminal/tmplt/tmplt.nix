@@ -1,5 +1,5 @@
 {...}: {
-  flake.modules.homeManager.tmplt = {pkgs, ...}: let
+  flake.modules.nixos.tmplt = {pkgs, ...}: let
     templateSource = ./templates;
     tmplt-script = pkgs.replaceVars ./tmplt.lua {
       templatePath = "${templateSource}";
@@ -36,6 +36,6 @@
       '';
     };
   in {
-    home.packages = [tmplt-package tmplt-completion];
+    environment.systemPackages = [tmplt-package tmplt-completion];
   };
 }

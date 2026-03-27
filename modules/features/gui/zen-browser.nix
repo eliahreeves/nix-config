@@ -1,4 +1,11 @@
-{inputs, ...}: {
+{
+  self,
+  inputs,
+  ...
+}: {
+  flake.modules.nixos.zen-browser = {
+    home-manager.sharedModules = [self.modules.homeManager.zen-browser];
+  };
   flake.modules.homeManager.zen-browser = {...}: let
     mkLockedAttrs = builtins.mapAttrs (_: value: {
       Value = value;

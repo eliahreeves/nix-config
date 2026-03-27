@@ -1,4 +1,7 @@
-{...}: {
+{self, ...}: {
+  flake.modules.nixos.gnome-tools = {
+    home-manager.sharedModules = [self.modules.homeManager.gnome-tools];
+  };
   flake.modules.homeManager.gnome-tools = {pkgs, ...}: {
     home.packages = with pkgs; [
       loupe
@@ -7,7 +10,6 @@
       snapshot
       warp
       nautilus
-      evolution
       gnome-software
       networkmanagerapplet
     ];

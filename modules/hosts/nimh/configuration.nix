@@ -1,31 +1,24 @@
-{
-  self,
-  inputs,
-  ...
-}: {
+{self, ...}: {
   flake.modules.nixos.nimhConfiguration = {pkgs, ...}: {
     environment.variables = {
       NH_FLAKE = "/etc/nixos";
     };
 
-    imports = with self.modules.nixos;
-      [
-        nimhHardware
+    imports = with self.modules.nixos; [
+      nimhHardware
 
-        neovim
-        base-gui
-        no-sleep
-        openssh
-        minecraft-server
-        samba
-        immich
-        eko-messenger
-        sops
-        restic-backup
-      ]
-      ++ [
-        inputs.home-manager.nixosModules.default
-      ];
+      neovim
+      base-gui
+      no-sleep
+      openssh
+      minecraft-server
+      samba
+      immich
+      eko-messenger
+      restic-backup
+      tmux
+      git
+    ];
 
     nixpkgs.config.allowUnfree = true;
 
@@ -140,20 +133,20 @@
     };
 
     home-manager = {
-      useGlobalPkgs = true;
-      useUserPackages = true;
-      extraSpecialArgs = {
-        inherit inputs;
-      };
       users.erreeves = {
-        imports = [self.modules.homeManager.nimh-home-erreeves];
+        home = {
+          username = "erreeves";
+          homeDirectory = "/home/erreeves";
+          stateVersion = "25.05";
+        };
+        git = {
+          email = "ereeclimb@gmail.com";
+          name = "Eliah Reeves";
+          sign = false;
+        };
+        tmux.prefix = "b";
       };
     };
-
-    environment.systemPackages = with pkgs; [
-      waypipe
-    ];
-
     system.stateVersion = "25.05";
   };
 }
