@@ -20,6 +20,8 @@
         samba
         immich
         eko-messenger
+        sops
+        restic-backup
       ]
       ++ [
         inputs.home-manager.nixosModules.default
