@@ -39,6 +39,8 @@
           # python
           ruff
           pyright
+          # json
+          jq
         ]
         ++ lib.optionals config.settings.full [
           deno
@@ -69,23 +71,36 @@
     };
   };
 
-  flake.modules.homeManager.neovim = {
+  flake.modules.nixos.neovim-full = {
+    home-manager.sharedModules = [self.modules.homeManager.neovim-full];
+  };
+
+  flake.modules.homeManager.neovim-full = {
     pkgs,
     config,
+    lib,
     ...
   }: {
-    programs.neovim = {
-      enable = true;
-      package =
-        self.packages.${pkgs.stdenv.hostPlatform.system}.myNeovim;
+    options.neovim-full.configPath = lib.mkOption {
+      type = lib.types.str;
+      default = "${config.home.homeDirectory}/nix-config/modules/wrapped/neovim/config";
+      description = "Path to neovim configuration directory";
     };
-    home = {
-      sessionVariables = {
-        EDITOR = "nvim";
+
+    config = {
+      programs.neovim = {
+        enable = true;
+        package =
+          self.packages.${pkgs.stdenv.hostPlatform.system}.myNeovim;
       };
-      file = {
-        ".config/nvim".source =
-          config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/modules/wrapped/neovim/config";
+      home = {
+        sessionVariables = {
+          EDITOR = "nvim";
+        };
+        file = {
+          ".config/nvim".source =
+            config.lib.file.mkOutOfStoreSymlink config.neovim-full.configPath;
+        };
       };
     };
   };

@@ -18,7 +18,7 @@
       podman
       sops
       tmux
-      neovim
+      neovim-full
       theme
       zen-browser
       zsh

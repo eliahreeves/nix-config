@@ -2,6 +2,7 @@
   flake.modules.nixos.ghostty = {
     home-manager.sharedModules = [self.modules.homeManager.ghostty];
   };
+
   flake.modules.homeManager.ghostty = {
     pkgs,
     config,
