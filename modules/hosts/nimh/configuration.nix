@@ -18,6 +18,7 @@
       restic-backup
       tmux
       git
+      zsh
     ];
 
     nixpkgs.config.allowUnfree = true;
