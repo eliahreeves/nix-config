@@ -12,6 +12,7 @@
       nautilus
       gnome-software
       networkmanagerapplet
+      gnome-text-editor
     ];
     xdg.configFile."autostart/nm-applet.desktop".text = ''
       [Desktop Entry]

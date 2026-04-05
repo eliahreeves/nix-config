@@ -56,6 +56,7 @@ end)
 on_filetype("tex", function()
   add({ "https://github.com/lervag/vimtex" })
   vim.g.vimtex_quickfix_mode = 0
+  vim.g.vimtex_complete_enabled = 0
 end)
 
 on_filetype("markdown", function()
@@ -77,4 +78,41 @@ end)
 on_filetype("dart", function()
   add({ "https://github.com/nvim-lua/plenary.nvim" })
   add({ "https://github.com/nvim-flutter/flutter-tools.nvim" })
+end)
+
+now(function()
+  add({ "https://github.com/nvim-treesitter/nvim-treesitter" })
+  vim.api.nvim_create_autocmd("FileType", {
+    callback = function(args)
+      local buf, filetype = args.buf, args.match
+
+      local language = vim.treesitter.language.get_lang(filetype)
+      if not language then
+        return
+      end
+
+      -- check if parser exists and load it
+      if not vim.treesitter.language.add(language) then
+        return
+      end
+      -- enables syntax highlighting and other treesitter features
+      vim.treesitter.start(buf, language)
+
+      -- enables treesitter based indentation
+      vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    end,
+  })
+end)
+
+later(function()
+  add({ "https://github.com/saghen/blink.cmp" })
+  require("blink.cmp").setup({
+    keymap = { preset = "enter" },
+    completion = {
+      documentation = {
+        auto_show = true,
+        auto_show_delay_ms = 100,
+      },
+    },
+  })
 end)

@@ -81,10 +81,6 @@ later(function()
 end)
 
 later(function()
-  require("mini.completion").setup()
-end)
-
-later(function()
   local miniclue = require("mini.clue")
   miniclue.setup({
     window = {

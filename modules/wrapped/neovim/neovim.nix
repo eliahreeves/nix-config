@@ -26,10 +26,12 @@
       specs.general = lib.mkIf (config.settings.full) (with pkgs.vimPlugins; [
         nvim-treesitter
         nvim-treesitter.withAllGrammars
+        blink-cmp
       ]);
 
       extraPackages = with pkgs;
         [
+          tree-sitter
           # nix
           alejandra
           nixd

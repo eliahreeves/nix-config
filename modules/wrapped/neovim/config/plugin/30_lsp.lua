@@ -1,7 +1,7 @@
-local now_if_args = Config.now_if_args
+local now = Config.now
 local add = vim.pack.add
 
-now_if_args(function()
+now(function()
   add({ "https://github.com/neovim/nvim-lspconfig" })
 
   vim.lsp.config("slang-server", {

@@ -10,8 +10,8 @@
       printing
       evolution-data-server
       system76-utils
-      power-button-sleep
       capslock-ctrl
+      suspend-then-hibernate
       alt-win-swap
       steam
       amd-gpu
@@ -91,12 +91,14 @@
       zulip
       spotify
       inkscape
-      protonvpn-gui
+      proton-vpn
       gocryptfs
       gapless
       rnote
       texliveFull
       prismlauncher
+      devenv
+      nomachine-client
     ];
 
     home-manager = {
