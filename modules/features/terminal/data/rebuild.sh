@@ -9,8 +9,8 @@ alejandra . >/dev/null 2>&1
 git add .
 if grep -q '^ID=nixos$' /etc/os-release; then
   echo "NixOS Rebuilding..."
-  sudo nixos-rebuild switch --flake $NH_FLAKE#$TAG
-  gen=$(sudo nixos-rebuild list-generations | grep True | awk '{print $1}')
+  nh os switch
+  gen=$(nixos-rebuild list-generations | grep True | awk '{print $1}')
   echo "Rebuild successful, generation $gen"
 else
   echo "Home Manager Rebuilding..."

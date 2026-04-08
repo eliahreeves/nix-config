@@ -20,7 +20,7 @@ now(function()
       action = function()
         local config = vim.fn.stdpath("config")
         vim.api.nvim_set_current_dir(config)
-        vim.cmd("Pick files")
+        Snacks.picker.files()
       end,
 
       section = "Basic actions",
@@ -73,11 +73,11 @@ later(function()
 end)
 
 later(function()
-  require("mini.pick").setup()
+  require("mini.files").setup({ windows = { preview = true } })
 end)
 
 later(function()
-  require("mini.files").setup({ windows = { preview = true } })
+  require("mini.diff").setup()
 end)
 
 later(function()
@@ -96,6 +96,8 @@ later(function()
       { mode = "i", keys = "<C-x>" },
       -- `g` key
       { mode = { "n", "x" }, keys = "g" },
+      -- `s` key
+      { mode = { "n", "x" }, keys = "s" },
       -- Marks
       { mode = { "n", "x" }, keys = "'" },
       { mode = { "n", "x" }, keys = "`" },
@@ -120,4 +122,8 @@ later(function()
       miniclue.gen_clues.z(),
     },
   })
+end)
+
+later(function()
+  require("mini.surround").setup()
 end)

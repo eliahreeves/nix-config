@@ -17,13 +17,17 @@ end, { expr = true })
 
 -- Pick
 map("n", "<leader> ", function()
-  local pick = require("mini.pick")
-  pick.builtin.files(nil, {
-    tool = "rg",
-  })
+  Snacks.picker.files()
 end, { desc = "Pick files" })
-map("n", "<leader>/", "<Cmd>Pick grep_live<CR>", { desc = "Live grep" })
-map("n", "<leader>x", "<Cmd>Pick diagnostic<CR>", { desc = "Pick diagnostic" })
+map("n", "<leader>/", function()
+  Snacks.picker.grep()
+end, { desc = "Live grep" })
+map("n", "<leader>x", function()
+  Snacks.picker.diagnostics()
+end, { desc = "Pick diagnostic" })
+map("n", "<leader>X", function()
+  Snacks.picker.diagnostics_buffer()
+end, { desc = "Pick diagnostic (buffer)" })
 
 -- Files
 map("n", "<leader>e", function()
@@ -47,16 +51,46 @@ map({ "n", "x" }, "<Leader>n", function()
 end, { desc = "Match add cursor" })
 
 -- Lsp
+local lsp_defaults = { "grn", "gra", "grr", "gri", "grn", "grx", "grt" }
+for _, key in ipairs(lsp_defaults) do
+  pcall(vim.keymap.del, "n", key)
+end
+
+map("n", "gd", function()
+  Snacks.picker.lsp_definitions()
+end, { desc = "Definition" })
+map("n", "gr", function()
+  Snacks.picker.lsp_references()
+end, { desc = "References" })
+map("n", "gi", function()
+  Snacks.picker.lsp_implementations()
+end, { desc = "Implementation" })
 map("n", "<leader>ck", vim.lsp.buf.hover, { desc = "Hover" })
-map("n", "<leader>cd", vim.lsp.buf.definition, { desc = "Go to definition" })
-map("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
-map("n", "<leader>ci", vim.lsp.buf.implementation, { desc = "Go to implementation" })
 map("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename" })
 map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code actions" })
 map("n", "<leader>ce", vim.diagnostic.open_float, { desc = "Open error float" })
 
+-- incremental selection treesitter/lsp
+map({ "n", "x", "o" }, "<C-o>", function()
+  if vim.treesitter.get_parser(nil, nil, { error = false }) then
+    require("vim.treesitter._select").select_parent(vim.v.count1)
+  else
+    vim.lsp.buf.selection_range(vim.v.count1)
+  end
+end, { desc = "Select parent treesitter node or outer incremental lsp selections" })
+
+map({ "n", "x", "o" }, "<C-i>", function()
+  if vim.treesitter.get_parser(nil, nil, { error = false }) then
+    require("vim.treesitter._select").select_child(vim.v.count1)
+  else
+    vim.lsp.buf.selection_range(-vim.v.count1)
+  end
+end, { desc = "Select child treesitter node or inner incremental lsp selections" })
+
 -- Utility
-map("n", "<leader>uy", "<cmd>Gitsigns blame_line<cr>", { desc = "Git blame" })
+map("n", "<leader>us", function()
+  MiniDiff.toggle_overlay()
+end, { desc = "Git summary" })
 map("n", "<leader>ul", "<cmd>VimtexCompile<cr>", { desc = "Compile LaTeX" })
 map("n", "<leader>up", "<cmd>PasteImage<cr>", { desc = "Paste image" })
 map("n", "<leader>un", function()

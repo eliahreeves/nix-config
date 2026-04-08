@@ -1,4 +1,4 @@
-local now, later = Config.now, Config.later
+local now = Config.now
 local add = vim.pack.add
 
 now(function()

@@ -44,11 +44,6 @@ now(function()
 end)
 
 later(function()
-  add({ "https://github.com/lewis6991/gitsigns.nvim" })
-  require("gitsigns").setup({})
-end)
-
-later(function()
   add({ "https://github.com/monaqa/dial.nvim" })
   require("dial-config").setup()
 end)
@@ -72,36 +67,25 @@ end)
 
 now(function()
   add({ "https://github.com/folke/snacks.nvim" })
-  require("snacks").setup({ indent = { enabled = true } })
+  require("snacks").setup({
+    indent = { enabled = true },
+    picker = {
+      ui_select = true,
+      enabled = true,
+      hidden = true,
+      ignored = false,
+      layouts = {
+        select = {
+          layout = { relative = "cursor" },
+        },
+      },
+    },
+  })
 end)
 
 on_filetype("dart", function()
   add({ "https://github.com/nvim-lua/plenary.nvim" })
   add({ "https://github.com/nvim-flutter/flutter-tools.nvim" })
-end)
-
-now(function()
-  add({ "https://github.com/nvim-treesitter/nvim-treesitter" })
-  vim.api.nvim_create_autocmd("FileType", {
-    callback = function(args)
-      local buf, filetype = args.buf, args.match
-
-      local language = vim.treesitter.language.get_lang(filetype)
-      if not language then
-        return
-      end
-
-      -- check if parser exists and load it
-      if not vim.treesitter.language.add(language) then
-        return
-      end
-      -- enables syntax highlighting and other treesitter features
-      vim.treesitter.start(buf, language)
-
-      -- enables treesitter based indentation
-      vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-    end,
-  })
 end)
 
 later(function()

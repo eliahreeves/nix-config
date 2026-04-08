@@ -1,0 +1,357 @@
+spawn-at-startup "noctalia-shell"
+input {
+    keyboard {
+        xkb {
+
+        }
+        numlock
+    }
+    touchpad {
+        tap
+        natural-scroll
+    }
+    mouse {
+
+    }
+    focus-follows-mouse max-scroll-amount="0%"
+}
+gestures {
+    hot-corners {
+        off
+    }
+}
+output "eDP-1" {
+    scale 1
+    transform "normal"
+    position x=0 y=0
+}
+output "DP-2" {
+    mode "1920x1080"
+    scale 1
+    transform "normal"
+    position x=-1920 y=0
+}
+layout {
+    gaps 3
+    border {
+        width 1
+    }
+    focus-ring {
+        width 1
+    }
+    center-focused-column "on-overflow"
+    background-color "transparent"
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        proportion 1.0
+    }
+}
+prefer-no-csd
+hotkey-overlay {
+    skip-at-startup
+}
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+// Open the Firefox picture-in-picture player as floating by default.
+window-rule {
+    match app-id="firefox$" title="^Picture-in-Picture$"
+    open-floating true
+}
+window-rule {
+    geometry-corner-radius 10
+    clip-to-geometry true
+}
+debug {
+    honor-xdg-activation-with-invalid-serial
+}
+binds {
+    Mod+Shift+Slash {
+        show-hotkey-overlay
+    }
+    Mod+Q hotkey-overlay-title="Open a Terminal: ghostty" {
+        spawn "ghostty"
+    }
+    Mod+W hotkey-overlay-title="Open a Browser: firefox" {
+        spawn-sh "zen-beta"
+    }
+    Mod+P {
+        spawn "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"
+    }
+    Mod+E hotkey-overlay-title="Open File Explorer: nautilus" {
+        spawn "nautilus"
+    }
+    Mod+Shift+E hotkey-overlay-title="Open File Explorer: nnn" {
+        spawn-sh "ghostty -e tmux new-session -A -s nnn-temp 'zsh -ic nnn' \\; set-option -t nnn-temp destroy-unattached on"
+    }
+    Mod+Space {
+        spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"
+    }
+    Mod+B {
+        spawn "noctalia-shell" "ipc" "call" "bluetooth" "togglePanel"
+    }
+    Mod+Shift+B {
+        spawn-sh "ghostty -e bluetuith"
+    }
+    XF86AudioRaiseVolume allow-when-locked=true {
+        spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"
+    }
+    XF86AudioLowerVolume allow-when-locked=true {
+        spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"
+    }
+    XF86AudioMute allow-when-locked=true {
+        spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+    }
+    XF86AudioMicMute allow-when-locked=true {
+        spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+    }
+    XF86AudioPlay allow-when-locked=true {
+        spawn-sh "playerctl play-pause"
+    }
+    XF86AudioStop allow-when-locked=true {
+        spawn-sh "playerctl stop"
+    }
+    XF86AudioPrev allow-when-locked=true {
+        spawn-sh "playerctl previous"
+    }
+    XF86AudioNext allow-when-locked=true {
+        spawn-sh "playerctl next"
+    }
+    XF86MonBrightnessUp allow-when-locked=true {
+        spawn "brightnessctl" "--class=backlight" "set" "+10%"
+    }
+    XF86MonBrightnessDown allow-when-locked=true {
+        spawn "brightnessctl" "--class=backlight" "set" "10%-"
+    }
+    Mod+O repeat=false {
+        toggle-overview
+    }
+    Mod+X repeat=false {
+        close-window
+    }
+    Mod+H {
+        focus-column-left
+    }
+    Mod+I {
+        focus-window-down
+    }
+    Mod+U {
+        focus-window-up
+    }
+    Mod+L {
+        focus-column-right
+    }
+    Mod+Ctrl+H {
+        move-column-left
+    }
+    Mod+Ctrl+L {
+        move-column-right
+    }
+    Mod+Shift+H {
+        focus-monitor-left
+    }
+    Mod+Shift+L {
+        focus-monitor-right
+    }
+    Mod+Shift+Ctrl+H {
+        move-column-to-monitor-left
+    }
+    Mod+Shift+Ctrl+I {
+        move-column-to-monitor-down
+    }
+    Mod+Shift+Ctrl+U {
+        move-column-to-monitor-up
+    }
+    Mod+Shift+Ctrl+L {
+        move-column-to-monitor-right
+    }
+    Mod+J {
+        focus-workspace-down
+    }
+    Mod+K {
+        focus-workspace-up
+    }
+    Mod+Ctrl+J {
+        move-column-to-workspace-down
+    }
+    Mod+Ctrl+K {
+        move-column-to-workspace-up
+    }
+    Mod+Shift+J {
+        move-workspace-down
+    }
+    Mod+Shift+K {
+        move-workspace-up
+    }
+    Mod+WheelScrollDown cooldown-ms=150 {
+        focus-workspace-down
+    }
+    Mod+WheelScrollUp cooldown-ms=150 {
+        focus-workspace-up
+    }
+    Mod+Ctrl+WheelScrollDown cooldown-ms=150 {
+        move-column-to-workspace-down
+    }
+    Mod+Ctrl+WheelScrollUp cooldown-ms=150 {
+        move-column-to-workspace-up
+    }
+    Mod+WheelScrollRight {
+        focus-column-right
+    }
+    Mod+WheelScrollLeft {
+        focus-column-left
+    }
+    Mod+Ctrl+WheelScrollRight {
+        move-column-right
+    }
+    Mod+Ctrl+WheelScrollLeft {
+        move-column-left
+    }
+    Mod+Shift+WheelScrollDown {
+        focus-column-right
+    }
+    Mod+Shift+WheelScrollUp {
+        focus-column-left
+    }
+    Mod+Ctrl+Shift+WheelScrollDown {
+        move-column-right
+    }
+    Mod+Ctrl+Shift+WheelScrollUp {
+        move-column-left
+    }
+    Mod+1 {
+        focus-workspace 1
+    }
+    Mod+2 {
+        focus-workspace 2
+    }
+    Mod+3 {
+        focus-workspace 3
+    }
+    Mod+4 {
+        focus-workspace 4
+    }
+    Mod+5 {
+        focus-workspace 5
+    }
+    Mod+6 {
+        focus-workspace 6
+    }
+    Mod+7 {
+        focus-workspace 7
+    }
+    Mod+8 {
+        focus-workspace 8
+    }
+    Mod+9 {
+        focus-workspace 9
+    }
+    Mod+Ctrl+1 {
+        move-column-to-workspace 1
+    }
+    Mod+Ctrl+2 {
+        move-column-to-workspace 2
+    }
+    Mod+Ctrl+3 {
+        move-column-to-workspace 3
+    }
+    Mod+Ctrl+4 {
+        move-column-to-workspace 4
+    }
+    Mod+Ctrl+5 {
+        move-column-to-workspace 5
+    }
+    Mod+Ctrl+6 {
+        move-column-to-workspace 6
+    }
+    Mod+Ctrl+7 {
+        move-column-to-workspace 7
+    }
+    Mod+Ctrl+8 {
+        move-column-to-workspace 8
+    }
+    Mod+Ctrl+9 {
+        move-column-to-workspace 9
+    }
+    Mod+BracketLeft {
+        consume-or-expel-window-left
+    }
+    Mod+BracketRight {
+        consume-or-expel-window-right
+    }
+    Mod+Comma {
+        consume-window-into-column
+    }
+    Mod+Period {
+        expel-window-from-column
+    }
+    Mod+R {
+        switch-preset-column-width
+    }
+    Mod+Shift+R {
+        switch-preset-window-height
+    }
+    Mod+Ctrl+R {
+        reset-window-height
+    }
+    Mod+Shift+F {
+        fullscreen-window
+    }
+    Mod+M {
+        maximize-window-to-edges
+    }
+    Mod+F {
+        expand-column-to-available-width
+    }
+    Mod+C {
+        center-column
+    }
+    Mod+Ctrl+C {
+        center-visible-columns
+    }
+    Mod+Minus {
+        set-column-width "-10%"
+    }
+    Mod+Equal {
+        set-column-width "+10%"
+    }
+    Mod+Shift+Minus {
+        set-window-height "-10%"
+    }
+    Mod+Shift+Equal {
+        set-window-height "+10%"
+    }
+    Mod+V {
+        toggle-window-floating
+    }
+    Mod+Shift+V {
+        switch-focus-between-floating-and-tiling
+    }
+    Shift+Print {
+        screenshot
+    }
+    Print {
+        screenshot-screen
+    }
+    Ctrl+Print {
+        screenshot-window
+    }
+    Mod+Escape allow-inhibiting=false {
+        toggle-keyboard-shortcuts-inhibit
+    }
+    Mod+Ctrl+Delete {
+        quit
+    }
+    Ctrl+Alt+Delete {
+        quit
+    }
+    Mod+Shift+P {
+        power-off-monitors
+    }
+}
+layer-rule {
+    match namespace="^noctalia-overview*"
+    place-within-backdrop true
+}
+include "./noctalia.kdl"
+

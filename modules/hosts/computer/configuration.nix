@@ -17,6 +17,7 @@
       amd-gpu
       podman
       sops
+      comma
       tmux
       neovim-full
       theme
@@ -99,6 +100,7 @@
       prismlauncher
       devenv
       nomachine-client
+      gimp
     ];
 
     home-manager = {

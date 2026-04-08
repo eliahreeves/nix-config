@@ -18,18 +18,25 @@
   flake.modules.homeManager.niri = {
     pkgs,
     config,
+    lib,
     ...
   }: {
     imports = with self.modules.homeManager; [noctalia vlc];
+    options.niri.configPath = lib.mkOption {
+      type = lib.types.str;
+      default = "${config.home.homeDirectory}/nix-config/modules/features/desktop/niri/config";
+      description = "Path to niri configuration directory";
+    };
+    config = {
+      home.packages = with pkgs; [
+        python313Packages.ipython
+        bluetuith
+      ];
 
-    home.packages = with pkgs; [
-      python313Packages.ipython
-      bluetuith
-    ];
-
-    home.file = {
-      ".config/niri".source =
-        config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/niri";
+      home.file = {
+        ".config/niri".source =
+          config.lib.file.mkOutOfStoreSymlink config.niri.configPath;
+      };
     };
   };
 }

@@ -23,15 +23,58 @@
 
       settings.config_directory = lib.mkIf (!config.settings.full) ./config;
 
-      specs.general = lib.mkIf (config.settings.full) (with pkgs.vimPlugins; [
-        nvim-treesitter
-        nvim-treesitter.withAllGrammars
-        blink-cmp
-      ]);
+      specs.general = with pkgs.vimPlugins;
+        [
+          blink-cmp
+        ]
+        ++ [
+          (pkgs.vimPlugins.nvim-treesitter.withPlugins (p:
+            with p;
+              [
+                nix
+                json
+                bash
+                python
+                query
+                diff
+                csv
+              ]
+              ++ lib.optionals config.settings.full [
+                c
+                cpp
+                cmake
+
+                go
+                gomod
+                gosum
+                rust
+                sql
+
+                latex
+                markdown
+                markdown-inline
+
+                lua
+                luadoc
+
+                yaml
+                toml
+                xml
+                kdl
+
+                javascript
+                typescript
+                html
+                css
+
+                dart
+
+                dockerfile
+              ]))
+        ];
 
       extraPackages = with pkgs;
         [
-          tree-sitter
           # nix
           alejandra
           nixd
@@ -66,9 +109,11 @@
           kdlfmt
           # verilog
           verible
-          inputs.slang-server.packages.${pkgs.stdenv.hostPlatform.system}.default
+          # inputs.slang-server.packages.${pkgs.stdenv.hostPlatform.system}.default
           # C
           clang-tools
+          # kdl
+          kdlfmt
         ];
     };
   };
@@ -91,6 +136,8 @@
 
     config = {
       programs.neovim = {
+        withPython3 = false;
+        withRuby = false;
         enable = true;
         package =
           self.packages.${pkgs.stdenv.hostPlatform.system}.myNeovim;

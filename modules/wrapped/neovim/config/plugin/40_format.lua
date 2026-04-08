@@ -23,6 +23,7 @@ later(function()
       sql = { "sql_formatter" },
       verilog = { "verible-verilog-format" },
       systemverilog = { "verible-verilog-format" },
+      kdl = { "kdlfmt" },
     },
     formatters = {
       shfmt = {
