@@ -1,7 +1,7 @@
 {self, ...}: {
   flake.modules.nixos.nimhConfiguration = {pkgs, ...}: {
     environment.variables = {
-      NH_FLAKE = "/etc/nixos";
+      NH_FLAKE = "/home/erreeves/nix-config/";
     };
 
     imports = with self.modules.nixos; [
