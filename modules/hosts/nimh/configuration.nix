@@ -5,8 +5,8 @@
     };
 
     imports = with self.modules.nixos; [
+      trading
       nimhHardware
-
       neovim
       base-gui
       no-sleep

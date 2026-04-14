@@ -1,5 +1,6 @@
 {inputs, ...}: {
   flake.modules.nixos.sops = {pkgs, ...}: {
+    key = "sops.key";
     imports = [
       inputs.sops-nix.nixosModules.sops
     ];
