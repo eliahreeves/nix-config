@@ -4,7 +4,12 @@
   ...
 }: {
   flake.modules.nixos.minecraft-server = {pkgs, ...}: {
-    services.minecraft-server = {
+    imports = [
+      inputs.nix-minecraft.nixosModules
+    ];
+
+    services.minecraft-servers = {
+      package = pkgs.minecraftServers.vanilla-server;
       enable = true;
       eula = true;
       jvmOpts = "-Xmx4096M -Xms1024M";
@@ -29,6 +34,5 @@
         white-list = true;
       };
     };
-    # systemd.services.minecraft-server.wantedBy = lib.mkForce [];
   };
 }
