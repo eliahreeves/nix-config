@@ -21,7 +21,7 @@
     config = {
       package = inputs.neovim-nightly.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
-      settings.config_directory = lib.mkIf (!config.settings.full) ./config;
+      settings.config_directory = ./config;
 
       specs.general = with pkgs.vimPlugins;
         [
@@ -118,43 +118,24 @@
     };
   };
 
-  flake.modules.nixos.neovim-full = {
-    home-manager.sharedModules = [self.modules.homeManager.neovim-full];
-  };
-
-  flake.modules.homeManager.neovim-full = {
-    pkgs,
-    config,
-    lib,
-    ...
-  }: {
-    options.neovim-full.configPath = lib.mkOption {
-      type = lib.types.str;
-      default = "${config.home.homeDirectory}/nix-config/modules/wrapped/neovim/config";
-      description = "Path to neovim configuration directory";
+  flake.modules.nixos.neovim-full = {pkgs, ...}: {
+    environment.variables = {
+      EDITOR = "nvim";
+      VISUAL = "nvim";
     };
-
-    config = {
-      programs.neovim = {
-        withPython3 = false;
-        withRuby = false;
-        enable = true;
-        package =
-          self.packages.${pkgs.stdenv.hostPlatform.system}.myNeovim;
-      };
-      home = {
-        sessionVariables = {
-          EDITOR = "nvim";
-        };
-        file = {
-          ".config/nvim".source =
-            config.lib.file.mkOutOfStoreSymlink config.neovim-full.configPath;
-        };
-      };
+    programs.neovim = {
+      enable = true;
+      package =
+        self.packages.${pkgs.stdenv.hostPlatform.system}.myNeovim;
     };
   };
 
   flake.modules.nixos.neovim = {pkgs, ...}: {
+    environment.variables = {
+      EDITOR = "nvim";
+      VISUAL = "nvim";
+    };
+
     programs.neovim = {
       enable = true;
       package =

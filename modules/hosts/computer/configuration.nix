@@ -1,7 +1,7 @@
 {self, ...}: {
   flake.modules.nixos.computerConfiguration = {pkgs, ...}: {
     environment.variables = {
-      NH_FLAKE = "/home/erreeves/nix-config/";
+      NH_FLAKE = "/home/erreeves/nix-config";
     };
     imports = with self.modules.nixos; [
       computerHardware

@@ -47,9 +47,11 @@
 
         shellAliases = {
           cpy = ''
-            rsync -ahPz "$@"
+            rsync -ahPz
           '';
+          l = "eza --group-directories-first --icons=auto -la";
           rebuild-nix = "${rebuild-nix}";
+          rcat = "command cat";
           cat = "bat";
           nix-shell = "nix-shell --command $SHELL";
         };
@@ -71,7 +73,7 @@
       home.sessionPath = [
         "/home/erreeves/.local/bin"
       ];
-
+      programs.eza.enable = true;
       programs.bat = {
         enable = true;
         config = {
