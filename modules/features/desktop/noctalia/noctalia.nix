@@ -1,4 +1,8 @@
-{inputs, ...}: {
+{
+  self,
+  inputs,
+  ...
+}: {
   flake.modules.homeManager.noctalia = {
     pkgs,
     config,
@@ -7,6 +11,7 @@
   }: {
     imports = [
       inputs.noctalia.homeModules.default
+      self.modules.homeManager.hypridle
     ];
     options.noctalia.configPath = lib.mkOption {
       type = lib.types.str;

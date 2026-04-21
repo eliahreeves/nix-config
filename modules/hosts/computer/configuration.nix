@@ -87,6 +87,7 @@
     services.tlp.enable = true;
     system.stateVersion = "25.05";
     environment.systemPackages = with pkgs; [
+      gemini-cli
       ungoogled-chromium
       qbittorrent
       zulip
