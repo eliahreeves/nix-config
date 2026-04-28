@@ -45,28 +45,41 @@
         autosuggestion.enable = true;
         syntaxHighlighting.enable = !config.zsh.simplify;
 
+        plugins = [
+          {
+            name = "zsh-nix-shell";
+            file = "nix-shell.plugin.zsh";
+            src = pkgs.fetchFromGitHub {
+              owner = "chisui";
+              repo = "zsh-nix-shell";
+              rev = "v0.8.0";
+              sha256 = "1lzrn0n4fxfcgg65v0qhnj7wnybybqzs4adz7xsrkgmcsr0ii8b7";
+            };
+          }
+        ];
+
         shellAliases = {
-          cpy = ''
-            rsync -ahPz
-          '';
           l = "eza --group-directories-first --icons=auto -la";
           rebuild-nix = "${rebuild-nix}";
           rcat = "command cat";
           cat = "bat";
-          nix-shell = "nix-shell --command $SHELL";
         };
 
         initContent = ''
-               ${lib.optionalString config.zsh.autolaunchTmux ''
+                       ${lib.optionalString config.zsh.autolaunchTmux ''
             if [ -z "$TMUX" ] && [ "$TERM_PROGRAM" != "vscode" ] && [ -z "$ZED" ]; then
               tmux attach -t main || tmux new -s main
             fi
           ''}
-               ${lib.optionalString (!config.zsh.simplify) ''
+                       ${lib.optionalString (!config.zsh.simplify) ''
             source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
             source ${p10k}
           ''}
           ${exp}
+          cpy() {
+            rsync -ahPz "$@"
+          }
+          compdef cpy=rsync
         '';
       };
 

@@ -66,6 +66,10 @@ window-rule {
     geometry-corner-radius 10
     clip-to-geometry true
 }
+window-rule {
+    match app-id="^com.mitchellh.ghostty$"
+    draw-border-with-background false
+}
 debug {
     honor-xdg-activation-with-invalid-serial
 }

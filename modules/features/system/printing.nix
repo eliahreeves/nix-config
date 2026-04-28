@@ -1,9 +1,5 @@
-{
-  self,
-  inputs,
-  ...
-}: {
-  flake.modules.nixos.printing = {pkgs, ...}: {
+{...}: {
+  flake.modules.nixos.printing = {...}: {
     services.printing.enable = true;
 
     services.avahi = {

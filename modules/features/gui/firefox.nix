@@ -2,9 +2,14 @@
   flake.modules.nixos.firefox = {
     home-manager.sharedModules = [self.modules.homeManager.firefox];
   };
-  flake.modules.homeManager.firefox = {pkgs, ...}: {
+  flake.modules.homeManager.firefox = {
+    pkgs,
+    config,
+    ...
+  }: {
     programs.firefox = {
       enable = true;
+      configPath = "${config.xdg.configHome}/mozilla/firefox";
       policies = {
         FirefoxHome = {
           SponsoredTopSites = false;

@@ -21,7 +21,6 @@
     config = {
       programs.noctalia-shell = {
         enable = true;
-        systemd.enable = false;
         package = pkgs.noctalia-shell.override {calendarSupport = true;};
       };
 

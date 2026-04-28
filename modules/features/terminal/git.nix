@@ -24,8 +24,6 @@
     };
 
     config = {
-      programs.lazygit.enable = lib.mkDefault true;
-
       programs.git = {
         enable = true;
         settings = {

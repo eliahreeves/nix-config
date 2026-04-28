@@ -51,6 +51,53 @@
       };
     };
 
+    pulse-sandbox = pkgs.writeShellScriptBin "pulse-sandbox" ''
+      NS_NAME="vpn-box"
+      VETH_HOST="veth-host"
+      VETH_NS="veth-ns"
+      HOST_IP="10.200.1.1"
+      NS_IP="10.200.1.2"
+
+      setup_ns() {
+        echo "Creating network namespace: $NS_NAME"
+        sudo ip netns add "$NS_NAME"
+        sudo ip link add "$VETH_HOST" type veth peer name "$VETH_NS"
+        sudo ip link set "$VETH_NS" netns "$NS_NAME"
+
+        sudo ip addr add "$HOST_IP/24" dev "$VETH_HOST"
+        sudo ip link set "$VETH_HOST" up
+
+        sudo ip netns exec "$NS_NAME" ip addr add "$NS_IP/24" dev "$VETH_NS"
+        sudo ip netns exec "$NS_NAME" ip link set "$VETH_NS" up
+        sudo ip netns exec "$NS_NAME" ip link set lo up
+        sudo ip netns exec "$NS_NAME" ip route add default via "$HOST_IP"
+
+        # Enable NAT so the namespace can reach the internet through the host
+        HOST_IFACE=$(ip route get 1.1.1.1 2>/dev/null | awk '/dev/{print $5; exit}')
+        sudo iptables -t nat -A POSTROUTING -s "$NS_IP/24" -o "$HOST_IFACE" -j MASQUERADE
+        sudo iptables -A FORWARD -i "$VETH_HOST" -o "$HOST_IFACE" -j ACCEPT
+        sudo iptables -A FORWARD -i "$HOST_IFACE" -o "$VETH_HOST" -m state --state RELATED,ESTABLISHED -j ACCEPT
+        sudo sysctl -q net.ipv4.ip_forward=1
+      }
+
+      # Recreate if namespace missing or veth pair is gone
+      if ! ip netns list | grep -q "$NS_NAME" || ! ip link show "$VETH_HOST" &>/dev/null; then
+        ip netns list | grep -q "$NS_NAME" && sudo ip netns del "$NS_NAME"
+        ip link show "$VETH_HOST" &>/dev/null && sudo ip link del "$VETH_HOST"
+        setup_ns
+      fi
+
+      sudo mkdir -p /etc/netns/"$NS_NAME"
+      echo "nameserver 8.8.8.8" | sudo tee /etc/netns/"$NS_NAME"/resolv.conf > /dev/null
+
+      echo "Acquiring SAML cookie..."
+      HOST=''${1:-"https://ps.vpn.ucsb.edu/ra"}
+      DSID=$(${pulse-cookie}/bin/get-pulse-cookie -n DSID $HOST)
+
+      echo "Starting VPN inside namespace..."
+      sudo ip netns exec "$NS_NAME" ${pkgs.openconnect}/bin/openconnect --protocol nc -C DSID=$DSID $HOST
+    '';
+
     pulse-vpn = pkgs.writeShellScriptBin "pulse-vpn" ''
       HOST=''${1:-"https://ps.vpn.ucsb.edu/ra"}
 
@@ -61,6 +108,6 @@
       sudo ${pkgs.openconnect}/bin/openconnect --protocol nc -C DSID=$DSID $HOST
     '';
   in {
-    environment.systemPackages = [pkgs.openconnect pulse-vpn];
+    environment.systemPackages = [pkgs.openconnect pulse-vpn pulse-sandbox];
   };
 }

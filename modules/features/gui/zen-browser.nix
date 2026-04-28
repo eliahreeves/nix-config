@@ -94,7 +94,7 @@
                     }
                     {
                       name = "release";
-                      value = "master"; # unstable
+                      value = "master";
                     }
                   ];
                 }
