@@ -39,8 +39,7 @@
         cursor-color = "#cdcdcd";
         selection-background = "#252530";
         selection-foreground = "#cdcdcd";
-        # background-blur = true;
-        background-opacity = 0.5;
+        background-opacity = 0.4;
 
         background = "#000000";
         keybind = [

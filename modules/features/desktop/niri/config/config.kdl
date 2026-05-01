@@ -80,6 +80,12 @@ binds {
     Mod+Q hotkey-overlay-title="Open a Terminal: ghostty" {
         spawn "ghostty"
     }
+    Mod+Shift+Ctrl+Pause hotkey-overlay-title="restart noctalia-shell" {
+        spawn-sh "pkill -f noctalia-shell"
+    }
+    Mod+Shift+Ctrl+Insert hotkey-overlay-title="restart noctalia-shell" {
+        spawn-sh "noctalia-shell"
+    }
     Mod+W hotkey-overlay-title="Open a Browser: firefox" {
         spawn-sh "zen-beta"
     }
@@ -91,6 +97,9 @@ binds {
     }
     Mod+Shift+E hotkey-overlay-title="Open File Explorer: nnn" {
         spawn-sh "ghostty -e tmux new-session -A -s nnn-temp 'zsh -ic nnn' \\; set-option -t nnn-temp destroy-unattached on"
+    }
+    Mod+Shift+S hotkey-overlay-title="Swap focused windows between monitors" {
+        spawn-sh "niri-monitor-swap"
     }
     Mod+Space {
         spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"

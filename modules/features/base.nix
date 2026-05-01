@@ -1,8 +1,4 @@
-{
-  self,
-  inputs,
-  ...
-}: {
+{self, ...}: {
   flake.modules.nixos.base = {pkgs, ...}: {
     imports = with self.modules.nixos; [locale nix-ld ssl-env];
     security.rtkit.enable = true;
@@ -14,7 +10,7 @@
     environment.systemPackages = with pkgs; [
       tree
       waypipe
-      ncdu
+      gdu
       unzip
       zip
       fastfetch

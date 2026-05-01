@@ -83,11 +83,6 @@ now(function()
   })
 end)
 
-on_filetype("dart", function()
-  add({ "https://github.com/nvim-lua/plenary.nvim" })
-  add({ "https://github.com/nvim-flutter/flutter-tools.nvim" })
-end)
-
 later(function()
   add({ "https://github.com/saghen/blink.cmp" })
   require("blink.cmp").setup({

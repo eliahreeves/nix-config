@@ -66,10 +66,10 @@
                 typescript
                 html
                 css
-
-                dart
+                svelte
 
                 dockerfile
+                dart
               ]))
         ];
 
@@ -88,7 +88,6 @@
           jq
         ]
         ++ lib.optionals config.settings.full [
-          deno
           ghostscript
           tree-sitter
           # lua

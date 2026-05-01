@@ -37,6 +37,7 @@ now(function()
   })
 
   vim.lsp.enable({
+    "dartls",
     "slang-server",
     "lua_ls",
     "bashls",
@@ -47,5 +48,6 @@ now(function()
     "texlab",
     "ltex_plus",
     "pyright",
+    "svelte",
   })
 end)
