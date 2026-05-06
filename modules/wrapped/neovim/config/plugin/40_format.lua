@@ -24,6 +24,7 @@ later(function()
       verilog = { "verible-verilog-format" },
       systemverilog = { "verible-verilog-format" },
       kdl = { "kdlfmt" },
+      javascript = { "deno_fmt" },
     },
     formatters = {
       shfmt = {

@@ -4,6 +4,7 @@
       NH_FLAKE = "/home/erreeves/nix-config";
     };
     imports = with self.modules.nixos; [
+      kunifiedpush
       lazygit
       nix-settings
       computerHardware
