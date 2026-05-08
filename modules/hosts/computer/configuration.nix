@@ -4,7 +4,7 @@
       NH_FLAKE = "/home/erreeves/nix-config";
     };
     imports = with self.modules.nixos; [
-      kunifiedpush
+      eko
       lazygit
       nix-settings
       computerHardware
@@ -37,7 +37,7 @@
       vscode
       docker
       gnome-tools
-      opencode
+      ai
     ];
 
     nixpkgs.config.allowUnfree = true;

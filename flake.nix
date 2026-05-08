@@ -35,6 +35,11 @@
       url = "github:eko-network/eko-messenger-client";
     };
 
+    eko = {
+      url = "github:eko-network/eko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
