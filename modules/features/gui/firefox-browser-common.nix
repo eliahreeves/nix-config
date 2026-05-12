@@ -164,7 +164,7 @@
         "{4590d8b8-3569-46e3-a571-cabfbaeab2c1}" = "no-youtube-shorts";
         "{74145f27-f039-47ce-a470-a662b129930a}" = "clearurls";
         "{85860b32-02a8-431a-b2b1-40fbd64c9c69}" = "github-file-icons";
-        "{ef9e884b-b6d8-4544-b0de-82c46c5e95de}" = "sponsorblock";
+        "sponsorBlocker@ajay.app" = "sponsorblock";
         "@searchengineadremover" = "searchengineadremover";
       };
       Preferences = mkLockedAttrs {
