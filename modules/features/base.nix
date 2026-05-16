@@ -1,6 +1,6 @@
 {self, ...}: {
   flake.modules.nixos.base = {pkgs, ...}: {
-    imports = with self.modules.nixos; [locale nix-ld ssl-env];
+    imports = with self.modules.nixos; [lazygit locale nix-ld ssl-env];
     security.rtkit.enable = true;
 
     networking.networkmanager.enable = true;

@@ -1,6 +1,6 @@
 -- General ====================================================================
 vim.g.mapleader = " " -- Use `<Space>` as a leader key
-vim.opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus"
+vim.opt.clipboard = "unnamedplus"
 vim.opt.swapfile = false
 
 vim.o.mouse = "a" -- Enable mouse

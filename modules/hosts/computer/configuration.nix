@@ -5,7 +5,6 @@
     };
     imports = with self.modules.nixos; [
       eko
-      lazygit
       nix-settings
       computerHardware
       niri
