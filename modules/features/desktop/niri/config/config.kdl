@@ -87,7 +87,7 @@ binds {
         spawn-sh "noctalia-shell"
     }
     Mod+W hotkey-overlay-title="Open a Browser: firefox" {
-        spawn "firefox"
+        spawn "zen-beta"
     }
     Mod+P {
         spawn "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"
