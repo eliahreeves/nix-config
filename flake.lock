@@ -31,11 +31,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778894997,
-        "narHash": "sha256-B3pwtMQ/TRFL1c6m42YRpOK7f++Zi5FI8fqUjwGioqk=",
+        "lastModified": 1778924267,
+        "narHash": "sha256-JI7Axp84k65YvhLv40/Wg/q+2JyhEFWcT3t1TTsL4Oo=",
         "owner": "eko-network",
         "repo": "eko",
-        "rev": "1fc32263767f4308246eab672cc6b53da2590643",
+        "rev": "75ab8dd9b550d432674dd4bfd105b5a4c9e9316c",
         "type": "github"
       },
       "original": {
