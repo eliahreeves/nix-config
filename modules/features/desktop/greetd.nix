@@ -1,12 +1,16 @@
 {...}: {
-  flake.modules.nixos.greetd = {pkgs, ...}: {
+  flake.modules.nixos.greetd = {
+    pkgs,
+    lib,
+    ...
+  }: {
     security.pam.services.greetd.enableGnomeKeyring = true;
     services.greetd = {
       enable = true;
       settings = {
         default_session = {
           command = ''
-            ${pkgs.tuigreet}/bin/tuigreet -r
+            ${lib.getExe pkgs.tuigreet} -r
           '';
           user = "greeter";
         };

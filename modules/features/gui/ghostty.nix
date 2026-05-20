@@ -3,7 +3,11 @@
     home-manager.sharedModules = [self.modules.homeManager.ghostty];
   };
 
-  flake.modules.homeManager.ghostty = {pkgs, ...}: {
+  flake.modules.homeManager.ghostty = {
+    pkgs,
+    lib,
+    ...
+  }: {
     programs.ghostty = {
       enable = true;
       systemd.enable = true;
@@ -54,7 +58,7 @@
     };
 
     home.sessionVariables = {
-      TERMINAL = "${pkgs.ghostty}/bin/ghostty";
+      TERMINAL = lib.getExe pkgs.ghostty;
     };
   };
 }

@@ -20,8 +20,8 @@
         sha256 = "sha256-fVJp10cCJPq4HENPh2gcljPUd7Q3Jqu3OO7kp0ZCOUc=";
       };
       postInstall = ''
-        sed -i -e 's|\bfzf\b|${pkgs.fzf}/bin/fzf|g' $target/scripts/launch.sh
-        sed -i -e 's|\byq\b|${pkgs.yq-go}/bin/yq|g' $target/scripts/launch.sh
+        sed -i -e 's|\bfzf\b|${lib.getExe pkgs.fzf}|g' $target/scripts/launch.sh
+        sed -i -e 's|\byq\b|${lib.getExe pkgs.yq-go}|g' $target/scripts/launch.sh
       '';
     };
   in {

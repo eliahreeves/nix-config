@@ -1,7 +1,8 @@
 {self, ...}: {
   flake.modules.nixos.restic-backup = {
-    config,
     pkgs,
+    lib,
+    config,
     ...
   }: {
     imports = with self.modules.nixos; [sops];
@@ -23,7 +24,7 @@
       serviceConfig = {
         Type = "oneshot";
         EnvironmentFile = config.sops.templates."restic-env".path;
-        ExecStart = "${pkgs.bash}/bin/bash ${./data/restic-backup.sh}";
+        ExecStart = "${lib.getExe pkgs.bash} ${./data/restic-backup.sh}";
         User = "root";
       };
       path = with pkgs; [

@@ -1,9 +1,9 @@
-{
-  self,
-  inputs,
-  ...
-}: {
-  flake.modules.nixos.battery-notice = {pkgs, ...}: {
+{...}: {
+  flake.modules.nixos.battery-notice = {
+    pkgs,
+    lib,
+    ...
+  }: {
     environment.systemPackages = with pkgs; [
       libnotify
     ];
@@ -20,7 +20,7 @@
           ON_AC_POWER=$(cat /sys/class/power_supply/BAT0/status)
 
           if [[ "$ON_AC_POWER" != "Charging" && $BATTERY_PERCENT -le 15 ]]; then
-          	${pkgs.libnotify}/bin/notify-send --urgency=CRITICAL --expire-time=5000 --category=device "Battery Low" "Level: $BATTERY_PERCENT%"
+          	${lib.getExe pkgs.libnotify} --urgency=CRITICAL --expire-time=5000 --category=device "Battery Low" "Level: $BATTERY_PERCENT%"
           fi
         '';
       };
