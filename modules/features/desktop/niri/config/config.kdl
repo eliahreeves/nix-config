@@ -67,7 +67,7 @@ window-rule {
     clip-to-geometry true
 }
 window-rule {
-    match app-id="^com.mitchellh.ghostty$"
+    match app-id="^(foot|com.mitchellh.ghostty)$"
     draw-border-with-background false
 }
 debug {
@@ -77,8 +77,8 @@ binds {
     Mod+Shift+Slash {
         show-hotkey-overlay
     }
-    Mod+Q hotkey-overlay-title="Open a Terminal: ghostty" {
-        spawn "ghostty"
+    Mod+Q hotkey-overlay-title="Open a Terminal: foot" {
+        spawn "foot"
     }
     Mod+Shift+Ctrl+Pause hotkey-overlay-title="restart noctalia-shell" {
         spawn-sh "pkill -f noctalia-shell"
@@ -95,9 +95,6 @@ binds {
     Mod+E hotkey-overlay-title="Open File Explorer: nautilus" {
         spawn "nautilus"
     }
-    Mod+Shift+E hotkey-overlay-title="Open File Explorer: nnn" {
-        spawn-sh "ghostty -e tmux new-session -A -s nnn-temp 'zsh -ic nnn' \\; set-option -t nnn-temp destroy-unattached on"
-    }
     Mod+Shift+S hotkey-overlay-title="Swap focused windows between monitors" {
         spawn-sh "niri-monitor-swap"
     }
@@ -106,9 +103,6 @@ binds {
     }
     Mod+B {
         spawn "noctalia-shell" "ipc" "call" "bluetooth" "togglePanel"
-    }
-    Mod+Shift+B {
-        spawn-sh "ghostty -e bluetuith"
     }
     XF86AudioRaiseVolume allow-when-locked=true {
         spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"

@@ -4,6 +4,7 @@
       NH_FLAKE = "/home/erreeves/nix-config";
     };
     imports = with self.modules.nixos; [
+      foot
       eko
       nix-settings
       computerHardware
@@ -31,7 +32,6 @@
       git
       pulse-vpn
       signal
-      ghostty
       firefox
       vscode
       docker
@@ -85,6 +85,7 @@
       prismlauncher
       devenv
       gimp
+      gh
     ];
 
     home-manager = {
