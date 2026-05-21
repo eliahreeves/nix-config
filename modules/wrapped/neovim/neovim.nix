@@ -126,7 +126,7 @@
     programs.neovim = {
       enable = true;
       package =
-        self.packages.${pkgs.stdenv.hostPlatform.system}.myNeovim;
+        self.packages.${pkgs.stdenv.hostPlatform.system}.neovim;
     };
   };
 
@@ -139,18 +139,18 @@
     programs.neovim = {
       enable = true;
       package =
-        self.packages.${pkgs.stdenv.hostPlatform.system}.myNeovimMinimal;
+        self.packages.${pkgs.stdenv.hostPlatform.system}.neovim-minimal;
     };
   };
 
   perSystem = {pkgs, ...}: {
     packages = {
-      myNeovim = inputs.wrapper-modules.wrappers.neovim.wrap {
+      neovim = inputs.wrapper-modules.wrappers.neovim.wrap {
         inherit pkgs;
         imports = [self.nvimWrapper];
       };
 
-      myNeovimMinimal = inputs.wrapper-modules.wrappers.neovim.wrap {
+      neovim-minimal = inputs.wrapper-modules.wrappers.neovim.wrap {
         inherit pkgs;
         settings.full = false;
         imports = [self.nvimWrapper];
