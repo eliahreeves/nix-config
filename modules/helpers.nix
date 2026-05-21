@@ -13,16 +13,18 @@
     flake.lib.helpers = {pkgs, ...}: {
       getDesktopEntry = pkg: let
         drv = pkgs.runCommand "get-desktop-entry-${pkg.name}" {} ''
-          files=("${pkg}/share/applications/"*.desktop)
-          if [ ''${#files[@]} -eq 0 ]; then
-            echo "No .desktop files found in ${pkg.name}" >&2
-            exit 1
-          else
-            basename "''${files[0]}" > $out
-          fi
+          for f in "${pkg}/share/applications/"*.desktop; do
+            [ -f "$f" ] || continue
+            if ! grep -q "^NoDisplay=true" "$f"; then
+              basename "$f" > $out
+              exit 0
+            fi
+          done
+          echo "No visible .desktop file found in ${pkg.name}" >&2
+          exit 1
         '';
       in
-        lib.trim (builtins.readFile drv);
+        pkgs.lib.trim (builtins.readFile drv);
     };
 
     flake.modules.nixos.helpers = {pkgs, ...}: {
