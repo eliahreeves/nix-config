@@ -14,7 +14,6 @@
       evolution-data-server
       system76-utils
       capslock-ctrl
-      suspend-then-hibernate
       alt-win-swap
       steam
       amd-gpu
@@ -42,7 +41,7 @@
     nixpkgs.config.allowUnfree = true;
 
     boot = {
-      kernelPackages = pkgs.linuxPackages_latest;
+      kernelPackages = pkgs.linuxPackages;
       loader = {
         systemd-boot.enable = true;
         timeout = 1;

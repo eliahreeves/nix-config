@@ -56,7 +56,6 @@
         };
 
         key-bindings = {
-          clipboard-copy = "Control+c";
           clipboard-paste = "Control+v";
         };
       };

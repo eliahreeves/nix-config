@@ -73,7 +73,7 @@
               ]))
         ];
 
-      extraPackages = with pkgs;
+      runtimePkgs = with pkgs;
         [
           # nix
           alejandra
