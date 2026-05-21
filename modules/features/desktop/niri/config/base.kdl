@@ -1,0 +1,12 @@
+binds {
+    Mod+Q hotkey-overlay-title="Open a Terminal" {
+        spawn-sh "@terminal@"
+    }
+    Mod+W hotkey-overlay-title="Open a Browser: firefox" {
+        spawn-sh "@browser@"
+    }
+    Mod+E hotkey-overlay-title="Open File Explorer: nautilus" {
+        spawn-sh "@explorer@"
+    }
+}
+

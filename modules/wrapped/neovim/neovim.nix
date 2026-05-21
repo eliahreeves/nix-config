@@ -118,19 +118,26 @@
     };
   };
 
-  flake.modules.nixos.neovim-full = {pkgs, ...}: {
+  flake.modules.nixos.neovim-full = {pkgs, ...}: let
+    package = self.packages.${pkgs.stdenv.hostPlatform.system}.neovim;
+  in {
+    home-manager.sharedModules = [self.modules.homeManager.neovim {_module.args = {inherit package;};}];
+
     environment.variables = {
       EDITOR = "nvim";
       VISUAL = "nvim";
     };
     programs.neovim = {
       enable = true;
-      package =
-        self.packages.${pkgs.stdenv.hostPlatform.system}.neovim;
+      inherit package;
     };
   };
 
-  flake.modules.nixos.neovim = {pkgs, ...}: {
+  flake.modules.nixos.neovim = {pkgs, ...}: let
+    package = self.packages.${pkgs.stdenv.hostPlatform.system}.neovim-minimal;
+  in {
+    home-manager.sharedModules = [self.modules.homeManager.neovim {_module.args = {inherit package;};}];
+
     environment.variables = {
       EDITOR = "nvim";
       VISUAL = "nvim";
@@ -138,8 +145,22 @@
 
     programs.neovim = {
       enable = true;
-      package =
-        self.packages.${pkgs.stdenv.hostPlatform.system}.neovim-minimal;
+      inherit package;
+    };
+  };
+
+  flake.modules.homeManager.neovim = {
+    helpers,
+    lib,
+    package,
+    ...
+  }: {
+    xdg.desktopEntries.nvim-terminal-wrapper = {
+      name = "Neovim";
+      exec = "${lib.getExe helpers.apps.terminal.package} -e ${lib.getExe package} %F";
+      terminal = false;
+      icon = "${package}/share/icons/hicolor/128x128/apps/nvim.png";
+      mimeType = ["text/plain"];
     };
   };
 

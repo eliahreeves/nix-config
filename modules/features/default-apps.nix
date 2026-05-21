@@ -1,41 +1,28 @@
-{
-  self,
-  inputs,
-  ...
-}: {
-  flake.modules.nixos.default-apps = {pkgs, ...}: {
+{self, ...}: {
+  flake.modules.nixos.default-apps = {helpers, ...}: {
     imports = with self.modules.nixos; [
-      helpers
       zen-browser
     ];
-    environment.systemPackages = with pkgs; [
-      vlc
-      nautilus
-      loupe
-      gnome-text-editor
-      papers
-      file-roller
-    ];
+    environment.systemPackages = map (a: a.package) (builtins.attrValues helpers.apps);
 
     home-manager.sharedModules = [self.modules.homeManager.default-apps];
   };
   flake.modules.homeManager.default-apps = {
-    pkgs,
     lib,
     helpers,
     ...
   }: let
     mimeAssoc = lib.genAttrs;
-    getEntry = helpers.getDesktopEntry;
-    files = mimeAssoc ["inode/directory"] (_: getEntry pkgs.nautilus);
-    documents = mimeAssoc ["application/pdf"] (_: getEntry pkgs.papers);
+    apps = helpers.apps;
+    files = mimeAssoc ["inode/directory"] (_: apps.file.entry);
+    documents = mimeAssoc ["application/pdf"] (_: apps.doc.entry);
 
     text = mimeAssoc [
       "text/plain"
       "text/markdown"
       "text/x-readme"
       "text/x-log"
-    ] (_: getEntry pkgs.gnome-text-editor);
+    ] (_: apps.text.entry);
     images = mimeAssoc [
       "image/png"
       "image/jpeg"
@@ -45,7 +32,7 @@
       "image/webp"
       "image/svg+xml"
       "image/x-tga"
-    ] (_: getEntry pkgs.loupe);
+    ] (_: apps.image.entry);
 
     archives = mimeAssoc [
       "application/zip"
@@ -59,7 +46,7 @@
       "application/x-rar"
       "application/x-rar-compressed"
       "application/java-archive"
-    ] (_: getEntry pkgs.file-roller);
+    ] (_: apps.archive.entry);
 
     browser = mimeAssoc [
       "application/x-extension-shtml"
@@ -76,7 +63,7 @@
       "application/xhtml+xml"
       "application/json"
       "text/html"
-    ] (_: getEntry inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default);
+    ] (_: apps.browser.entry);
 
     videos = mimeAssoc [
       "video/mp4"
@@ -96,7 +83,7 @@
       "audio/aac"
       "audio/x-matroska"
       "audio/x-m4b"
-    ] (_: getEntry pkgs.vlc);
+    ] (_: apps.video.entry);
     defaults = videos // browser // images // files // documents // text // archives;
   in {
     xdg.mimeApps = {

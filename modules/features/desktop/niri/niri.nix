@@ -21,13 +21,20 @@
     pkgs,
     config,
     lib,
+    helpers,
     ...
-  }: {
+  }: let
+    base = pkgs.replaceVars ./config/base.kdl {
+      terminal = lib.getExe helpers.apps.terminal.package;
+      browser = lib.getExe helpers.apps.browser.package;
+      explorer = lib.getExe helpers.apps.file.package;
+    };
+  in {
     imports = with self.modules.homeManager; [noctalia];
     options.niri.configPath = lib.mkOption {
       type = lib.types.str;
-      default = "${config.home.homeDirectory}/nix-config/modules/features/desktop/niri/config";
-      description = "Path to niri configuration directory";
+      default = "${config.home.homeDirectory}/nix-config/modules/features/desktop/niri/config/config.kdl";
+      description = "Path to niri configuration file";
     };
     config = {
       home.packages = with pkgs; [
@@ -35,8 +42,9 @@
       ];
 
       home.file = {
-        ".config/niri".source =
+        ".config/niri/config.kdl".source =
           config.lib.file.mkOutOfStoreSymlink config.niri.configPath;
+        ".config/niri/base.kdl".source = base;
       };
     };
   };

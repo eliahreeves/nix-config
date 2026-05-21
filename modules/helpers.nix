@@ -1,6 +1,7 @@
 {
   self,
   lib,
+  inputs,
   ...
 }: {
   options.flake.lib = lib.mkOption {
@@ -11,20 +12,38 @@
 
   config = {
     flake.lib.helpers = {pkgs, ...}: {
-      getDesktopEntry = pkg: let
-        drv = pkgs.runCommand "get-desktop-entry-${pkg.name}" {} ''
-          for f in "${pkg}/share/applications/"*.desktop; do
-            [ -f "$f" ] || continue
-            if ! grep -q "^NoDisplay=true" "$f"; then
-              basename "$f" > $out
-              exit 0
-            fi
-          done
-          echo "No visible .desktop file found in ${pkg.name}" >&2
-          exit 1
-        '';
-      in
-        pkgs.lib.trim (builtins.readFile drv);
+      apps = let
+        getDesktopEntry = pkg: let
+          drv = pkgs.runCommand "get-desktop-entry-${pkg.name}" {} ''
+            for f in "${pkg}/share/applications/"*.desktop; do
+              [ -f "$f" ] || continue
+              if ! grep -q "^NoDisplay=true" "$f"; then
+                basename "$f" > $out
+                exit 0
+              fi
+            done
+            echo "No visible .desktop file found in ${pkg.name}" >&2
+            exit 1
+          '';
+        in
+          pkgs.lib.trim (builtins.readFile drv);
+        mkApp = package: {
+          inherit package;
+          entry = getDesktopEntry package;
+        };
+      in {
+        terminal = mkApp pkgs.foot;
+        file = mkApp pkgs.nautilus;
+        doc = mkApp pkgs.papers;
+        video = mkApp pkgs.vlc;
+        text = {
+          package = inputs.neovim-nightly.packages.${pkgs.stdenv.hostPlatform.system}.default;
+          entry = "nvim-terminal-wrapper.desktop";
+        };
+        browser = mkApp inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default;
+        archive = mkApp pkgs.file-roller;
+        image = mkApp pkgs.loupe;
+      };
     };
 
     flake.modules.nixos.helpers = {pkgs, ...}: {

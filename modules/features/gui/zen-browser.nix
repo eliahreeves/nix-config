@@ -14,6 +14,7 @@
       inputs.zen-browser.homeModules.beta
     ];
     programs.zen-browser = {
+      package = inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default;
       enable = true;
       profiles = sharedConfig.profiles;
       policies = sharedConfig.policies;
