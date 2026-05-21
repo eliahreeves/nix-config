@@ -4,6 +4,7 @@
       NH_FLAKE = "/home/erreeves/nix-config";
     };
     imports = with self.modules.nixos; [
+      default-apps
       foot
       eko
       nix-settings
@@ -30,7 +31,6 @@
       python
       git
       pulse-vpn
-      signal
       firefox
       vscode
       docker

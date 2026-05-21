@@ -67,7 +67,7 @@
       '';
     };
   in {
-    imports = with self.modules.homeManager; [noctalia vlc];
+    imports = with self.modules.homeManager; [noctalia];
     options.niri.configPath = lib.mkOption {
       type = lib.types.str;
       default = "${config.home.homeDirectory}/nix-config/modules/features/desktop/niri/config";
