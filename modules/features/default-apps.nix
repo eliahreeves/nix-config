@@ -10,11 +10,11 @@
     ];
     environment.systemPackages = with pkgs; [
       vlc
-      signal-desktop
       nautilus
       loupe
       gnome-text-editor
       papers
+      file-roller
     ];
 
     home-manager.sharedModules = [self.modules.homeManager.default-apps];
@@ -25,31 +25,18 @@
     helpers,
     ...
   }: let
-    browserDesktop = helpers.getDesktopEntry inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default;
-    videoDesktop = helpers.getDesktopEntry pkgs.vlc;
-    signalDesktop = helpers.getDesktopEntry pkgs.signal-desktop;
-    fileExplorer = helpers.getDesktopEntry pkgs.nautilus;
-    imageViewer = helpers.getDesktopEntry pkgs.loupe;
-    DocumentViewer = helpers.getDesktopEntry pkgs.papers;
-    textDesktop = helpers.getDesktopEntry pkgs.gnome-text-editor;
-
     mimeAssoc = lib.genAttrs;
-
-    signalMessaging = mimeAssoc [
-      "x-scheme-handler/sgnl"
-      "x-scheme-handler/signalcaptcha"
-    ] (_: signalDesktop);
-
-    files = mimeAssoc ["inode/directory"] (_: fileExplorer);
-    documents = mimeAssoc ["application/pdf"] (_: DocumentViewer);
+    getEntry = helpers.getDesktopEntry;
+    files = mimeAssoc ["inode/directory"] (_: getEntry pkgs.nautilus);
+    documents = mimeAssoc ["application/pdf"] (_: getEntry pkgs.papers);
 
     text = mimeAssoc [
       "text/plain"
       "text/markdown"
       "text/x-readme"
       "text/x-log"
-    ] (_: textDesktop);
-    image = mimeAssoc [
+    ] (_: getEntry pkgs.gnome-text-editor);
+    images = mimeAssoc [
       "image/png"
       "image/jpeg"
       "image/bmp"
@@ -58,7 +45,21 @@
       "image/webp"
       "image/svg+xml"
       "image/x-tga"
-    ] (_: imageViewer);
+    ] (_: getEntry pkgs.loupe);
+
+    archives = mimeAssoc [
+      "application/zip"
+      "application/x-zip-compressed"
+      "application/x-tar"
+      "application/x-compressed-tar"
+      "application/x-bzip2"
+      "application/x-gzip"
+      "application/x-xz"
+      "application/x-7z-compressed"
+      "application/x-rar"
+      "application/x-rar-compressed"
+      "application/java-archive"
+    ] (_: getEntry pkgs.file-roller);
 
     browser = mimeAssoc [
       "application/x-extension-shtml"
@@ -75,9 +76,9 @@
       "application/xhtml+xml"
       "application/json"
       "text/html"
-    ] (_: browserDesktop);
+    ] (_: getEntry inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default);
 
-    video = mimeAssoc [
+    videos = mimeAssoc [
       "video/mp4"
       "video/mpeg"
       "video/quicktime"
@@ -95,8 +96,8 @@
       "audio/aac"
       "audio/x-matroska"
       "audio/x-m4b"
-    ] (_: videoDesktop);
-    defaults = video // browser // signalMessaging // image // files // documents // text;
+    ] (_: getEntry pkgs.vlc);
+    defaults = videos // browser // images // files // documents // text // archives;
   in {
     xdg.mimeApps = {
       enable = true;

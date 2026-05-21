@@ -83,6 +83,7 @@
       texliveFull
       prismlauncher
       devenv
+      signal-desktop
       gimp
       gh
     ];
