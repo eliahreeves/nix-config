@@ -34,18 +34,10 @@
     };
 
     config = {
-      home.packages = with pkgs; [yq-go];
       programs.tmux = {
         enable = true;
         prefix = "C-${config.tmux.prefix}";
         plugins = with pkgs.tmuxPlugins; [
-          {
-            plugin = catppuccin;
-            extraConfig = ''
-              set -g @catppuccin_flavor 'mocha'
-              set -g @catppuccin_window_status_style "rounded"
-            '';
-          }
           {
             plugin = fingers;
             extraConfig = ''
@@ -54,7 +46,6 @@
               set -g @fingers-highlight-style "bg=green,fg=black"
             '';
           }
-          mode-indicator
           {
             plugin = layouts;
             extraConfig = ''

@@ -66,7 +66,8 @@
         };
 
         initContent = ''
-                       ${lib.optionalString config.zsh.autolaunchTmux ''
+          DISABLE_AUTO_TITLE="true"
+          ${lib.optionalString config.zsh.autolaunchTmux ''
             if [ -z "$TMUX" ] && [ "$TERM_PROGRAM" != "vscode" ] && [ -z "$ZED" ]; then
               tmux attach -t main || tmux new -s main
             fi
@@ -83,6 +84,9 @@
         '';
       };
 
+      home.sessionVariables = {
+        DISABLE_AUTO_TITLE = "true";
+      };
       home.sessionPath = [
         "/home/erreeves/.local/bin"
       ];
