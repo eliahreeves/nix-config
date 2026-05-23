@@ -41,7 +41,7 @@
     nixpkgs.config.allowUnfree = true;
 
     boot = {
-      kernelPackages = pkgs.linuxPackages;
+      kernelPackages = pkgs.linuxPackages_latest;
       loader = {
         systemd-boot.enable = true;
         timeout = 1;
