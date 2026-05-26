@@ -129,7 +129,7 @@
                     "diskPath": "/",
                     "iconColor": "none",
                     "id": "SystemMonitor",
-                    "showCpuCores": false,
+                    "showCpuCores": true,
                     "showCpuFreq": false,
                     "showCpuTemp": true,
                     "showCpuUsage": true,

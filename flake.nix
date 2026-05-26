@@ -37,7 +37,6 @@
 
     eko = {
       url = "github:eko-network/eko";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     noctalia = {

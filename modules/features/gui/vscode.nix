@@ -3,7 +3,7 @@
     home-manager.sharedModules = [self.modules.homeManager.vscode];
   };
   flake.modules.homeManager.vscode = {pkgs, ...}: {
-    programs.vscode = {
+    programs.vscodium = {
       enable = true;
       profiles.default = {
         extensions = with pkgs.vscode-extensions; [
