@@ -39,10 +39,7 @@
       url = "github:eko-network/eko";
     };
 
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    noctalia.url = "github:noctalia-dev/noctalia-shell/v5";
 
     wrapper-modules = {
       url = "github:BirdeeHub/nix-wrapper-modules";

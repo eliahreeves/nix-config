@@ -1,17 +1,11 @@
-{
-  self,
-  inputs,
-  ...
-}: {
+{inputs, ...}: {
   flake.modules.homeManager.noctalia = {
-    pkgs,
     config,
     lib,
     ...
   }: {
     imports = [
       inputs.noctalia.homeModules.default
-      self.modules.homeManager.hypridle
     ];
     options.noctalia.configPath = lib.mkOption {
       type = lib.types.str;
@@ -19,9 +13,9 @@
       description = "Path to noctalia configuration directory";
     };
     config = {
-      programs.noctalia-shell = {
+      programs.noctalia = {
         enable = true;
-        package = pkgs.noctalia-shell.override {calendarSupport = true;};
+        systemd.enable = true;
       };
 
       home.file = {

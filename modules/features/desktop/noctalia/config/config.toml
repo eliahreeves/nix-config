@@ -1,0 +1,103 @@
+[audio]
+enable_overdrive = true
+
+[bar.default]
+start = [ "cpu", "temp", "taskbar" ]
+center = [ "clock", "audio_visualizer", "media" ]
+end = [ "tray", "notifications", "clipboard", "bluetooth", "volume", "network", "battery", "control-center" ]
+margin_edge = 0
+margin_ends = 0
+radius = 0
+widget_spacing = 8
+
+[location]
+auto_locate = true
+
+[nightlight]
+enabled = true
+
+[weather]
+unit = "imperial"
+
+[idle]
+behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
+
+    [idle.behavior.lock]
+    action = "lock"
+    enabled = true
+    timeout = 600
+
+    [idle.behavior.lock-and-suspend]
+    action = "lock_and_suspend"
+    enabled = true
+    timeout = 900
+
+    [idle.behavior.screen-off]
+    action = "screen_off"
+    enabled = true
+    timeout = 660
+
+[shell]
+avatar_path = "/home/erreeves/Pictures/profile_picture.jpg"
+font_family = "Liberation Sans"
+niri_overview_type_to_launch_enabled = true
+telemetry_enabled = false
+clipboard_confirm_clear_history = false
+time_format = "{:%I:%M %p}"
+
+[theme]
+source = "wallpaper"
+wallpaper_scheme = "m3-monochrome"
+
+[wallpaper]
+directory = "/home/erreeves/Pictures/wallpapers"
+
+    [wallpaper.default]
+    path = "/home/erreeves/Pictures/wallpapers/waves.jpg"
+
+    [wallpaper.last]
+    path = "/home/erreeves/Pictures/wallpapers/waves.jpg"
+
+    [wallpaper.monitors.eDP-1]
+    path = "/home/erreeves/Pictures/wallpapers/waves.jpg"
+
+[widget.audio_visualizer]
+bands = 32
+width = 227.0
+
+[widget.battery]
+display_mode = "graphic"
+
+[widget.clock]
+format = "{:%A, %B %d, %Y %I:%M %p }"
+
+[widget.cpu]
+display = "graph"
+show_label = false
+
+[widget.media]
+hide_when_no_media = true
+max_length = 180
+title_scroll = "on_hover"
+
+[widget.network]
+show_label = false
+
+[widget.ram]
+show_label = false
+
+[widget.sysmon]
+show_label = false
+
+[widget.temp]
+show_label = false
+
+[widget.volume]
+show_label = false
+
+[widget.taskbar]
+group_by_workspace = true
+hide_empty_workspaces = true
+inactive_opacity = 0.9
+scale = 1.1
+

@@ -9,9 +9,7 @@
       enable = true;
       settings = {
         default_session = {
-          command = ''
-            ${lib.getExe pkgs.tuigreet} -r
-          '';
+          command = "${lib.getExe pkgs.tuigreet} -r";
           user = "greeter";
         };
       };

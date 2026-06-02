@@ -1,4 +1,7 @@
-spawn-at-startup "noctalia-shell"
+debug {
+    // Allows notification actions and window activation from Noctalia.
+    honor-xdg-activation-with-invalid-serial
+}
 input {
     touchpad {
         tap
@@ -62,14 +65,8 @@ binds {
     Mod+Shift+Slash {
         show-hotkey-overlay
     }
-    Mod+Shift+Ctrl+Pause hotkey-overlay-title="restart noctalia-shell" {
-        spawn-sh "pkill -f noctalia-shell"
-    }
-    Mod+Shift+Ctrl+Insert hotkey-overlay-title="restart noctalia-shell" {
-        spawn-sh "noctalia-shell"
-    }
     Mod+P {
-        spawn "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"
+        spawn-sh "noctalia msg panel-toggle session"
     }
     XF86AudioRaiseVolume allow-when-locked=true {
         spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"
@@ -326,4 +323,5 @@ layer-rule {
     place-within-backdrop true
 }
 include "base.kdl"
+include "noctalia.kdl"
 
