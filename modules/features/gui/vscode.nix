@@ -8,7 +8,15 @@
       profiles.default = {
         extensions = with pkgs.vscode-extensions; [
           jnoortheen.nix-ide
+          dart-code.flutter
+          dart-code.dart-code
         ];
+        userSettings = {
+          "security.workspace.trust.enabled" = false;
+          "explorer.confirmDelete" = false;
+          "files.autoSave" = "afterDelay";
+          "explorer.confirmDragAndDrop" = false;
+        };
       };
     };
   };

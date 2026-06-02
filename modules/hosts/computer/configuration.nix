@@ -14,7 +14,7 @@
       printing
       evolution-data-server
       system76-utils
-      capslock-ctrl
+      capslock-arrow-keys
       alt-win-swap
       steam
       amd-gpu
@@ -73,7 +73,6 @@
       cursor-cli
       ungoogled-chromium
       qbittorrent
-      zulip
       spotify
       inkscape
       proton-vpn

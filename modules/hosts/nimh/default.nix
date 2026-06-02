@@ -8,7 +8,12 @@
       self.modules.nixos.helpers
       self.modules.nixos.nimhConfiguration
       inputs.home-manager.nixosModules.default
-      {home-manager.useGlobalPkgs = true;}
+      {
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+        };
+      }
     ];
   };
 }

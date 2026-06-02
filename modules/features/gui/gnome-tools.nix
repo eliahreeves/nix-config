@@ -7,7 +7,6 @@
       gnome-disk-utility
       snapshot
       warp
-      gnome-software
       networkmanagerapplet
     ];
     xdg.configFile."autostart/nm-applet.desktop".text = ''
