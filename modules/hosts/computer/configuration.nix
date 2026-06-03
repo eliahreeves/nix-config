@@ -4,6 +4,7 @@
       NH_FLAKE = "/home/erreeves/nix-config";
     };
     imports = with self.modules.nixos; [
+      tuned
       default-apps
       foot
       eko
