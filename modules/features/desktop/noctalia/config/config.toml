@@ -38,6 +38,7 @@ behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
     timeout = 660
 
 [shell]
+launch_apps_as_systemd_services = true
 avatar_path = "/home/erreeves/Pictures/profile_picture.jpg"
 font_family = "Liberation Sans"
 niri_overview_type_to_launch_enabled = true
