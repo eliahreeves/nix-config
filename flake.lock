@@ -132,27 +132,6 @@
         "type": "github"
       }
     },
-    "flake-parts_3": {
-      "inputs": {
-        "nixpkgs-lib": [
-          "neovim-nightly",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1778716662,
-        "narHash": "sha256-m1Yf0wZ8j1OHjTc2UwHwyQRSnNeSgLJOd7q5Y45hzi4=",
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "rev": "f7c1a2d347e4c52d5fb8d10cb4d94b5884e546fb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "type": "github"
-      }
-    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -223,44 +202,6 @@
       "original": {
         "owner": "eko-network",
         "repo": "kunifedpush-flake",
-        "type": "github"
-      }
-    },
-    "neovim-nightly": {
-      "inputs": {
-        "flake-parts": "flake-parts_3",
-        "neovim-src": "neovim-src",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1780445083,
-        "narHash": "sha256-n1/8BTS1rJZXzyJCCmydxn11sPoxfJEcUMv1EwZOF38=",
-        "owner": "nix-community",
-        "repo": "neovim-nightly-overlay",
-        "rev": "7a243cca59f5d68838ac6510148a2f470053cb84",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "neovim-nightly-overlay",
-        "type": "github"
-      }
-    },
-    "neovim-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1780441153,
-        "narHash": "sha256-EqSmE5JSvCcjmHOP+vL5DVW6vLZb3ZgVg0PqbzTHSfo=",
-        "owner": "neovim",
-        "repo": "neovim",
-        "rev": "13b2b1427578bec7714e1a14be44ca72ef18f379",
-        "type": "github"
-      },
-      "original": {
-        "owner": "neovim",
-        "repo": "neovim",
         "type": "github"
       }
     },
@@ -492,11 +433,11 @@
         "home-manager": "home-manager",
         "import-tree": "import-tree",
         "kunifiedpush-flake": "kunifiedpush-flake",
-        "neovim-nightly": "neovim-nightly",
         "nix-index-database": "nix-index-database",
         "nix-minecraft": "nix-minecraft",
         "nixpkgs": "nixpkgs_4",
         "noctalia": "noctalia",
+        "samsung-fixes": "samsung-fixes",
         "slang-server": "slang-server",
         "sops-nix": "sops-nix",
         "wrapper-modules": "wrapper-modules",
@@ -521,6 +462,22 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "samsung-fixes": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1779151423,
+        "narHash": "sha256-fcwLBR+oE6VoEOJyjiusqzia/pyslcjLGFDwARY5wcQ=",
+        "owner": "Andycodeman",
+        "repo": "samsung-galaxy-book-linux-fixes",
+        "rev": "70fd253adaa184c267f733f4606dc5d6dbec47db",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Andycodeman",
+        "repo": "samsung-galaxy-book-linux-fixes",
         "type": "github"
       }
     },

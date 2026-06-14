@@ -19,8 +19,6 @@
     };
 
     config = {
-      package = inputs.neovim-nightly.packages.${pkgs.stdenv.hostPlatform.system}.default;
-
       settings.config_directory = ./config;
 
       specs.general = with pkgs.vimPlugins;
@@ -75,6 +73,7 @@
 
       runtimePkgs = with pkgs;
         [
+          ripgrep
           # nix
           alejandra
           nixd

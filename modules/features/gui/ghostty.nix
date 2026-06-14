@@ -8,6 +8,10 @@
     lib,
     ...
   }: {
+    home.packages = with pkgs; [
+      nerd-fonts.caskaydia-mono
+    ];
+
     programs.ghostty = {
       enable = true;
       systemd.enable = true;
@@ -43,14 +47,12 @@
         cursor-color = "#cdcdcd";
         selection-background = "#252530";
         selection-foreground = "#cdcdcd";
-        background-opacity = 0.4;
 
         background = "#000000";
         keybind = [
           "performable:ctrl+c=copy_to_clipboard"
           "ctrl+v=paste_from_clipboard"
         ];
-        window-decoration = "none";
         confirm-close-surface = false;
         quit-after-last-window-closed = true;
         quit-after-last-window-closed-delay = "5m";

@@ -12,6 +12,10 @@
       TERMINAL = lib.getExe pkgs.foot;
     };
 
+    home.packages = with pkgs; [
+      nerd-fonts.caskaydia-mono
+    ];
+
     programs.foot = {
       enable = true;
       server.enable = true;

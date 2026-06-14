@@ -1,5 +1,6 @@
 {self, ...}: {
   flake.modules.nixos.zsh = {
+    programs.zsh.enable = true;
     home-manager.sharedModules = [self.modules.homeManager.zsh];
   };
   flake.modules.homeManager.zsh = {

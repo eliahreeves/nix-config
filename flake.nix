@@ -12,9 +12,9 @@
       };
     };
 
-    neovim-nightly = {
-      url = "github:nix-community/neovim-nightly-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
+    samsung-fixes = {
+      url = "github:Andycodeman/samsung-galaxy-book-linux-fixes";
+      flake = false;
     };
 
     slang-server = {

@@ -14,7 +14,7 @@ if grep -q '^ID=nixos$' /etc/os-release; then
   echo "Rebuild successful, generation $gen"
 else
   echo "Home Manager Rebuilding..."
-  home-manager switch --flake $HOME/nix-config#$TAG
+  home-manager switch --flake "$HOME"/nix-config#"$TAG"
   echo "Rebuild successful"
 fi
 
