@@ -68,6 +68,7 @@
 
                 dockerfile
                 dart
+                typst
               ]))
         ];
 
@@ -113,6 +114,8 @@
           clang-tools
           # kdl
           kdlfmt
+          typstyle
+          tinymist
         ];
     };
   };

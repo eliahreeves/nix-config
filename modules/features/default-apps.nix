@@ -1,9 +1,15 @@
 {self, ...}: {
-  flake.modules.nixos.default-apps = {helpers, ...}: {
+  flake.modules.nixos.default-apps = {
+    helpers,
+    lib,
+    ...
+  }: {
     imports = with self.modules.nixos; [
       zen-browser
     ];
-    environment.systemPackages = map (a: a.package) (builtins.attrValues helpers.apps);
+    environment.systemPackages =
+      lib.filter (pkg: pkg != null)
+      (map (a: a.package or null) (builtins.attrValues helpers.apps));
 
     home-manager.sharedModules = [self.modules.homeManager.default-apps];
   };

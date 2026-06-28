@@ -11,6 +11,7 @@ later(function()
 
     formatters_by_ft = {
       cpp = { "clang-format" },
+      typst = { "typstyle" },
       lua = { "stylua" },
       nix = { "alejandra" },
       bash = { "shfmt" },

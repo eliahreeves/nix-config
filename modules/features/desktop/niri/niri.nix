@@ -24,9 +24,13 @@
     helpers,
     ...
   }: let
+    browser =
+      if config.programs.zen-browser.enable or false
+      then lib.getExe config.programs.zen-browser.finalPackage
+      else "zen-beta";
     base = pkgs.replaceVars ./config/base.kdl {
       terminal = lib.getExe helpers.apps.terminal.package;
-      browser = lib.getExe helpers.apps.browser.package;
+      inherit browser;
       explorer = lib.getExe helpers.apps.file.package;
     };
   in {

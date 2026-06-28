@@ -49,5 +49,6 @@ now(function()
     "ltex_plus",
     "pyright",
     "svelte",
+    "tinymist",
   })
 end)

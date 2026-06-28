@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-TAG="${HOST:-$(hostname)}"
+TAG="${NH_TAG:-${HOST:-$(hostname)}}"
 
 pushd "$NH_FLAKE" >/dev/null
 
@@ -14,7 +14,7 @@ if grep -q '^ID=nixos$' /etc/os-release; then
   echo "Rebuild successful, generation $gen"
 else
   echo "Home Manager Rebuilding..."
-  home-manager switch --flake "$HOME"/nix-config#"$TAG"
+  home-manager switch --flake "$NH_FLAKE"#"$TAG"
   echo "Rebuild successful"
 fi
 

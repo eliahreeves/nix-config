@@ -10,16 +10,18 @@
     options.git = {
       sign = lib.mkOption {
         type = lib.types.bool;
-        default = true;
+        default = false;
         description = "sign commit";
       };
       name = lib.mkOption {
         type = lib.types.str;
         description = "name";
+        default = "Eliah Reeves";
       };
       email = lib.mkOption {
         type = lib.types.str;
         description = "email";
+        default = "ereeclimb@gmail.com";
       };
     };
 

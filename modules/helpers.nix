@@ -40,7 +40,9 @@
           package = inputs.neovim-nightly.packages.${pkgs.stdenv.hostPlatform.system}.default;
           entry = "nvim-terminal-wrapper.desktop";
         };
-        browser = mkApp inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default;
+        browser = {
+          entry = "zen-beta.desktop";
+        };
         archive = mkApp pkgs.file-roller;
         image = mkApp pkgs.loupe;
       };
