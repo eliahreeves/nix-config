@@ -5,6 +5,7 @@
     };
 
     imports = with self.modules.nixos; [
+      gnome
       trading
       nimhHardware
       neovim
@@ -68,15 +69,6 @@
       };
     };
 
-    services.xserver = {
-      enable = true;
-      desktopManager = {
-        xterm.enable = false;
-        xfce.enable = true;
-      };
-    };
-
-    services.displayManager.defaultSession = "xfce";
     users.groups.nix-admins = {};
 
     users.users.erreeves = {
@@ -93,34 +85,34 @@
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJT4WXnfL1SCvyBo6p3+pUNSBI+ZxyTADd4NzX5GKd0Z ereeclimb@gmail.com"
       ];
     };
-    users.users.ctknab = {
-      isNormalUser = true;
-      description = "Christian";
-      extraGroups = [
-        "networkmanager"
-        "wheel"
-        "docker"
-        "nix-admins"
-      ];
-      shell = pkgs.zsh;
-      openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKZnymIHOfUPHQuCbaW8aPC9lkrV7kHBaE0sEQDaykG3 christiantknab@gmail.com"
-      ];
-    };
-    users.users.ericbreh = {
-      isNormalUser = true;
-      description = "Eric";
-      extraGroups = [
-        "networkmanager"
-        "wheel"
-        "docker"
-        "nix-admins"
-      ];
-      shell = pkgs.zsh;
-      openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOanOZf0P4dP7gnyYLQ8WcxTm3ln5rFZE+J/1RhTewVR ericchuang94@gmail.com"
-      ];
-    };
+    # users.users.ctknab = {
+    #   isNormalUser = true;
+    #   description = "Christian";
+    #   extraGroups = [
+    #     "networkmanager"
+    #     "wheel"
+    #     "docker"
+    #     "nix-admins"
+    #   ];
+    #   shell = pkgs.zsh;
+    #   openssh.authorizedKeys.keys = [
+    #     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKZnymIHOfUPHQuCbaW8aPC9lkrV7kHBaE0sEQDaykG3 christiantknab@gmail.com"
+    #   ];
+    # };
+    # users.users.ericbreh = {
+    #   isNormalUser = true;
+    #   description = "Eric";
+    #   extraGroups = [
+    #     "networkmanager"
+    #     "wheel"
+    #     "docker"
+    #     "nix-admins"
+    #   ];
+    #   shell = pkgs.zsh;
+    #   openssh.authorizedKeys.keys = [
+    #     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOanOZf0P4dP7gnyYLQ8WcxTm3ln5rFZE+J/1RhTewVR ericchuang94@gmail.com"
+    #   ];
+    # };
     users.users.rlreeves = {
       isNormalUser = true;
       description = "Ryan Reeves";
