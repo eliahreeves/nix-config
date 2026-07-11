@@ -1,4 +1,12 @@
-{inputs, ...}: {
+{
+  inputs,
+  self,
+  ...
+}: {
+  flake.modules.nixos.noctalia = {...}: {
+    home-manager.sharedModules = [self.modules.homeManager.noctalia];
+    persist.userDirectories = [".local/state/noctalia"];
+  };
   flake.modules.homeManager.noctalia = {
     config,
     lib,

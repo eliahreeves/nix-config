@@ -1,8 +1,9 @@
 {self, ...}: {
   flake.modules.nixos.niri = {pkgs, ...}: {
     home-manager.sharedModules = [self.modules.homeManager.niri];
-    imports = [
-      self.modules.nixos.greetd
+    imports = with self.modules.nixos; [
+      greetd
+      noctalia
     ];
     programs.niri = {
       enable = true;
@@ -34,7 +35,6 @@
       explorer = lib.getExe helpers.apps.file.package;
     };
   in {
-    imports = with self.modules.homeManager; [noctalia];
     options.niri.configPath = lib.mkOption {
       type = lib.types.str;
       default = "${config.home.homeDirectory}/nix-config/modules/features/desktop/niri/config/config.kdl";

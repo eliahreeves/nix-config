@@ -4,17 +4,23 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    preservation = {
+      url = "github:nix-community/preservation";
+    };
+
+    disko = {
+      url = "github:nix-community/disko";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake/beta";
       inputs = {
         home-manager.follows = "home-manager";
         nixpkgs.follows = "nixpkgs";
       };
-    };
-
-    samsung-fixes = {
-      url = "github:Andycodeman/samsung-galaxy-book-linux-fixes";
-      flake = false;
     };
 
     slang-server = {
@@ -39,7 +45,7 @@
       url = "github:eko-network/eko";
     };
 
-    noctalia.url = "github:noctalia-dev/noctalia-shell/v5";
+    noctalia.url = "github:noctalia-dev/noctalia-shell";
 
     wrapper-modules = {
       url = "github:BirdeeHub/nix-wrapper-modules";
@@ -56,10 +62,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    algo-ranch = {
-      url = "git+ssh://git@github.com/eliahreeves/algo-ranch.git";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    #    algo-ranch = {
+    #      url = "git+ssh://git@github.com/eliahreeves/algo-ranch.git";
+    #      inputs.nixpkgs.follows = "nixpkgs";
+    #    };
 
     nix-minecraft = {
       url = "github:Infinidoge/nix-minecraft";

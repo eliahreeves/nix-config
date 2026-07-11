@@ -1,0 +1,75 @@
+{self, ...}: {
+  flake.modules.nixos.machine-configuration = {pkgs, ...}: {
+    environment.variables = {
+      NH_FLAKE = "/home/erreeves/nix-config/";
+    };
+
+    imports = with self.modules.nixos; [
+      capslock-arrow-keys
+      theme
+      alt-win-swap
+      neovim
+      default-apps
+      firefox
+      niri
+      tmux
+      nix-settings
+      hm-dir
+      base-gui
+      git
+      zsh
+      foot
+    ];
+
+    persist = {
+      enable = true;
+      user = "erreeves";
+    };
+
+    services.upower.enable = true;
+    nixpkgs.config.allowUnfree = true;
+
+    boot = {
+      kernelPackages = pkgs.linuxPackages;
+      loader = {
+        systemd-boot.enable = true;
+        timeout = 1;
+        efi.canTouchEfiVariables = true;
+      };
+    };
+
+    networking.hostName = "machine";
+    users = {
+      mutableUsers = false;
+      users.erreeves = {
+        hashedPasswordFile = "/persistent/home/erreeves/.secrets/user-password-hash";
+        isNormalUser = true;
+        description = "Eliah Reeves";
+        extraGroups = [
+          "networkmanager"
+          "wheel"
+          "docker"
+          "nix-admins"
+        ];
+        shell = pkgs.zsh;
+      };
+    };
+
+    home-manager = {
+      users.erreeves = {
+        home = {
+          username = "erreeves";
+          homeDirectory = "/home/erreeves";
+          stateVersion = "25.05";
+        };
+        foot.font-size = 12;
+        git = {
+          email = "ereeclimb@gmail.com";
+          name = "Eliah Reeves";
+          sign = false;
+        };
+      };
+    };
+    system.stateVersion = "25.05";
+  };
+}

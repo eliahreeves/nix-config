@@ -1,7 +1,6 @@
 {
   self,
   lib,
-  inputs,
   ...
 }: {
   options.flake.lib = lib.mkOption {
@@ -36,10 +35,7 @@
         file = mkApp pkgs.nautilus;
         doc = mkApp pkgs.papers;
         video = mkApp pkgs.vlc;
-        text = {
-          package = inputs.neovim-nightly.packages.${pkgs.stdenv.hostPlatform.system}.default;
-          entry = "nvim-terminal-wrapper.desktop";
-        };
+        text = mkApp pkgs.vim;
         browser = {
           entry = "zen-beta.desktop";
         };

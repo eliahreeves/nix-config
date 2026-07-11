@@ -1,8 +1,4 @@
-{
-  self,
-  inputs,
-  ...
-}: {
+{self, ...}: {
   flake.modules.nixos.base-gui = {pkgs, ...}: {
     imports = with self.modules.nixos; [base sound-config];
 

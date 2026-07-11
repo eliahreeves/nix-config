@@ -4,6 +4,8 @@
     lib,
     ...
   }: {
+    persist.files = ["/var/cache/tuigreet/lastuser"];
+    persist.userDirectories = [".local/share/keyrings"];
     security.pam.services.greetd.enableGnomeKeyring = true;
     services.greetd = {
       enable = true;

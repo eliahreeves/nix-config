@@ -323,5 +323,4 @@ layer-rule {
     place-within-backdrop true
 }
 include "base.kdl"
-include "noctalia.kdl"
 

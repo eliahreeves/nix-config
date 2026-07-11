@@ -1,6 +1,7 @@
 {self, ...}: {
   flake.modules.nixos.zsh = {
     programs.zsh.enable = true;
+    persist.userFiles = [".zsh_history"];
     home-manager.sharedModules = [self.modules.homeManager.zsh];
   };
   flake.modules.homeManager.zsh = {
