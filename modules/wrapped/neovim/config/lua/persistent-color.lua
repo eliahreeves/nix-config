@@ -1,5 +1,5 @@
 local M = {}
-M.saveLocation = vim.fn.stdpath("data") .. "colorscheme"
+M.saveLocation = vim.fn.stdpath("data") .. "/" .. "colorscheme"
 M.save = function(opt)
     if opt == nil or opt == "" then
         return

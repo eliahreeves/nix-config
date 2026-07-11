@@ -5,6 +5,7 @@
     };
 
     imports = with self.modules.nixos; [
+      undervolt
       capslock-arrow-keys
       theme
       alt-win-swap
@@ -26,9 +27,17 @@
       user = "erreeves";
     };
 
-    services.upower.enable = true;
+    environment.systemPackages = with pkgs; [
+      undervolt
+      s-tui
+      stress
+    ];
+
     nixpkgs.config.allowUnfree = true;
 
+    security.sudo.extraConfig = ''
+      Defaults lecture=never
+    '';
     boot = {
       kernelPackages = pkgs.linuxPackages;
       loader = {

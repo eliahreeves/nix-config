@@ -1,6 +1,7 @@
 {self, ...}: {
   flake.modules.nixos.lazygit = {
     home-manager.sharedModules = [self.modules.homeManager.lazygit];
+    persist.userDirectories = [".local/state/lazygit"];
   };
   flake.modules.homeManager.lazygit = {
     pkgs,

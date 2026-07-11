@@ -1,9 +1,4 @@
-{
-  inputs,
-  lib,
-  self,
-  ...
-}: {
+{inputs, ...}: {
   config = {
     flake.modules.nixos.persist = {
       config,

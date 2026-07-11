@@ -1,11 +1,16 @@
 {
   inputs,
   self,
+  lib,
   ...
 }: {
   flake.modules.nixos.noctalia = {...}: {
     home-manager.sharedModules = [self.modules.homeManager.noctalia];
-    persist.userDirectories = [".local/state/noctalia"];
+    persist.userDirectories = [
+      ".local/state/noctalia"
+      ".local/share/qalculate"
+    ];
+    services.upower.enable = lib.mkDefault true;
   };
   flake.modules.homeManager.noctalia = {
     config,
