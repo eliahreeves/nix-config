@@ -1,13 +1,5 @@
-{
-  self,
-  inputs,
-  ...
-}: {
-  flake.modules.homeManager.thunar = {
-    pkgs,
-    config,
-    ...
-  }: {
+{...}: {
+  flake.modules.homeManager.thunar = {pkgs, ...}: {
     home.packages = with pkgs; [
       thunar
       tumbler

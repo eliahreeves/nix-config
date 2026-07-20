@@ -13,6 +13,15 @@
       };
     };
 
+    persist = {
+      userDirectories = [
+        ".cache/mesa_shader_cache"
+      ];
+      directories = [
+        "/var/lib/bluetooth"
+      ];
+    };
+
     # fixes some issues with rendering svgs in certain places. Not very important.
     programs.gdk-pixbuf.modulePackages = [pkgs.librsvg];
 

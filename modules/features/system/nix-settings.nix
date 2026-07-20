@@ -1,5 +1,6 @@
 {...}: {
   flake.modules.nixos.nix-settings = {...}: {
+    persist.userDirectories = [".cache/nix"];
     nix = {
       settings = {
         extra-substituters = [

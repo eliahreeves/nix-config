@@ -6,5 +6,6 @@
       dedicatedServer.openFirewall = true;
       localNetworkGameTransfers.openFirewall = true;
     };
+    persist.userDirectories = [".steam" ".local/share/Steam"];
   };
 }

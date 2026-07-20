@@ -2,10 +2,13 @@
   flake.modules.nixos.base = {pkgs, ...}: {
     imports = with self.modules.nixos; [lazygit locale nix-ld ssl-env persist];
     security.rtkit.enable = true;
-
     networking.networkmanager.enable = true;
-
     programs.zsh.enable = true;
+
+    persist.directories = [
+      "/var/lib/NetworkManager"
+      "/etc/NetworkManager/system-connections"
+    ];
 
     environment.systemPackages = with pkgs; [
       tree

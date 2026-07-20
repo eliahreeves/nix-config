@@ -5,11 +5,16 @@
     };
 
     imports = with self.modules.nixos; [
+      persist-dev
+      organicmaps
+      signal
+      steam
+      tuned
       undervolt
       capslock-arrow-keys
       theme
       alt-win-swap
-      neovim
+      neovim-full
       default-apps
       firefox
       niri
@@ -20,8 +25,33 @@
       git
       zsh
       foot
+      comma
+      proton-vpn
+      direnv
+      tmplt
+      python
+      vscode
+      gnome-tools
+      qbittorrent
+      prisismlauncher
+      ai
     ];
-
+    # hardware.graphics = {
+    #   enable = true;
+    #   enable32Bit = true;
+    #
+    #   extraPackages = with pkgs; [
+    #     intel-media-driver
+    #     intel-vaapi-driver
+    #     libvdpau-va-gl
+    #   ];
+    #
+    #   extraPackages32 = with pkgs.pkgsi686Linux; [
+    #     intel-media-driver
+    #     intel-vaapi-driver
+    #     libvdpau-va-gl
+    #   ];
+    # };
     persist = {
       enable = true;
       user = "erreeves";

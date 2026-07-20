@@ -47,9 +47,6 @@
             directories =
               config.persist.directories
               ++ [
-                "/var/lib/NetworkManager"
-                "/etc/NetworkManager/system-connections"
-                "/var/lib/bluetooth"
                 {
                   directory = "/var/lib/nixos";
                   inInitrd = true;

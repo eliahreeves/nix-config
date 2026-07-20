@@ -65,7 +65,6 @@
       shell = pkgs.zsh;
     };
 
-    services.upower.enable = true;
     services.flatpak.enable = true;
 
     system.stateVersion = "25.05";

@@ -9,6 +9,7 @@
     persist.userDirectories = [
       ".local/state/noctalia"
       ".local/share/qalculate"
+      ".cache/noctalia"
     ];
     services.upower.enable = lib.mkDefault true;
   };

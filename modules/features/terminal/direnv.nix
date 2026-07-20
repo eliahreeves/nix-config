@@ -1,6 +1,9 @@
 {self, ...}: {
   flake.modules.nixos.direnv = {
     home-manager.sharedModules = [self.modules.homeManager.direnv];
+    persist.userDirectories = [
+      ".local/share/direnv"
+    ];
   };
   flake.modules.homeManager.direnv = {...}: {
     programs.direnv = {
