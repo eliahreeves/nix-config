@@ -36,22 +36,7 @@
       prisismlauncher
       ai
     ];
-    # hardware.graphics = {
-    #   enable = true;
-    #   enable32Bit = true;
-    #
-    #   extraPackages = with pkgs; [
-    #     intel-media-driver
-    #     intel-vaapi-driver
-    #     libvdpau-va-gl
-    #   ];
-    #
-    #   extraPackages32 = with pkgs.pkgsi686Linux; [
-    #     intel-media-driver
-    #     intel-vaapi-driver
-    #     libvdpau-va-gl
-    #   ];
-    # };
+
     persist = {
       enable = true;
       user = "erreeves";
@@ -69,7 +54,7 @@
       Defaults lecture=never
     '';
     boot = {
-      kernelPackages = pkgs.linuxPackages;
+      kernelPackages = pkgs.linuxPackages_latest;
       loader = {
         systemd-boot.enable = true;
         timeout = 1;
