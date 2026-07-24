@@ -4,7 +4,7 @@
   };
   flake.modules.homeManager.python = {pkgs, ...}: {
     home.packages = with pkgs; [
-      (python312.withPackages (p:
+      (python314.withPackages (p:
         with p; [
           scipy
           numpy

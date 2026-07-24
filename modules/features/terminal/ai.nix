@@ -10,6 +10,8 @@
       ".cursor"
       ".config/cursor"
       ".local/share/cursor-agent"
+      ".npm"
+      ".gemini"
     ];
   };
   flake.modules.homeManager.ai = {pkgs, ...}: {
@@ -18,7 +20,7 @@
     };
     home.sessionVariables.OPENCODE_EXPERIMENTAL_PLAN_MODE = "true";
     home.packages = with pkgs; [
-      gemini-cli
+      antigravity-cli
       cursor-cli
     ];
     programs.git = {ignores = [".opencode/" ".cursor/"];};

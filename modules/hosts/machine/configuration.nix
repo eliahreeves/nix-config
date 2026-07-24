@@ -5,6 +5,7 @@
     };
 
     imports = with self.modules.nixos; [
+      distrobox
       persist-dev
       organicmaps
       signal
@@ -30,7 +31,7 @@
       direnv
       tmplt
       python
-      vscode
+      vscodium
       gnome-tools
       qbittorrent
       prisismlauncher

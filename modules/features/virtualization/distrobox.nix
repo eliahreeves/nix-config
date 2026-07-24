@@ -1,18 +1,15 @@
-{
-  self,
-  inputs,
-  ...
-}: {
+{...}: {
   flake.modules.nixos.distrobox = {pkgs, ...}: {
     virtualisation = {
-      containers.enable = true;
-      docker = {
+      podman = {
         enable = true;
+        dockerCompat = true;
       };
     };
 
+    persist.userDirectories = [".local/share/containers"];
+
     environment.systemPackages = with pkgs; [
-      dive
       distrobox
     ];
   };

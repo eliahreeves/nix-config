@@ -33,7 +33,7 @@
       git
       pulse-vpn
       firefox
-      vscode
+      vscodium
       docker
       gnome-tools
       ai

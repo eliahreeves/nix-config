@@ -1,8 +1,9 @@
 {self, ...}: {
-  flake.modules.nixos.vscode = {
-    home-manager.sharedModules = [self.modules.homeManager.vscode];
+  flake.modules.nixos.vscodium = {
+    home-manager.sharedModules = [self.modules.homeManager.vscodium];
+    persist.userDirectories = [".config/VSCodium" ".vscode-oss"];
   };
-  flake.modules.homeManager.vscode = {pkgs, ...}: {
+  flake.modules.homeManager.vscodium = {pkgs, ...}: {
     programs.vscodium = {
       enable = true;
       profiles.default = {
