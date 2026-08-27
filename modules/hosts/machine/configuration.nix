@@ -5,6 +5,8 @@
     };
 
     imports = with self.modules.nixos; [
+      kdenlive
+      tailscale
       distrobox
       persist-dev
       organicmaps

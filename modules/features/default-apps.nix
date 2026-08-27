@@ -5,6 +5,7 @@
     ...
   }: {
     imports = with self.modules.nixos; [
+      vlc
       zen-browser
     ];
     environment.systemPackages =
