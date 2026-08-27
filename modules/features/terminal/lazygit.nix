@@ -13,9 +13,9 @@
       settings = {
         git = {
           ignoreWhitespaceInDiffView = true;
-          pagers = [
-            {pager = "${lib.getExe pkgs.delta} --dark --paging=never --side-by-side --line-numbers-left-format='' --line-numbers-right-format='' --hunk-header-style syntax";}
-            {pager = "${lib.getExe pkgs.delta} --dark --paging=never --hunk-header-style syntax";}
+          diffRenderers = [
+            {command = "${lib.getExe pkgs.delta} --dark --paging=never --side-by-side --line-numbers-left-format='' --line-numbers-right-format='' --hunk-header-style syntax";}
+            {command = "${lib.getExe pkgs.delta} --dark --paging=never --hunk-header-style syntax";}
           ];
         };
         gui = {
