@@ -9,7 +9,7 @@
       tailscale
       distrobox
       persist-dev
-      organicmaps
+      comaps
       signal
       steam
       tuned
@@ -49,6 +49,9 @@
       undervolt
       s-tui
       stress
+      typst
+      texliveFull
+      gh
     ];
 
     nixpkgs.config.allowUnfree = true;

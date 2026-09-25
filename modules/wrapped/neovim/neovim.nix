@@ -88,6 +88,7 @@
           jq
         ]
         ++ lib.optionals config.settings.full [
+          vtsls
           deno
           ghostscript
           tree-sitter

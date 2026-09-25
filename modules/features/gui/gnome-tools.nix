@@ -8,6 +8,7 @@
       snapshot
       warp
       networkmanagerapplet
+      gnome-calculator
     ];
     xdg.configFile."autostart/nm-applet.desktop".text = ''
       [Desktop Entry]

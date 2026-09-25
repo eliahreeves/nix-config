@@ -47,6 +47,7 @@ now(function()
     "rust_analyzer",
     "texlab",
     "ltex_plus",
+    "vtsls",
     "pyright",
     "svelte",
     "tinymist",
