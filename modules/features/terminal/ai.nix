@@ -1,18 +1,6 @@
 {self, ...}: {
   flake.modules.nixos.ai = {
     home-manager.sharedModules = [self.modules.homeManager.ai];
-    persist.userDirectories = [
-      ".cache/opencode"
-      ".cache/cursor-compile-cache"
-      ".config/opencode"
-      ".local/state/opencode"
-      ".local/share/opencode"
-      ".cursor"
-      ".config/cursor"
-      ".local/share/cursor-agent"
-      ".npm"
-      ".gemini"
-    ];
   };
   flake.modules.homeManager.ai = {pkgs, ...}: {
     programs.opencode = {

@@ -14,9 +14,6 @@
     };
 
     persist = {
-      userDirectories = [
-        ".cache/mesa_shader_cache"
-      ];
       directories = [
         "/var/lib/bluetooth"
       ];

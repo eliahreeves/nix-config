@@ -3,6 +3,5 @@
     environment.systemPackages = with pkgs; [
       prismlauncher
     ];
-    persist.userDirectories = [".local/share/PrismLauncher"];
   };
 }

@@ -7,8 +7,6 @@
       };
     };
 
-    persist.userDirectories = [".local/share/containers"];
-
     environment.systemPackages = with pkgs; [
       distrobox
     ];

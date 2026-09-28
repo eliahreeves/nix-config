@@ -1,7 +1,6 @@
 {self, ...}: {
   flake.modules.nixos.firefox = {
     home-manager.sharedModules = [self.modules.homeManager.firefox];
-    persist.userDirectories = [".config/mozilla" ".cache/mozilla"];
   };
   flake.modules.homeManager.firefox = {
     pkgs,

@@ -3,6 +3,5 @@
     environment.systemPackages = with pkgs; [
       kdePackages.kdenlive
     ];
-    persist.userDirectories = [".cache/kdenlive"];
   };
 }

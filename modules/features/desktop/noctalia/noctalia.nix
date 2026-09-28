@@ -6,11 +6,6 @@
 }: {
   flake.modules.nixos.noctalia = {...}: {
     home-manager.sharedModules = [self.modules.homeManager.noctalia];
-    persist.userDirectories = [
-      ".local/state/noctalia"
-      ".local/share/qalculate"
-      ".cache/noctalia"
-    ];
     services.upower.enable = lib.mkDefault true;
   };
   flake.modules.homeManager.noctalia = {

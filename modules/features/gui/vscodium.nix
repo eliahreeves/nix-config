@@ -1,7 +1,6 @@
 {self, ...}: {
   flake.modules.nixos.vscodium = {
     home-manager.sharedModules = [self.modules.homeManager.vscodium];
-    persist.userDirectories = [".config/VSCodium" ".vscode-oss"];
   };
   flake.modules.homeManager.vscodium = {pkgs, ...}: {
     programs.vscodium = {

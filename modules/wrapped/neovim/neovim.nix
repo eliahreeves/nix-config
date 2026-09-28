@@ -126,11 +126,6 @@
   in {
     home-manager.sharedModules = [self.modules.homeManager.neovim {_module.args = {inherit package;};}];
 
-    persist.userDirectories = [
-      ".local/state/nvim"
-      ".local/share/nvim"
-    ];
-
     environment.variables = {
       EDITOR = "nvim";
       VISUAL = "nvim";
@@ -145,11 +140,6 @@
     package = self.packages.${pkgs.stdenv.hostPlatform.system}.neovim-minimal;
   in {
     home-manager.sharedModules = [self.modules.homeManager.neovim {_module.args = {inherit package;};}];
-
-    persist.userDirectories = [
-      ".local/state/nvim"
-      ".local/share/nvim"
-    ];
 
     environment.variables = {
       EDITOR = "nvim";

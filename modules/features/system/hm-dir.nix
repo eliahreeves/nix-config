@@ -11,7 +11,6 @@
     ];
   in {
     home-manager.sharedModules = [self.modules.homeManager.hm-dir {_module.args = {inherit folders;};}];
-    persist.userDirectories = folders ++ [".secrets"];
   };
   flake.modules.homeManager.hm-dir = {
     folders,

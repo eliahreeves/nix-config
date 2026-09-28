@@ -8,7 +8,6 @@
       kdenlive
       tailscale
       distrobox
-      persist-dev
       comaps
       signal
       steam
@@ -42,7 +41,7 @@
 
     persist = {
       enable = true;
-      user = "erreeves";
+      directories = ["/home/erreeves"];
     };
 
     environment.systemPackages = with pkgs; [
