@@ -16,6 +16,7 @@
       capslock-arrow-keys
       theme
       alt-win-swap
+      docker
       neovim-full
       default-apps
       firefox
@@ -41,7 +42,14 @@
 
     persist = {
       enable = true;
-      directories = ["/home/erreeves"];
+      directories = [
+        {
+          directory = "/home/erreeves";
+          user = "erreeves";
+          group = "users";
+          mode = "0700";
+        }
+      ];
     };
 
     environment.systemPackages = with pkgs; [

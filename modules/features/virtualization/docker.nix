@@ -7,5 +7,6 @@
     environment.systemPackages = with pkgs; [
       docker-compose
     ];
+    persist.directories = ["/var/lib/docker"];
   };
 }

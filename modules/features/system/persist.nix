@@ -20,11 +20,11 @@
           description = "enable preservation";
         };
         directories = lib.mkOption {
-          type = lib.types.listOf lib.types.str;
+          type = with lib.types; listOf (either str attrs);
           default = [];
         };
         files = lib.mkOption {
-          type = lib.types.listOf lib.types.str;
+          type = with lib.types; listOf (either str attrs);
           default = [];
         };
       };
