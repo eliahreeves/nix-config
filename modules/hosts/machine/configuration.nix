@@ -3,8 +3,8 @@
     environment.variables = {
       NH_FLAKE = "/home/erreeves/nix-config/";
     };
-
     imports = with self.modules.nixos; [
+      artcraft
       kdenlive
       tailscale
       distrobox
@@ -59,6 +59,9 @@
       typst
       texliveFull
       gh
+      ffmpeg-headless
+      mindustry-wayland
+      ffmpegthumbnailer
     ];
 
     nixpkgs.config.allowUnfree = true;

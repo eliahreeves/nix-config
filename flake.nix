@@ -8,6 +8,11 @@
       url = "github:nix-community/preservation";
     };
 
+    nix-craftapps = {
+      url = "github:olafkfreund/nix-craftapps";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     disko = {
       url = "github:nix-community/disko";
       inputs = {
@@ -44,8 +49,6 @@
     eko = {
       url = "github:eko-network/eko";
     };
-
-    noctalia.url = "github:noctalia-dev/noctalia-shell";
 
     wrapper-modules = {
       url = "github:BirdeeHub/nix-wrapper-modules";

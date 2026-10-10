@@ -1,5 +1,4 @@
 {
-  inputs,
   self,
   lib,
   ...
@@ -13,10 +12,6 @@
     lib,
     ...
   }: {
-    imports = [
-      inputs.noctalia.homeModules.default
-    ];
-    disabledModules = ["programs/noctalia"];
     options.noctalia.configPath = lib.mkOption {
       type = lib.types.str;
       default = "${config.home.homeDirectory}/nix-config/modules/features/desktop/noctalia/config";
