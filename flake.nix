@@ -4,6 +4,11 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    helium = {
+      url = "github:schembriaiden/helium-browser-nix-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     preservation = {
       url = "github:nix-community/preservation";
     };

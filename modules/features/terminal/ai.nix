@@ -10,6 +10,7 @@
     home.packages = with pkgs; [
       antigravity-cli
       cursor-cli
+      claude-code
     ];
     programs.git = {ignores = [".opencode/" ".cursor/"];};
   };

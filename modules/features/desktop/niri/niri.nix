@@ -1,4 +1,8 @@
-{self, ...}: {
+{
+  self,
+  inputs,
+  ...
+}: {
   flake.modules.nixos.niri = {pkgs, ...}: {
     home-manager.sharedModules = [self.modules.homeManager.niri];
     imports = with self.modules.nixos; [
@@ -25,10 +29,10 @@
     helpers,
     ...
   }: let
-    browser =
-      if config.programs.zen-browser.enable or false
-      then lib.getExe config.programs.zen-browser.finalPackage
-      else "zen-beta";
+    browser = lib.getExe inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default;
+    # if config.programs.zen-browser.enable or false
+    # then lib.getExe config.programs.zen-browser.finalPackage
+    # else "zen-beta";
     base = pkgs.replaceVars ./config/base.kdl {
       terminal = lib.getExe helpers.apps.terminal.package;
       inherit browser;

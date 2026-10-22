@@ -7,6 +7,7 @@
     imports = with self.modules.nixos; [
       vlc
       zen-browser
+      helium
     ];
     environment.systemPackages =
       lib.filter (pkg: pkg != null)

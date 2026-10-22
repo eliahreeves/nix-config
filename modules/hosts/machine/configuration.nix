@@ -4,14 +4,17 @@
       NH_FLAKE = "/home/erreeves/nix-config/";
     };
     imports = with self.modules.nixos; [
+      helium
       artcraft
       kdenlive
       tailscale
       distrobox
+      pulse-vpn
       comaps
       signal
       steam
       tuned
+      printing
       undervolt
       capslock-arrow-keys
       theme
@@ -54,6 +57,7 @@
 
     environment.systemPackages = with pkgs; [
       undervolt
+      spotify
       s-tui
       stress
       typst
@@ -61,6 +65,7 @@
       gh
       ffmpeg-headless
       mindustry-wayland
+      freerdp
       ffmpegthumbnailer
     ];
 

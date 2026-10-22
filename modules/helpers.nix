@@ -37,7 +37,7 @@
         video = mkApp pkgs.vlc;
         text = mkApp pkgs.vim;
         browser = {
-          entry = "zen-beta.desktop";
+          entry = "helium.desktop";
         };
         archive = mkApp pkgs.file-roller;
         image = mkApp pkgs.loupe;
