@@ -15,7 +15,7 @@
       base-gui
       printing
       evolution-data-server
-      system76-utils
+      # system76-utils
       capslock-arrow-keys
       alt-win-swap
       steam
@@ -70,7 +70,6 @@
 
     system.stateVersion = "25.05";
     environment.systemPackages = with pkgs; [
-      gemini-cli
       cursor-cli
       ungoogled-chromium
       qbittorrent
