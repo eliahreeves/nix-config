@@ -5,6 +5,7 @@
     };
 
     imports = with self.modules.nixos; [
+      jellyfin
       gnome
       tailscale
       # trading
@@ -57,6 +58,16 @@
         device = "/dev/disk/by-label/data";
         fsType = "btrfs";
         options = ["subvol=@subvolumes/immich" "compress=zstd" "noatime"];
+      };
+      "/srv/jelly" = {
+        device = "/dev/disk/by-label/data";
+        fsType = "btrfs";
+        options = ["subvol=@subvolumes/jelly" "compress=zstd" "noatime"];
+      };
+      "/srv/media" = {
+        device = "/dev/disk/by-label/data";
+        fsType = "btrfs";
+        options = ["subvol=@subvolumes/media" "compress=zstd" "noatime"];
       };
       "/srv/share" = {
         device = "/dev/disk/by-label/data";
