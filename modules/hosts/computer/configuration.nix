@@ -5,7 +5,12 @@
     };
     imports = with self.modules.nixos; [
       kicad
+      tailscale
+      erreeves
+      openssh
       tuned
+      no-sleep
+      no-lid-switch
       default-apps
       foot
       eko
@@ -15,7 +20,6 @@
       base-gui
       printing
       evolution-data-server
-      # system76-utils
       capslock-arrow-keys
       alt-win-swap
       steam
@@ -53,18 +57,10 @@
 
     networking.hostName = "computer";
 
-    users.users.erreeves = {
-      isNormalUser = true;
-      description = "Eliah Reeves";
-      extraGroups = [
-        "networkmanager"
-        "wheel"
-        "docker"
-        "podman"
-        "dialout"
-      ];
-      shell = pkgs.zsh;
-    };
+    users.users.erreeves.extraGroups = [
+      "podman"
+      "dialout"
+    ];
 
     services.flatpak.enable = true;
 

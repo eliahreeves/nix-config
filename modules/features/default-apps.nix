@@ -1,27 +1,37 @@
 {self, ...}: {
   flake.modules.nixos.default-apps = {
-    helpers,
-    lib,
-    ...
-  }: {
     imports = with self.modules.nixos; [
       vlc
       zen-browser
       helium
     ];
-    environment.systemPackages =
-      lib.filter (pkg: pkg != null)
-      (map (a: a.package or null) (builtins.attrValues helpers.apps));
 
     home-manager.sharedModules = [self.modules.homeManager.default-apps];
   };
   flake.modules.homeManager.default-apps = {
+    config,
     lib,
+    pkgs,
     helpers,
     ...
   }: let
+    appType = lib.types.submodule ({config, ...}: {
+      options = {
+        package = lib.mkOption {
+          type = lib.types.nullOr lib.types.package;
+          default = null;
+          description = "Package providing the app; installed when set.";
+        };
+        entry = lib.mkOption {
+          type = lib.types.str;
+          default = helpers.getDesktopEntry config.package;
+          defaultText = lib.literalExpression "helpers.getDesktopEntry package";
+          description = "Desktop entry used for mime associations.";
+        };
+      };
+    });
+    apps = config.defaultApps;
     mimeAssoc = lib.genAttrs;
-    apps = helpers.apps;
     files = mimeAssoc ["inode/directory"] (_: apps.file.entry);
     documents = mimeAssoc ["application/pdf"] (_: apps.doc.entry);
 
@@ -94,10 +104,33 @@
     ] (_: apps.video.entry);
     defaults = videos // browser // images // files // documents // text // archives;
   in {
-    xdg.mimeApps = {
-      enable = true;
-      defaultApplications = defaults;
-      associations.added = defaults;
+    options.defaultApps = lib.mkOption {
+      type = lib.types.attrsOf appType;
+      default = {};
+      description = "Default application for each role.";
+    };
+
+    config = {
+      defaultApps = lib.mapAttrs (_: lib.mkDefault) {
+        terminal.package = pkgs.foot;
+        file.package = pkgs.nautilus;
+        doc.package = pkgs.papers;
+        video.package = pkgs.vlc;
+        text.package = pkgs.vim;
+        browser.entry = "helium.desktop";
+        archive.package = pkgs.file-roller;
+        image.package = pkgs.loupe;
+      };
+
+      home.packages =
+        lib.filter (pkg: pkg != null)
+        (lib.mapAttrsToList (_: app: app.package) apps);
+
+      xdg.mimeApps = {
+        enable = true;
+        defaultApplications = defaults;
+        associations.added = defaults;
+      };
     };
   };
 }

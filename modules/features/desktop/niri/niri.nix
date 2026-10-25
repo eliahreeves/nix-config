@@ -26,7 +26,6 @@
     pkgs,
     config,
     lib,
-    helpers,
     ...
   }: let
     browser = lib.getExe inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default;
@@ -34,15 +33,20 @@
     # then lib.getExe config.programs.zen-browser.finalPackage
     # else "zen-beta";
     base = pkgs.replaceVars ./config/base.kdl {
-      terminal = lib.getExe helpers.apps.terminal.package;
+      terminal = lib.getExe config.defaultApps.terminal.package;
       inherit browser;
-      explorer = lib.getExe helpers.apps.file.package;
+      explorer = lib.getExe config.defaultApps.file.package;
     };
   in {
     options.niri.configPath = lib.mkOption {
       type = lib.types.str;
       default = "${config.home.homeDirectory}/nix-config/modules/features/desktop/niri/config/config.kdl";
       description = "Path to niri configuration file";
+    };
+    options.niri.hostConfig = lib.mkOption {
+      type = lib.types.lines;
+      default = "";
+      description = "Host-specific niri config, written to host.kdl.";
     };
     config = {
       home.packages = with pkgs; [
@@ -53,6 +57,7 @@
         ".config/niri/config.kdl".source =
           config.lib.file.mkOutOfStoreSymlink config.niri.configPath;
         ".config/niri/base.kdl".source = base;
+        ".config/niri/host.kdl".text = config.niri.hostConfig;
       };
     };
   };

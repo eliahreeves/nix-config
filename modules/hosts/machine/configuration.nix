@@ -5,6 +5,7 @@
     };
     imports = with self.modules.nixos; [
       kicad
+      erreeves
       helium
       artcraft
       kdenlive
@@ -89,15 +90,7 @@
       mutableUsers = false;
       users.erreeves = {
         hashedPasswordFile = "/persistent/home/erreeves/.secrets/user-password-hash";
-        isNormalUser = true;
-        description = "Eliah Reeves";
-        extraGroups = [
-          "networkmanager"
-          "wheel"
-          "docker"
-          "nix-admins"
-        ];
-        shell = pkgs.zsh;
+        extraGroups = ["nix-admins"];
       };
     };
 

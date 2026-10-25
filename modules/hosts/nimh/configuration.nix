@@ -14,6 +14,8 @@
       base-gui
       no-sleep
       openssh
+      erreeves
+      rlreeves
       minecraft-server
       samba
       immich
@@ -83,62 +85,7 @@
 
     users.groups.nix-admins = {};
 
-    users.users.erreeves = {
-      isNormalUser = true;
-      description = "Eliah Reeves";
-      extraGroups = [
-        "networkmanager"
-        "wheel"
-        "docker"
-        "nix-admins"
-      ];
-      shell = pkgs.zsh;
-      openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJT4WXnfL1SCvyBo6p3+pUNSBI+ZxyTADd4NzX5GKd0Z ereeclimb@gmail.com"
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGgePIkD/env+P6ITHLEHWfG88Lfc9okdGiBqT+gRh3R ereeclimb@gmail.com"
-      ];
-    };
-    # users.users.ctknab = {
-    #   isNormalUser = true;
-    #   description = "Christian";
-    #   extraGroups = [
-    #     "networkmanager"
-    #     "wheel"
-    #     "docker"
-    #     "nix-admins"
-    #   ];
-    #   shell = pkgs.zsh;
-    #   openssh.authorizedKeys.keys = [
-    #     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKZnymIHOfUPHQuCbaW8aPC9lkrV7kHBaE0sEQDaykG3 christiantknab@gmail.com"
-    #   ];
-    # };
-    # users.users.ericbreh = {
-    #   isNormalUser = true;
-    #   description = "Eric";
-    #   extraGroups = [
-    #     "networkmanager"
-    #     "wheel"
-    #     "docker"
-    #     "nix-admins"
-    #   ];
-    #   shell = pkgs.zsh;
-    #   openssh.authorizedKeys.keys = [
-    #     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOanOZf0P4dP7gnyYLQ8WcxTm3ln5rFZE+J/1RhTewVR ericchuang94@gmail.com"
-    #   ];
-    # };
-    users.users.rlreeves = {
-      isNormalUser = true;
-      description = "Ryan Reeves";
-      extraGroups = [
-        "networkmanager"
-        "wheel"
-        "docker"
-      ];
-      shell = pkgs.zsh;
-      openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICrsuj0ydqjTHAmiTyVTFsWl3HHGKglxYQVQdlvNa/hL 75mmnorm@gmail.com"
-      ];
-    };
+    users.users.erreeves.extraGroups = ["nix-admins"];
 
     home-manager = {
       users.erreeves = {

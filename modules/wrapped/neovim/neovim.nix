@@ -153,17 +153,21 @@
   };
 
   flake.modules.homeManager.neovim = {
-    helpers,
+    config,
+    options,
     lib,
     package,
     ...
   }: {
-    xdg.desktopEntries.nvim-terminal-wrapper = {
-      name = "Neovim";
-      exec = "${lib.getExe helpers.apps.terminal.package} -e ${lib.getExe package} %F";
-      terminal = false;
-      icon = "${package}/share/icons/hicolor/128x128/apps/nvim.png";
-      mimeType = ["text/plain"];
+    # Only on hosts that import default-apps, which defines the terminal.
+    config = lib.mkIf (options ? defaultApps) {
+      xdg.desktopEntries.nvim-terminal-wrapper = {
+        name = "Neovim";
+        exec = "${lib.getExe config.defaultApps.terminal.package} -e ${lib.getExe package} %F";
+        terminal = false;
+        icon = "${package}/share/icons/hicolor/128x128/apps/nvim.png";
+        mimeType = ["text/plain"];
+      };
     };
   };
 

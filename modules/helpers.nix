@@ -11,37 +11,21 @@
 
   config = {
     flake.lib.helpers = {pkgs, ...}: {
-      apps = let
-        getDesktopEntry = pkg: let
-          drv = pkgs.runCommand "get-desktop-entry-${pkg.name}" {} ''
-            for f in "${pkg}/share/applications/"*.desktop; do
-              [ -f "$f" ] || continue
-              if ! grep -q "^NoDisplay=true" "$f"; then
-                basename "$f" > $out
-                exit 0
-              fi
-            done
-            echo "No visible .desktop file found in ${pkg.name}" >&2
-            exit 1
-          '';
-        in
-          pkgs.lib.trim (builtins.readFile drv);
-        mkApp = package: {
-          inherit package;
-          entry = getDesktopEntry package;
-        };
-      in {
-        terminal = mkApp pkgs.foot;
-        file = mkApp pkgs.nautilus;
-        doc = mkApp pkgs.papers;
-        video = mkApp pkgs.vlc;
-        text = mkApp pkgs.vim;
-        browser = {
-          entry = "helium.desktop";
-        };
-        archive = mkApp pkgs.file-roller;
-        image = mkApp pkgs.loupe;
-      };
+      # Name of the first visible .desktop file shipped by a package.
+      getDesktopEntry = pkg: let
+        drv = pkgs.runCommand "get-desktop-entry-${pkg.name}" {} ''
+          for f in "${pkg}/share/applications/"*.desktop; do
+            [ -f "$f" ] || continue
+            if ! grep -q "^NoDisplay=true" "$f"; then
+              basename "$f" > $out
+              exit 0
+            fi
+          done
+          echo "No visible .desktop file found in ${pkg.name}" >&2
+          exit 1
+        '';
+      in
+        pkgs.lib.trim (builtins.readFile drv);
     };
 
     flake.modules.nixos.helpers = {pkgs, ...}: {
