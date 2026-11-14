@@ -58,6 +58,10 @@
     };
 
     environment.systemPackages = with pkgs; [
+      rnote
+      inkscape
+      remmina
+      uv
       undervolt
       spotify
       s-tui
