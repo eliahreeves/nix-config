@@ -31,12 +31,6 @@
       };
     };
 
-    qt = {
-      enable = true;
-      platformTheme.name = "gtk3";
-      style.name = "adwaita-dark";
-    };
-
     home.pointerCursor = {
       enable = true;
       name = "phinger-cursors-light";
@@ -45,6 +39,13 @@
       gtk.enable = true;
       x11.enable = true;
       hyprcursor.enable = true;
+    };
+  };
+  flake.modules.homeManager.qt-gtk-theme = {
+    qt = {
+      enable = true;
+      platformTheme.name = "gtk3";
+      style.name = "adwaita-dark";
     };
   };
 }

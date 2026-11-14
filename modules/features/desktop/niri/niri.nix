@@ -4,7 +4,7 @@
   ...
 }: {
   flake.modules.nixos.niri = {pkgs, ...}: {
-    home-manager.sharedModules = [self.modules.homeManager.niri];
+    home-manager.sharedModules = with self.modules.homeManager; [niri qt-gtk-theme];
     imports = with self.modules.nixos; [
       greetd
       noctalia

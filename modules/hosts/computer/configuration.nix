@@ -4,6 +4,8 @@
       NH_FLAKE = "/home/erreeves/nix-config";
     };
     imports = with self.modules.nixos; [
+      kde
+      krdp
       kicad
       tailscale
       erreeves
@@ -16,7 +18,6 @@
       eko
       nix-settings
       computerHardware
-      niri
       base-gui
       printing
       evolution-data-server
@@ -42,6 +43,7 @@
       docker
       gnome-tools
       ai
+      qbittorrent
     ];
 
     nixpkgs.config.allowUnfree = true;
@@ -62,13 +64,22 @@
       "dialout"
     ];
 
-    services.flatpak.enable = true;
+    # services.flatpak.enable = true;
+
+    services.displayManager = {
+      defaultSession = "plasma";
+      autoLogin = {
+        enable = true;
+        user = "erreeves";
+      };
+    };
 
     system.stateVersion = "25.05";
     environment.systemPackages = with pkgs; [
+      mindustry-wayland
+      uv
       cursor-cli
       ungoogled-chromium
-      qbittorrent
       spotify
       inkscape
       proton-vpn
