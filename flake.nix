@@ -45,6 +45,7 @@
 
     eko-messenger = {
       url = "github:eko-network/eko-messenger";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     eko-messenger-client = {

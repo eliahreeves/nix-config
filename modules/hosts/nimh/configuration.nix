@@ -5,7 +5,7 @@
     };
 
     imports = with self.modules.nixos; [
-      jellyfin
+      # jellyfin
       gnome
       tailscale
       # trading
@@ -19,10 +19,11 @@
       minecraft-server
       samba
       immich
-      # eko-messenger
+      eko-messenger
       restic-backup
       tmux
       git
+      ai
       zsh
     ];
 

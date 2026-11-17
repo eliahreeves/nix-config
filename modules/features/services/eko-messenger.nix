@@ -3,25 +3,48 @@
   inputs,
   ...
 }: {
-  flake.modules.nixos.eko-messenger = {pkgs, ...}: {
+  flake.modules.nixos.eko-messenger = {
+    pkgs,
+    config,
+    ...
+  }: {
     imports = with self.modules.nixos;
       [
         postgres
         nginx
+        sops
       ]
       ++ [
         inputs.eko-messenger.nixosModules.default
       ];
+    sops = {
+      secrets."eko-messenger/supabase_db_url" = {};
+      secrets."eko-messenger/vapid_public_key" = {};
+      secrets."eko-messenger/vapid_private_key" = {};
+      secrets."eko-messenger/apns_private_key" = {};
+    };
+
+    sops.templates."eko-messenger.env".content = ''
+      SUPABASE_DB_URL=${config.sops.placeholder."eko-messenger/supabase_db_url"}
+      VAPID_PUBLIC_KEY=${config.sops.placeholder."eko-messenger/vapid_public_key"}
+      VAPID_PRIVATE_KEY=${config.sops.placeholder."eko-messenger/vapid_private_key"}
+      APNS_PRIVATE_KEY=${config.sops.placeholder."eko-messenger/apns_private_key"}
+    '';
 
     services.eko-messenger = {
       enable = true;
       port = 1265;
-      package = inputs.eko-messenger.packages.${pkgs.stdenv.hostPlatform.system}.firebase;
       domain = "https://messages.eko-app.com";
-      authProvider = "firebase";
-      firebaseServiceAccount = "/var/lib/eko-messenger/firebase.json";
-      jwtSecret = "not-very-secret-key";
+      databaseUrl = "postgresql:///eko_messenger?host=/run/postgresql&user=eko_messenger";
+      jwtJwksUrl = "https://nkwizistugahxfwdwtwg.supabase.co/auth/v1/.well-known/jwks.json";
+      environmentFile = config.sops.templates."eko-messenger.env".path;
       logLevel = "debug";
+      apns = {
+        teamId = "7ZD8Y5HH26";
+        keyId = "49R3DYSG93";
+        bundleId = "com.example.untitledApp";
+        sandbox = true;
+      };
     };
 
     services.nginx = {

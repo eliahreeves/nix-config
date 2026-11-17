@@ -31,6 +31,7 @@
           TSbrisaPMO = "429a0d8d-a28e-42d1-8a8b-1bf809130e3f";
           Blue_Sushi = "c12ddbb3-ca9b-4fde-b485-e75b597ecc5c";
           brucec_sann = "143911d3-c562-4b54-ae8e-d751f043b8f7";
+          DestroyerofHope9 = "3803a59c-ecc7-4a69-9631-2799e63b1361";
         };
         serverProperties = {
           level-name = "world";
