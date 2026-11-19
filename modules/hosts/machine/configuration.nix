@@ -17,6 +17,7 @@
       steam
       tuned
       printing
+      # eko
       undervolt
       capslock-arrow-keys
       theme
@@ -32,6 +33,7 @@
       base-gui
       git
       zsh
+      eko
       foot
       comma
       proton-vpn
